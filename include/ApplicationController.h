@@ -48,7 +48,6 @@ private:
   std::list<Nest*> nests;
   //ground
   Ground ground;
-
 };
 
 #endif	/* APPLICATIONCONTROLLER_H */
