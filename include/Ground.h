@@ -35,11 +35,6 @@ public:
 private:
   //size
   int length, width;
-  //ants
-  std::list<Ant*> ants;
-  //nests
-  std::list<Nest*> nests;
-
 };
 
 #endif	/* GROUND_H */

@@ -8,6 +8,10 @@
 #ifndef APPLICATIONCONTROLLER_H
 #define	APPLICATIONCONTROLLER_H
 
+#include "Ant.h"
+#include "Nest.h"
+#include "Ground.h"
+
 /**
  * Class
  */
@@ -38,6 +42,13 @@ public:
    */
   void resetSimulation();
 private:
+  //ants
+  std::list<Ant*> ants;
+  //nests
+  std::list<Nest*> nests;
+  //ground
+  Ground ground;
+
 };
 
 #endif	/* APPLICATIONCONTROLLER_H */
