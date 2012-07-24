@@ -35,6 +35,19 @@
       </toolsSet>
       <compileType>
       </compileType>
+      <folder path="TestFiles">
+        <ccTool>
+          <incDir>
+            <pElem>../gtest/gtest_src/include</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <linkerLibItems>
+            <linkerLibFileItem>../gtest/libgtest.a</linkerLibFileItem>
+          </linkerLibItems>
+          <commandLine>-lpthread</commandLine>
+        </linkerTool>
+      </folder>
     </conf>
     <conf name="Release" type="1">
       <toolsSet>
