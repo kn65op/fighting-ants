@@ -10,10 +10,12 @@
 
 #include <gtkmm-3.0/gtkmm.h>
 
+#include "Ground.h"
+
 /**
  * Class representing Gtk::DrawingArea where simalation will be presented.
  */
-class GroundArea : public Gtk::DrawingArea
+class GroundArea : public Gtk::DrawingArea, public Ground
 {
 public:
   /**

@@ -21,6 +21,12 @@ bool GroundArea::on_draw(const Cairo::RefPtr<Cairo::Context>& cr)
   const int width = allocation.get_width();
   const int height = allocation.get_height();
 
+  //draw all fields
+
+  //draw nests
+
+  //draw ants with are on the ground
+
   return true;
 }
 
