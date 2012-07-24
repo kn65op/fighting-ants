@@ -21,6 +21,9 @@ public:
    * Default constructor.
    */
   MainWindow();
+  /**
+   * Copying is not allowed.
+   */
   MainWindow(const MainWindow& orig) = delete;
   /**
    * Default destructor.

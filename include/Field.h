@@ -10,13 +10,26 @@
 
 #include <gtkmm-3.0/gtkmm.h>
 
+/**
+ * Class representing Gtk::DrawingArea where simalation will be presented.
+ */
 class Field : public Gtk::DrawingArea
 {
 public:
+  /**
+   * Default constructor.
+   */
   Field();
+  /**
+   * Default destructor.
+   */
   virtual ~Field();
 protected:
-  
+  /**
+   * Function draws simulation state.
+   * @param cr Cario::Context where painting it's made.
+   * @return true.
+   */
   virtual bool on_draw(const Cairo::RefPtr<Cairo::Context>& cr);
 };
 
