@@ -23,7 +23,20 @@ public:
    */
   virtual ~ApplicationController();
 
-  int run(int argc, char** argv);
+  /**
+   * Function starts simulation.
+   */
+  void startSimulation();
+
+  /**
+   * Function stops simulation.
+   */
+  void stopSimulation();
+
+  /**
+   * Function resets simulation to initial state.
+   */
+  void resetSimulation();
 private:
 };
 

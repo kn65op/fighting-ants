@@ -31,14 +31,9 @@ MainWindow::MainWindow()
   //setting buttons
   ss_button.set_label("Start");
 
-  //setting drawingArea
-  Glib::RefPtr<Gdk::Window> www = field.get_window();
-  
   //showing widgets
   main_box.show();
   main_box.show_all_children(true);
-
-//  Cairo::RefPtr<Cairo::Context> cont = field.get_window()->create_cairo_context();
 }
 
 MainWindow::~MainWindow()
