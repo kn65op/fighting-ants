@@ -9,15 +9,34 @@
 #define	MAINWINDOWS_H
 
 #include <gtkmm-3.0/gtkmm.h>
+#include "Field.h"
 
+/**
+ * Class reprezenting main window.
+ */
 class MainWindow : public Gtk::Window
 {
 public:
+  /**
+   * Default constructor.
+   */
   MainWindow();
   MainWindow(const MainWindow& orig) = delete;
+  /**
+   * Default destructor.
+   */
   ~MainWindow();
 private:
+  //for paint field with ants
+  Field field;
+  //start/stop button
+  Gtk::Button ss_button;
 
+  //for view
+  //box for buttons
+  Gtk::VBox buttons_box;
+  //box for separating field from buttons
+  Gtk::HBox main_box;
 };
 
 #endif	/* MAINWINDOWS_H */
