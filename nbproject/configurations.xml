@@ -4,8 +4,12 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
-      <itemPath>include/Field.h</itemPath>
+      <itemPath>include/Ant.h</itemPath>
+      <itemPath>include/ApplicationController.h</itemPath>
+      <itemPath>include/Ground.h</itemPath>
+      <itemPath>include/GroundArea.h</itemPath>
       <itemPath>include/MainWindow.h</itemPath>
+      <itemPath>include/Nest.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -14,8 +18,12 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>src/Field.cpp</itemPath>
+      <itemPath>src/Ant.cpp</itemPath>
+      <itemPath>src/ApplicationController.cpp</itemPath>
+      <itemPath>src/Ground.cpp</itemPath>
+      <itemPath>src/GroundArea.cpp</itemPath>
       <itemPath>src/MainWindow.cpp</itemPath>
+      <itemPath>src/Nest.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"

@@ -5,17 +5,17 @@
  * Created on 24 lipiec 2012, 15:24
  */
 
-#include "../include/Field.h"
+#include "../include/GroundArea.h"
 
-Field::Field()
+GroundArea::GroundArea()
 {
 }
 
-Field::~Field()
+GroundArea::~GroundArea()
 {
 }
 
-bool Field::on_draw(const Cairo::RefPtr<Cairo::Context>& cr)
+bool GroundArea::on_draw(const Cairo::RefPtr<Cairo::Context>& cr)
 {
   Gtk::Allocation allocation = get_allocation();
   const int width = allocation.get_width();

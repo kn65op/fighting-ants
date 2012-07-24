@@ -9,7 +9,9 @@
 #define	MAINWINDOWS_H
 
 #include <gtkmm-3.0/gtkmm.h>
-#include "Field.h"
+
+#include "ApplicationController.h"
+#include "GroundArea.h"
 
 /**
  * Class reprezenting main window.
@@ -31,7 +33,7 @@ public:
   ~MainWindow();
 private:
   //for paint field with ants
-  Field field;
+  GroundArea field;
   //start/stop button
   Gtk::Button ss_button;
 
@@ -40,6 +42,10 @@ private:
   Gtk::VBox buttons_box;
   //box for separating field from buttons
   Gtk::HBox main_box;
+
+
+  //application controller
+  ApplicationController ap;
 };
 
 #endif	/* MAINWINDOWS_H */

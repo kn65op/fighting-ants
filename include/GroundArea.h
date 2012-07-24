@@ -13,17 +13,17 @@
 /**
  * Class representing Gtk::DrawingArea where simalation will be presented.
  */
-class Field : public Gtk::DrawingArea
+class GroundArea : public Gtk::DrawingArea
 {
 public:
   /**
    * Default constructor.
    */
-  Field();
+  GroundArea();
   /**
    * Default destructor.
    */
-  virtual ~Field();
+  virtual ~GroundArea();
 protected:
   /**
    * Function draws simulation state.
