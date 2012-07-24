@@ -16,13 +16,14 @@ MainWindow::MainWindow()
   //setting widow view
   //title
   set_title("Fighting ants");
+  set_size_request(800, 600);
   
   //setting view
   add(main_box);
 
   //setting main box
   main_box.pack_start(field);
-  main_box.pack_end(buttons_box);
+  main_box.pack_end(buttons_box, Gtk::PACK_SHRINK);
 
   //setting buttons_box
   buttons_box.pack_end(ss_button);
