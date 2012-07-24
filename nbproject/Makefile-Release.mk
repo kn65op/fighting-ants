@@ -36,7 +36,10 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/src/Field.o \
-	${OBJECTDIR}/src/MainWindow.o
+	${OBJECTDIR}/src/Ant.o \
+	${OBJECTDIR}/src/MainWindow.o \
+	${OBJECTDIR}/src/Ground.o \
+	${OBJECTDIR}/src/Nest.o
 
 
 # C Compiler Flags
@@ -73,10 +76,25 @@ ${OBJECTDIR}/src/Field.o: src/Field.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Field.o src/Field.cpp
 
+${OBJECTDIR}/src/Ant.o: src/Ant.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Ant.o src/Ant.cpp
+
 ${OBJECTDIR}/src/MainWindow.o: src/MainWindow.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/MainWindow.o src/MainWindow.cpp
+
+${OBJECTDIR}/src/Ground.o: src/Ground.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Ground.o src/Ground.cpp
+
+${OBJECTDIR}/src/Nest.o: src/Nest.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Nest.o src/Nest.cpp
 
 # Subprojects
 .build-subprojects:
