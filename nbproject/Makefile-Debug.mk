@@ -34,15 +34,16 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/main.o
+	${OBJECTDIR}/main.o \
+	${OBJECTDIR}/src/MainWindow.o
 
 
 # C Compiler Flags
 CFLAGS=
 
 # CC Compiler Flags
-CCFLAGS=
-CXXFLAGS=
+CCFLAGS=-std=c++0x `pkg-config gtkmm-3.0 --cflags` 
+CXXFLAGS=-std=c++0x `pkg-config gtkmm-3.0 --cflags` 
 
 # Fortran Compiler Flags
 FFLAGS=
@@ -59,12 +60,17 @@ LDLIBSOPTIONS=
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/fighting-ants: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/fighting-ants ${OBJECTFILES} ${LDLIBSOPTIONS} 
+	${LINK.cc} `pkg-config gtkmm-3.0 --libs` -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/fighting-ants  ${OBJECTFILES} ${LDLIBSOPTIONS} 
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.cpp
+
+${OBJECTDIR}/src/MainWindow.o: src/MainWindow.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/MainWindow.o src/MainWindow.cpp
 
 # Subprojects
 .build-subprojects:
