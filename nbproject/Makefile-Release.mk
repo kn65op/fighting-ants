@@ -39,7 +39,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/Ant.o \
 	${OBJECTDIR}/src/MainWindow.o \
 	${OBJECTDIR}/src/Ground.o \
-	${OBJECTDIR}/src/Nest.o
+	${OBJECTDIR}/src/Nest.o \
+	${OBJECTDIR}/src/ApplicationController.o
 
 
 # C Compiler Flags
@@ -95,6 +96,11 @@ ${OBJECTDIR}/src/Nest.o: src/Nest.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Nest.o src/Nest.cpp
+
+${OBJECTDIR}/src/ApplicationController.o: src/ApplicationController.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/ApplicationController.o src/ApplicationController.cpp
 
 # Subprojects
 .build-subprojects:

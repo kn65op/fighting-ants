@@ -9,6 +9,8 @@
 #define	MAINWINDOWS_H
 
 #include <gtkmm-3.0/gtkmm.h>
+
+#include "ApplicationController.h"
 #include "Field.h"
 
 /**
@@ -40,6 +42,10 @@ private:
   Gtk::VBox buttons_box;
   //box for separating field from buttons
   Gtk::HBox main_box;
+
+
+  //application controller
+  ApplicationController ap;
 };
 
 #endif	/* MAINWINDOWS_H */

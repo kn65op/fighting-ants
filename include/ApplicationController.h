@@ -22,8 +22,9 @@ public:
    * Default destructor.
    */
   virtual ~ApplicationController();
-private:
 
+  int run(int argc, char** argv);
+private:
 };
 
 #endif	/* APPLICATIONCONTROLLER_H */
