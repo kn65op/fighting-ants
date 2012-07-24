@@ -11,7 +11,7 @@
 #include <gtkmm-3.0/gtkmm.h>
 
 #include "ApplicationController.h"
-#include "Field.h"
+#include "GroundArea.h"
 
 /**
  * Class reprezenting main window.

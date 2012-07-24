@@ -35,8 +35,8 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/main.o \
-	${OBJECTDIR}/src/Field.o \
 	${OBJECTDIR}/src/Ant.o \
+	${OBJECTDIR}/src/GroundArea.o \
 	${OBJECTDIR}/src/MainWindow.o \
 	${OBJECTDIR}/src/Ground.o \
 	${OBJECTDIR}/src/Nest.o \
@@ -72,15 +72,15 @@ ${OBJECTDIR}/main.o: main.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.cpp
 
-${OBJECTDIR}/src/Field.o: src/Field.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Field.o src/Field.cpp
-
 ${OBJECTDIR}/src/Ant.o: src/Ant.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Ant.o src/Ant.cpp
+
+${OBJECTDIR}/src/GroundArea.o: src/GroundArea.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/GroundArea.o src/GroundArea.cpp
 
 ${OBJECTDIR}/src/MainWindow.o: src/MainWindow.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
