@@ -15,3 +15,14 @@ Ground::~Ground()
 {
 }
 
+void Ground::proceedNextStep()
+{
+  for (auto a: ants)
+  {
+    //TODO: move ants
+  }
+  for (auto n: nests)
+  {
+    //TODO: do with nests
+  }
+}

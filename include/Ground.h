@@ -8,6 +8,10 @@
 #ifndef GROUND_H
 #define	GROUND_H
 
+#include "Nest.h"
+#include "Ant.h"
+
+#include <list>
 
 /**
  * Class representing place ehere ants can walk.
@@ -23,7 +27,18 @@ public:
    * Default destructor.
    */
   virtual ~Ground();
+
+  /**
+   * Function proceedes next step of simulation .
+   */
+  void proceedNextStep();
 private:
+  //size
+  int length, width;
+  //ants
+  std::list<Ant*> ants;
+  //nests
+  std::list<Nest*> nests;
 
 };
 
