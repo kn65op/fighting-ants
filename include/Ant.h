@@ -10,6 +10,8 @@
 
 #include <UsesRandom.h>
 
+#include <random>
+
 /**
  * Class represents ant.
  */
@@ -25,7 +27,7 @@ public:
    */
   virtual ~Ant();
 private:
-
+  std::uniform_int_distribution<> *dis; 
 };
 
 #endif	/* ANT_H */

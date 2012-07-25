@@ -9,9 +9,11 @@
 
 Ant::Ant()
 {
+  dis = new std::uniform_int_distribution<>(1,8);
 }
 
 Ant::~Ant()
 {
+  delete dis;
 }
 
