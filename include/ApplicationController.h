@@ -12,6 +12,8 @@
 #include "Nest.h"
 #include "Ground.h"
 
+#include <thread>
+
 /**
  * Class
  */
@@ -48,6 +50,12 @@ private:
   std::list<Nest*> nests;
   //ground
   Ground ground;
+
+  //threads
+  std::thread *simulation_thread;
+  //if simulation should continue
+  bool simulate;
+
 };
 
 #endif	/* APPLICATIONCONTROLLER_H */

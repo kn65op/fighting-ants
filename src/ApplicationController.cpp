@@ -16,3 +16,14 @@ ApplicationController::~ApplicationController()
 {
 }
 
+void ApplicationController::startSimulation()
+{
+  //TODO: new thread
+  simulate = true;
+}
+
+void ApplicationController::stopSimulation()
+{
+  simulate = false;
+}
+
