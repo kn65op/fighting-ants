@@ -8,10 +8,12 @@
 #ifndef ANT_H
 #define	ANT_H
 
+#include <UsesRandom.h>
+
 /**
  * Class represents ant.
  */
-class Ant
+class Ant : public UsesRandom
 {
 public:
   /**

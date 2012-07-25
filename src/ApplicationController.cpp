@@ -9,6 +9,7 @@
 
 ApplicationController::ApplicationController()
 {
+  ground.setSize(400,300);
 }
 
 ApplicationController::~ApplicationController()

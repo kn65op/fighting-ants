@@ -14,3 +14,9 @@ Ground::Ground()
 Ground::~Ground()
 {
 }
+
+void Ground::setSize(int l, int w)
+{
+  length = l;
+  width = w;
+}
