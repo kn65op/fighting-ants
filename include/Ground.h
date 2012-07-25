@@ -32,6 +32,13 @@ public:
    * Function proceedes next step of simulation .
    */
   void proceedNextStep();
+
+  /**
+   * Set size of ground.
+   * @param l Length of ground.
+   * @param w Width of ground.
+   */
+  void setSize(int l, int w);
 private:
   //size
   int length, width;

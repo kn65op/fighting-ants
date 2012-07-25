@@ -8,10 +8,14 @@
 #ifndef ANT_H
 #define	ANT_H
 
+#include <UsesRandom.h>
+
+#include <random>
+
 /**
  * Class represents ant.
  */
-class Ant
+class Ant : public UsesRandom
 {
 public:
   /**
@@ -23,7 +27,7 @@ public:
    */
   virtual ~Ant();
 private:
-
+  std::uniform_int_distribution<> *dis; 
 };
 
 #endif	/* ANT_H */

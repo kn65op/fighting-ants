@@ -36,8 +36,8 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/src/Ant.o \
-	${OBJECTDIR}/src/GroundArea.o \
 	${OBJECTDIR}/src/MainWindow.o \
+	${OBJECTDIR}/src/GroundArea.o \
 	${OBJECTDIR}/src/Ground.o \
 	${OBJECTDIR}/src/Nest.o \
 	${OBJECTDIR}/src/ApplicationController.o
@@ -57,11 +57,13 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=
+LDLIBSOPTIONS=LibHelper/dist/Debug/GNU-Linux-x86/libHelper.so
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
 	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/fighting-ants
+
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/fighting-ants: LibHelper/dist/Debug/GNU-Linux-x86/libHelper.so
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/fighting-ants: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
@@ -70,40 +72,41 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/fighting-ants: ${OBJECTFILES}
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -g -ILibHelper/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.cpp
 
 ${OBJECTDIR}/src/Ant.o: src/Ant.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
-	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Ant.o src/Ant.cpp
-
-${OBJECTDIR}/src/GroundArea.o: src/GroundArea.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src
-	${RM} $@.d
-	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/GroundArea.o src/GroundArea.cpp
+	$(COMPILE.cc) -g -ILibHelper/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Ant.o src/Ant.cpp
 
 ${OBJECTDIR}/src/MainWindow.o: src/MainWindow.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
-	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/MainWindow.o src/MainWindow.cpp
+	$(COMPILE.cc) -g -ILibHelper/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/MainWindow.o src/MainWindow.cpp
+
+${OBJECTDIR}/src/GroundArea.o: src/GroundArea.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -g -ILibHelper/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/GroundArea.o src/GroundArea.cpp
 
 ${OBJECTDIR}/src/Ground.o: src/Ground.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
-	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Ground.o src/Ground.cpp
+	$(COMPILE.cc) -g -ILibHelper/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Ground.o src/Ground.cpp
 
 ${OBJECTDIR}/src/Nest.o: src/Nest.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
-	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Nest.o src/Nest.cpp
+	$(COMPILE.cc) -g -ILibHelper/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Nest.o src/Nest.cpp
 
 ${OBJECTDIR}/src/ApplicationController.o: src/ApplicationController.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
-	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/ApplicationController.o src/ApplicationController.cpp
+	$(COMPILE.cc) -g -ILibHelper/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/ApplicationController.o src/ApplicationController.cpp
 
 # Subprojects
 .build-subprojects:
+	cd LibHelper && ${MAKE}  -f Makefile CONF=Debug
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
@@ -112,6 +115,7 @@ ${OBJECTDIR}/src/ApplicationController.o: src/ApplicationController.cpp
 
 # Subprojects
 .clean-subprojects:
+	cd LibHelper && ${MAKE}  -f Makefile CONF=Debug clean
 
 # Enable dependency checking
 .dep.inc: .depcheck-impl
