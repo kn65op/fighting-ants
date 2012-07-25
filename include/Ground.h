@@ -9,7 +9,9 @@
 #define	GROUND_H
 
 
-#include <list>
+#include <vector>
+
+#include "Field.h"
 
 /**
  * @brief Class representing place ehere ants can walk.
@@ -41,6 +43,14 @@ public:
    */
   void setSize(int l, int w);
 private:
+  //types
+  typedef std::vector<Field*> Row;
+  typedef std::vector<Row*> Map;
+  
+  //map itself
+  Map map;
+
+  
   //size
   int length, width;
 };
