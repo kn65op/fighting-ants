@@ -43,6 +43,7 @@ public:
    * Function resets simulation to initial state.
    */
   void resetSimulation();
+  
 private:
   //ants
   std::list<Ant*> ants;
@@ -56,6 +57,10 @@ private:
   //if simulation should continue
   bool simulate;
 
+  /**
+   * Processing simulation.
+   */
+  void processSimulation();
 };
 
 #endif	/* APPLICATIONCONTROLLER_H */
