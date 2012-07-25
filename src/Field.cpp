@@ -11,9 +11,9 @@ Field::Field()
 {
 }
 
-Field::Field(const Field& orig)
+/**Field::Field(const Field& orig)
 {
-}
+}*/
 
 Field::~Field()
 {

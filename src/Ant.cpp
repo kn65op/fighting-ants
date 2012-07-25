@@ -9,6 +9,7 @@
 
 Ant::Ant()
 {
+  //First ant will wolk completly randomly
   dis = new std::uniform_int_distribution<>(1,8);
 }
 
