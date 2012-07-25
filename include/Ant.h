@@ -17,7 +17,7 @@
  * 
  * 
  */
-class Ant : public UsesRandom
+class Ant : private UsesRandom
 {
 public:
   /**
