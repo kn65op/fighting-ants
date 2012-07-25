@@ -15,7 +15,7 @@
 #include <thread>
 
 /**
- * Class
+ * @brief Class which control simulation.
  */
 class ApplicationController
 {
