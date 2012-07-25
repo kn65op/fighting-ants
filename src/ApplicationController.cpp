@@ -34,7 +34,27 @@ void ApplicationController::processSimulation()
 {
   while(simulate)
   {
-    //TODO: Do simulation
+    //simulate ants
+    for (auto ant: ants) //pinter to Ant
+    {
+      if (!ant->move(ground)) //ant moves, if false it go to nest
+      {
+	ant = 0; //remove ant from list
+      }
+    }
+    //remove ant which come into nest
+    ants.remove_if([](Ant *ant)
+    {
+      return !ant;
+    });
+    
+    //simulate nests
+    std::list<Ant*> tmp;
+    for (auto nest: nests) //pointer to nest
+    {
+      tmp = nest->nextStep();
+      ants.insert(ants.begin(), tmp.begin(), tmp.end());
+    }
   }
 }
 
