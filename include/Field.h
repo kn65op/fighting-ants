@@ -18,7 +18,11 @@ public:
    * Default constructor.
    */
   Field();
-  Field(const Field& orig);
+  /**
+   * Copy constructor, for now it's not done.
+   * @param orig Original Field.
+   */
+  Field(const Field& orig) = delete;
   /**
    * Default destructor.
    */

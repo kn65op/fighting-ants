@@ -17,7 +17,8 @@
  * @brief Class representing place ehere ants can walk.
  *
  * 
- * /
+ */
+
 class Ground
 {
 public:

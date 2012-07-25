@@ -12,6 +12,8 @@
 #include "Nest.h"
 #include "Ground.h"
 
+#include <thread>
+
 /**
  * @brief Class which control simulation.
  */
@@ -41,6 +43,7 @@ public:
    * Function resets simulation to initial state.
    */
   void resetSimulation();
+  
 private:
   //ants
   std::list<Ant*> ants;
@@ -48,6 +51,16 @@ private:
   std::list<Nest*> nests;
   //ground
   Ground ground;
+
+  //threads
+  std::thread *simulation_thread;
+  //if simulation should continue
+  bool simulate;
+
+  /**
+   * Processing simulation.
+   */
+  void processSimulation();
 };
 
 #endif	/* APPLICATIONCONTROLLER_H */

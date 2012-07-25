@@ -17,7 +17,7 @@ MainWindow::MainWindow()
   //title
   set_title("Fighting ants");
   set_size_request(800, 600);
-  
+
   //setting view
   add(main_box);
 
@@ -27,9 +27,11 @@ MainWindow::MainWindow()
 
   //setting buttons_box
   buttons_box.pack_end(ss_button);
+  is_started = false;
 
   //setting buttons
   ss_button.set_label("Start");
+  ss_button.signal_clicked().connect(sigc::mem_fun(*this, &MainWindow::on_start_stop_button_clicked));
 
   //showing widgets
   main_box.show();
@@ -40,3 +42,16 @@ MainWindow::~MainWindow()
 {
 }
 
+void MainWindow::on_start_stop_button_clicked()
+{
+  if (is_started = !is_started) //starting
+  {
+    ss_button.set_label("Stop");
+    ap.startSimulation();
+  }
+  else //stopping
+  {
+    ss_button.set_label("Start");
+    ap.stopSimulation();
+  }
+}
