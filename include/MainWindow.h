@@ -36,6 +36,8 @@ private:
   GroundArea field;
   //start/stop button
   Gtk::Button ss_button;
+  //state of this button
+  bool is_started;
 
   //for view
   //box for buttons
@@ -46,6 +48,9 @@ private:
 
   //application controller
   ApplicationController ap;
+
+  //signal handlers
+  void on_start_stop_button_clicked();
 };
 
 #endif	/* MAINWINDOWS_H */
