@@ -18,12 +18,23 @@ ApplicationController::~ApplicationController()
 
 void ApplicationController::startSimulation()
 {
-  //TODO: new thread
   simulate = true;
+  simulation_thread = new std::thread(&ApplicationController::processSimulation, this);
 }
 
 void ApplicationController::stopSimulation()
 {
   simulate = false;
+  simulation_thread->join();
+  delete simulation_thread;
+  simulation_thread = 0;
+}
+
+void ApplicationController::processSimulation()
+{
+  while(simulate)
+  {
+    //TODO: Do simulation
+  }
 }
 
