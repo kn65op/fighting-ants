@@ -9,7 +9,7 @@
 #define	FIELD_H
 
 /**
- * Class reprezents one field from ground.
+ * @brief Class reprezents one field from ground.
  */
 class Field
 {

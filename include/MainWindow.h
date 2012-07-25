@@ -14,7 +14,7 @@
 #include "GroundArea.h"
 
 /**
- * Class reprezenting main window.
+ * @brief Class reprezenting main window.
  */
 class MainWindow : public Gtk::Window
 {

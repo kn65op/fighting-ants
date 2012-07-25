@@ -9,7 +9,9 @@
 #define	NEST_H
 
 /**
- * Class reprezents nest.
+ * @brief Class reprezents nest.
+ * 
+ * 
  */
 class Nest
 {

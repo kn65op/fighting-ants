@@ -13,7 +13,7 @@
 #include "Ground.h"
 
 /**
- * Class representing Gtk::DrawingArea where simalation will be presented.
+ * @brief Class representing Gtk::DrawingArea where simalation will be presented.
  */
 class GroundArea : public Gtk::DrawingArea, public Ground
 {

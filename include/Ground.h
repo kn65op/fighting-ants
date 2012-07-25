@@ -14,8 +14,10 @@
 #include <list>
 
 /**
- * Class representing place ehere ants can walk.
- */
+ * @brief Class representing place ehere ants can walk.
+ *
+ * 
+ * /
 class Ground
 {
 public:

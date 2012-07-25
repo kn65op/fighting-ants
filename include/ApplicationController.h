@@ -13,7 +13,7 @@
 #include "Ground.h"
 
 /**
- * Class
+ * @brief Class which control simulation.
  */
 class ApplicationController
 {

@@ -13,7 +13,9 @@
 #include <random>
 
 /**
- * Class represents ant.
+ * @brief Class represents ant.
+ * 
+ * 
  */
 class Ant : public UsesRandom
 {
