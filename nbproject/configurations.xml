@@ -6,6 +6,7 @@
                    projectFiles="true">
       <itemPath>include/Ant.h</itemPath>
       <itemPath>include/ApplicationController.h</itemPath>
+      <itemPath>include/Field.h</itemPath>
       <itemPath>include/Ground.h</itemPath>
       <itemPath>include/GroundArea.h</itemPath>
       <itemPath>include/MainWindow.h</itemPath>
@@ -20,6 +21,7 @@
                    projectFiles="true">
       <itemPath>src/Ant.cpp</itemPath>
       <itemPath>src/ApplicationController.cpp</itemPath>
+      <itemPath>src/Field.cpp</itemPath>
       <itemPath>src/Ground.cpp</itemPath>
       <itemPath>src/GroundArea.cpp</itemPath>
       <itemPath>src/MainWindow.cpp</itemPath>

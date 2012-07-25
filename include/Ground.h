@@ -46,10 +46,18 @@ private:
   //types
   typedef std::vector<Field*> Row;
   typedef std::vector<Row*> Map;
+
+  /**
+   * Creates map with size from length and width.
+   */
+  void createMap();
+  /**
+   * Deletes map.
+   */
+  void deleteMap();
   
   //map itself
   Map map;
-
   
   //size
   int length, width;
