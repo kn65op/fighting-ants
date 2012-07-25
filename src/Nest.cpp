@@ -15,3 +15,7 @@ Nest::~Nest()
 {
 }
 
+std::list<Ant*> Nest::nextStep()
+{
+  //TODO: dopisać
+}

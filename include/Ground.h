@@ -8,8 +8,6 @@
 #ifndef GROUND_H
 #define	GROUND_H
 
-#include "Nest.h"
-#include "Ant.h"
 
 #include <list>
 

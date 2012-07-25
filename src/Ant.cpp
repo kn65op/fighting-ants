@@ -18,3 +18,7 @@ Ant::~Ant()
   delete dis;
 }
 
+bool Ant::move(Ground& ground)
+{
+  //TODO: dopisać
+}
