@@ -5,8 +5,8 @@
  * Created on 24 lipiec 2012, 15:24
  */
 
-#ifndef FIELD_H
-#define	FIELD_H
+#ifndef GROUND_AREA_H
+#define	GROUND_AREA_H
 
 #include <gtkmm-3.0/gtkmm.h>
 
@@ -35,5 +35,5 @@ protected:
   virtual bool on_draw(const Cairo::RefPtr<Cairo::Context>& cr);
 };
 
-#endif	/* FIELD_H */
+#endif	/* GROUND_AREA_H */
 

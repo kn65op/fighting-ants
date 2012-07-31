@@ -35,6 +35,13 @@ public:
    */
   std::list<Ant*> nextStep();
 private:
+  //number of ants in nest
+  int ants_in;
+  //nest id (id differ ants from different nests).
+  int id;
+  //food to eat
+  int food;
+
 
 };
 

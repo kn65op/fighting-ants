@@ -38,7 +38,16 @@ public:
    */
   bool move(Ground & ground);
 private:
+  //distrubution for movement
   std::uniform_int_distribution<> *dis; 
+
+  //nest id from which ant come from
+  int id;
+  //time (in steps) which ants spent on ground (means that it don't eat)
+  int time;
+
+  //maksimum time which ant can spent on ground without eating
+  static int max_time;
 };
 
 #endif	/* ANT_H */
