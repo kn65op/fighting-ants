@@ -22,10 +22,25 @@ bool GroundArea::on_draw(const Cairo::RefPtr<Cairo::Context>& cr)
   const int height = allocation.get_height();
 
   //draw all fields
+  for (row_type* row : Ground::map)
+  {
+    for (Field* field : *row)
+    {
+      //TODO: draw fields
+    }
+  }
 
   //draw nests
+  for (auto nest: nests)
+  {
+    //TODO: draw nests
+  }
 
   //draw ants with are on the ground
+  for (auto ant : ants)
+  {
+    //TODO: draw ants
+  }
 
   return true;
 }

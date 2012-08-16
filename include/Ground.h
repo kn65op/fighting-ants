@@ -10,8 +10,11 @@
 
 
 #include <vector>
+#include <list>
 
 #include "Field.h"
+#include "Ant.h"
+#include "Nest.h"
 
 /**
  * @brief Class representing place ehere ants can walk.
@@ -43,9 +46,6 @@ public:
    */
   void setSize(int l, int w);
 private:
-  //types
-  typedef std::vector<Field*> Row;
-  typedef std::vector<Row*> Map;
 
   /**
    * Creates map with size from length and width.
@@ -55,12 +55,36 @@ private:
    * Deletes map.
    */
   void deleteMap();
-  
-  //map itself
-  Map map;
-  
-  //size
+
   int length, width;
+
+protected:
+  /** Container for field as a row of map
+   */
+  typedef std::vector<Field*> row_type;
+  /** Container for rows as a map
+   */
+  typedef std::vector<row_type*> map_type;
+  /** Container for ants.
+   */
+
+  /** Map of fields.
+   */
+  map_type map;
+
+  //size
+  typedef std::list<Ant*> ants_type;
+  /** Container for nests
+   */
+  typedef std::list<Nest*> nests_type;
+
+  /** Ants, which are visible on ground
+   */
+  ants_type ants;
+
+  /** Nests, which remains on gorund
+   */
+  nests_type nests;
 };
 
 #endif	/* GROUND_H */

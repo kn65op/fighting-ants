@@ -34,11 +34,11 @@ void Ground::setSize(int l, int w)
 
 void Ground::createBlankMap()
 {
-  Row *tmp;
+  row_type *tmp;
   map.reserve(width);
   for (int i=0; i<width; ++i)
   {
-    tmp = new Row();
+    tmp = new row_type();
     tmp->reserve(length);
     map.push_back(tmp);
     for (int j=0; j<length; ++j)
@@ -46,10 +46,10 @@ void Ground::createBlankMap()
       tmp->push_back(new Field()); //temporary making blank fields
     }
   }
-  /*map.insert(map.begin(), width, (Row*)0);
-  std::for_each(map.begin(), map.end(), [this](Row * row)
+  /*map.insert(map.begin(), width, (row_type*)0);
+  std::for_each(map.begin(), map.end(), [this](row_type * row)
   {
-    row =  new Row(length, (Field*)0);
+    row =  new row_type(length, (Field*)0);
     std::for_each(row->begin(), row->end(), [](Field * field)
     {
       field = new Field();
@@ -61,7 +61,7 @@ void Ground::deleteMap()
 {
   if (!map.empty()) //erase old map
   {
-    std::for_each(map.begin(), map.end(), [](Row * row)
+    std::for_each(map.begin(), map.end(), [](row_type * row)
     {
       std::for_each(row->begin(), row->end(), [](Field * field)
       {

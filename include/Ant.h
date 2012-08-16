@@ -12,7 +12,8 @@
 
 #include <random>
 
-#include "Ground.h"
+class Ground;
+
 
 /**
  * @brief Class represents ant.
