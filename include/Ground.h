@@ -50,7 +50,7 @@ private:
   /**
    * Creates map with size from length and width.
    */
-  void createMap();
+  void createBlankMap();
   /**
    * Deletes map.
    */

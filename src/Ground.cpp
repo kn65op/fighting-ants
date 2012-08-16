@@ -29,10 +29,10 @@ void Ground::setSize(int l, int w)
   length = l;
   width = w;
 
-  createMap();
+  createBlankMap();
 }
 
-void Ground::createMap()
+void Ground::createBlankMap()
 {
   Row *tmp;
   map.reserve(width);
@@ -43,7 +43,7 @@ void Ground::createMap()
     map.push_back(tmp);
     for (int j=0; j<length; ++j)
     {
-      tmp->push_back(new Field());
+      tmp->push_back(new Field()); //temporary making blank fields
     }
   }
   /*map.insert(map.begin(), width, (Row*)0);
