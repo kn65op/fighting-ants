@@ -20,6 +20,7 @@ void ApplicationController::startSimulation()
 {
   simulate = true;
   simulation_thread = new std::thread(&ApplicationController::processSimulation, this);
+  
 }
 
 void ApplicationController::stopSimulation()

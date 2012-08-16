@@ -39,7 +39,7 @@ public:
   bool move(Ground & ground);
 private:
   //distrubution for movement
-  std::uniform_int_distribution<> *dis; 
+  std::uniform_int_distribution<> *dis;
 
   //nest id from which ant come from
   int id;
@@ -48,6 +48,13 @@ private:
 
   //maksimum time which ant can spent on ground without eating
   static int max_time;
+
+  //ant position
+  int x, y;
+  
+  //nest position
+  int nest_x, nest_y;
+
 };
 
 #endif	/* ANT_H */
