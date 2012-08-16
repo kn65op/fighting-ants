@@ -19,3 +19,17 @@ Field::~Field()
 {
 }
 
+double Field::getBColor() const 
+{
+  return bcolor;
+}
+
+double Field::getGColor() const
+{
+  return gcolor;
+}
+
+double Field::getRColor() const
+{
+  return rcolor;
+}

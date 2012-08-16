@@ -7,6 +7,8 @@
 
 #include "../include/ApplicationController.h"
 
+#include <chrono>
+
 ApplicationController::ApplicationController()
 {
   ground.setSize(400,300);
@@ -56,6 +58,7 @@ void ApplicationController::processSimulation()
       tmp = nest->nextStep();
       ants.insert(ants.begin(), tmp.begin(), tmp.end());
     }
+    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
   }
 }
 

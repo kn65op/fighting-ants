@@ -27,8 +27,27 @@ public:
    * Default destructor.
    */
   virtual ~Field();
+  
+  /**
+   * Returns red element of field color.
+   * @return Red color.
+   */
+  double getRColor() const;
+  /**
+   * Returns green element of field color.
+   * @return Green color.
+   */
+  double getGColor() const;
+  /**
+   * Returns blue element of field color.
+   * @return Blue color.
+   */
+  double getBColor() const;
 private:
-
+  //colors of field
+  double bcolor;
+  double gcolor;
+  double rcolor;
 };
 
 #endif	/* FIELD_H */
