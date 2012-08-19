@@ -33,7 +33,7 @@ public:
   ~MainWindow();
 private:
   //for paint field with ants
-  GroundArea field;
+  GroundArea* field;
   //start/stop button
   Gtk::Button ss_button;
   //state of this button

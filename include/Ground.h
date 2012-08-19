@@ -40,13 +40,19 @@ public:
   void proceedNextStep();
 
   /**
-   * Set size of ground.
+   * Set size of ground. It also creates ground.
    * @param l Length of ground.
    * @param w Width of ground.
    */
   void setSize(int l, int w);
+  /**
+   * Checks if coordinates are laying in ground.
+   * @param x X coordinate.
+   * @param y Y coordinate.
+   * @return true if coordinates lay in groud, else otherwise.
+   */
+  bool checkifInGround(int x, int y);
 private:
-
   /**
    * Creates map with size from length and width.
    */
@@ -56,9 +62,18 @@ private:
    */
   void deleteMap();
 
-  int length, width;
 
 protected:
+  /** true if map is ready, false otherwise
+   */
+  bool is_map;
+  /** length of map
+   */
+  int length;
+  /** width of map
+   */
+  int width;
+
   /** Container for field as a row of map
    */
   typedef std::vector<Field*> row_type;

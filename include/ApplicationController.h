@@ -43,6 +43,15 @@ public:
    * Function resets simulation to initial state.
    */
   void resetSimulation();
+  /**
+   * Set ground to application controller.
+   * @param ground Ground* to set.
+   */
+  void setGround(Ground* ground)
+  {
+    this->ground = ground;
+  }
+
   
 private:
   //ants
@@ -50,7 +59,7 @@ private:
   //nests
   std::list<Nest*> nests;
   //ground
-  Ground ground;
+  Ground* ground;
 
   //threads
   std::thread *simulation_thread;

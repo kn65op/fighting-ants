@@ -11,7 +11,6 @@
 
 ApplicationController::ApplicationController()
 {
-  ground.setSize(400,300);
 }
 
 ApplicationController::~ApplicationController()
@@ -22,6 +21,8 @@ void ApplicationController::startSimulation()
 {
   simulate = true;
   simulation_thread = new std::thread(&ApplicationController::processSimulation, this);
+  ground->setSize(40,30);
+  ants.push_back(new Ant());
   
 }
 
@@ -40,7 +41,7 @@ void ApplicationController::processSimulation()
     //simulate ants
     for (auto ant: ants) //pinter to Ant
     {
-      if (!ant->move(ground)) //ant moves, if false it go to nest
+      if (!ant->move(*ground)) //ant moves, if false it go to nest
       {
 	ant = 0; //remove ant from list
       }

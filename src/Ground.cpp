@@ -14,6 +14,7 @@
 
 Ground::Ground()
 {
+  is_map = false;
 }
 
 Ground::~Ground()
@@ -46,6 +47,7 @@ void Ground::createBlankMap()
       tmp->push_back(new Field()); //temporary making blank fields
     }
   }
+  is_map = true;
   /*map.insert(map.begin(), width, (row_type*)0);
   std::for_each(map.begin(), map.end(), [this](row_type * row)
   {
@@ -70,4 +72,9 @@ void Ground::deleteMap()
       delete row;
     });
   }
+}
+
+bool Ground::checkifInGround(int x, int y)
+{
+  return !(x < 0 || y < 0 || x > width || y > length);
 }

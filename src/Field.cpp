@@ -9,6 +9,9 @@
 
 Field::Field()
 {
+  bcolor = 0.1647;
+  gcolor = 0.1647;
+  rcolor = 0.6471;
 }
 
 /**Field::Field(const Field& orig)

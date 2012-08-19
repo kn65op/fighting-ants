@@ -38,6 +38,25 @@ public:
    * @return true if ant still on ground, false if it go into nest.
    */
   bool move(Ground & ground);
+  
+  /**
+   * Returs X coordinate.
+   * @return X coordinate.
+   */
+  int getX() const
+  {
+    return x;
+  }
+
+  /**
+   * Returns Y coordinate.
+   * @return Y coordinate.
+   */
+  int getY() const
+  {
+    return y;
+  }
+
 private:
   //distrubution for movement
   std::uniform_int_distribution<> *dis;

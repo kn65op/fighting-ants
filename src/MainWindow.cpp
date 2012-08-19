@@ -22,7 +22,8 @@ MainWindow::MainWindow()
   add(main_box);
 
   //setting main box
-  main_box.pack_start(field);
+  field = new GroundArea();
+  main_box.pack_start(*field);
   main_box.pack_end(buttons_box, Gtk::PACK_SHRINK);
 
   //setting buttons_box
@@ -36,6 +37,9 @@ MainWindow::MainWindow()
   //showing widgets
   main_box.show();
   main_box.show_all_children(true);
+
+  //setting application controller
+  ap.setGround(field);
 }
 
 MainWindow::~MainWindow()
