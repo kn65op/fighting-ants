@@ -25,6 +25,13 @@
 class Ground
 {
 public:
+  /** Container for Ants
+   */
+  typedef std::list<Ant*>* ants_type;
+  /** Container for nests
+   */
+  typedef std::list<Nest*>* nests_type;
+
   /**
    * Default constructor.
    */
@@ -52,6 +59,24 @@ public:
    * @return true if coordinates lay in groud, else otherwise.
    */
   bool checkifInGround(int x, int y);
+
+  /**
+   * Sets ants to paint.
+   * @param ants Ants to paint.
+   */
+  void setAnts(ants_type ants)
+  {
+    this->ants = ants;
+  }
+
+  /**
+   * Sets nests to paint.
+   * @param nests Nests to paint.
+   */
+  void setNests(nests_type nests)
+  {
+    this->nests = nests;
+  }
 private:
   /**
    * Creates map with size from length and width.
@@ -61,6 +86,8 @@ private:
    * Deletes map.
    */
   void deleteMap();
+
+
 
 
 protected:
@@ -87,11 +114,6 @@ protected:
    */
   map_type map;
 
-  //size
-  typedef std::list<Ant*> ants_type;
-  /** Container for nests
-   */
-  typedef std::list<Nest*> nests_type;
 
   /** Ants, which are visible on ground
    */

@@ -23,7 +23,7 @@ MainWindow::MainWindow()
 
   //setting main box
   field = new GroundArea();
-  main_box.pack_start(*field);
+  main_box.pack_start(*field, Gtk::PACK_EXPAND_WIDGET);
   main_box.pack_end(buttons_box, Gtk::PACK_SHRINK);
 
   //setting buttons_box

@@ -10,7 +10,7 @@
 
 #include "Ant.h"
 #include "Nest.h"
-#include "Ground.h"
+#include "GroundArea.h"
 
 #include <thread>
 
@@ -47,7 +47,7 @@ public:
    * Set ground to application controller.
    * @param ground Ground* to set.
    */
-  void setGround(Ground* ground)
+  void setGround(GroundArea* ground)
   {
     this->ground = ground;
   }
@@ -59,7 +59,7 @@ private:
   //nests
   std::list<Nest*> nests;
   //ground
-  Ground* ground;
+  GroundArea* ground;
 
   //threads
   std::thread *simulation_thread;

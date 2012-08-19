@@ -21,9 +21,9 @@ void ApplicationController::startSimulation()
 {
   simulate = true;
   simulation_thread = new std::thread(&ApplicationController::processSimulation, this);
-  ground->setSize(40,30);
+  ground->setSize(100, 100);
   ants.push_back(new Ant());
-  
+
 }
 
 void ApplicationController::stopSimulation()
@@ -36,30 +36,41 @@ void ApplicationController::stopSimulation()
 
 void ApplicationController::processSimulation()
 {
-  while(simulate)
+  while (simulate)
   {
     //simulate ants
-    for (auto ant: ants) //pinter to Ant
+    for (auto ant : ants) //pinter to Ant
     {
       if (!ant->move(*ground)) //ant moves, if false it go to nest
       {
-	ant = 0; //remove ant from list
+        ant = 0; //remove ant from list
       }
     }
     //remove ant which come into nest
-    ants.remove_if([](Ant *ant)
+
+    ants.remove_if([](Ant * ant)
     {
       return !ant;
     });
-    
+
     //simulate nests
     std::list<Ant*> tmp;
-    for (auto nest: nests) //pointer to nest
+    for (auto nest : nests) //pointer to nest
     {
       tmp = nest->nextStep();
       ants.insert(ants.begin(), tmp.begin(), tmp.end());
     }
-    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+
+    //painting area
+    ground->setAnts(&ants);
+    Glib::RefPtr<Gdk::Window> win = ground->get_window();
+    if (win)
+    {
+      Gdk::Rectangle r(0,0, ground->get_allocation().get_width(), ground->get_allocation().get_height());
+      win->invalidate_rect(r, false);
+    }
+
   }
 }
 
