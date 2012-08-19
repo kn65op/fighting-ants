@@ -61,6 +61,7 @@ void Ground::createBlankMap()
 
 void Ground::deleteMap()
 {
+  is_map = false;
   if (!map.empty()) //erase old map
   {
     std::for_each(map.begin(), map.end(), [](row_type * row)
@@ -76,5 +77,5 @@ void Ground::deleteMap()
 
 bool Ground::checkifInGround(int x, int y)
 {
-  return !(x < 0 || y < 0 || x > width || y > length);
+  return !(x < 0 || y < 0 || x > width - 1 || y > length - 1);
 }

@@ -34,6 +34,26 @@ public:
    * @return List with pointers to Ant which went out in std::list<Ant*>.
    */
   std::list<Ant*> nextStep();
+
+  /**
+   * Returns X coordinate of nest.
+   * @return X coordinate.
+   */
+  int getX() const
+  {
+    return x;
+  }
+
+  /**
+   * Returns Y cooridinate of nest.
+   * @return Y coordinate.
+   */
+  int getY() const
+  {
+    return y;
+  }
+
+  
 private:
   //number of ants in nest
   int ants_in;
@@ -41,6 +61,8 @@ private:
   int id;
   //food to eat
   int food;
+  //coordinates
+  int x, y;
 
 
 };

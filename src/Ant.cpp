@@ -6,7 +6,6 @@
  */
 
 #include <exception>
-#include <iostream>
 
 #include "../include/Ant.h"
 
@@ -18,7 +17,7 @@ Ant::Ant()
   dis = new std::uniform_int_distribution<>(1,8);
 
   //tmp
-  x = y = 0;
+  x = y = 50;
 }
 
 Ant::~Ant()
@@ -86,6 +85,5 @@ bool Ant::move(Ground& ground)
     throw std::exception();
   }
 
-  std::cout << x << " " << y << "\n";
   //TODO: dopisać
 }

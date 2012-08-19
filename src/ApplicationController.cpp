@@ -19,10 +19,14 @@ ApplicationController::~ApplicationController()
 
 void ApplicationController::startSimulation()
 {
+  for (int i=0; i<100; ++i)
+  {
+    ants.push_back(new Ant());
+  }
+  nests.push_back(new Nest());
+  ground->setSize(100, 100);
   simulate = true;
   simulation_thread = new std::thread(&ApplicationController::processSimulation, this);
-  ground->setSize(100, 100);
-  ants.push_back(new Ant());
 
 }
 
@@ -60,10 +64,11 @@ void ApplicationController::processSimulation()
       tmp = nest->nextStep();
       ants.insert(ants.begin(), tmp.begin(), tmp.end());
     }
-    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    std::this_thread::sleep_for(std::chrono::milliseconds(1));
 
     //painting area
     ground->setAnts(&ants);
+    ground->setNests(&nests);
     Glib::RefPtr<Gdk::Window> win = ground->get_window();
     if (win)
     {

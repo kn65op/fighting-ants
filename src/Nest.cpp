@@ -9,6 +9,9 @@
 
 Nest::Nest()
 {
+  //TMP
+  x = y = 25;
+  //TMP
 }
 
 Nest::~Nest()
@@ -18,4 +21,5 @@ Nest::~Nest()
 std::list<Ant*> Nest::nextStep()
 {
   //TODO: dopisać
+  return std::list<Ant*>();
 }
