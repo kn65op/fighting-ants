@@ -16,13 +16,15 @@
 #include "Ant.h"
 #include "Nest.h"
 
+#include <UsesRandom.h>
+
 /**
  * @brief Class representing place ehere ants can walk.
  *
  * 
  */
 
-class Ground
+class Ground : private Helper::UsesRandom
 {
 public:
   /** Container for Ants

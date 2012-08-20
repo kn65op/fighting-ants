@@ -43,10 +43,15 @@ public:
    * @return Blue color.
    */
   double getBColor() const;
-private:
-  //colors of field
+protected:
+  /** Blue element of field color.
+   */
   double bcolor;
+  /** Green element of field color.
+   */
   double gcolor;
+  /** Red element of field color.
+   */
   double rcolor;
 };
 

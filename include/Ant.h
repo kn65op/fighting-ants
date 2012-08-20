@@ -20,7 +20,7 @@ class Ground;
  * 
  * 
  */
-class Ant : private UsesRandom
+class Ant : private Helper::UsesRandom
 {
 public:
   /**
