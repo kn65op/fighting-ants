@@ -24,7 +24,7 @@
  * 
  */
 
-class Ground : private Helper::UsesRandom
+class Ground : private THelper::UsesRandom
 {
 public:
   /** Container for Ants
