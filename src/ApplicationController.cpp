@@ -19,11 +19,13 @@ ApplicationController::~ApplicationController()
 
 void ApplicationController::startSimulation()
 {
+  /**
   for (int i=0; i<100; ++i)
   {
     ants.push_back(new Ant());
-  }
-  nests.push_back(new Nest());
+  }*/
+  //for test one nest created
+  nests.push_back(new Nest(50));
   ground->setSize(100, 100);
   simulate = true;
   simulation_thread = new std::thread(&ApplicationController::processSimulation, this);

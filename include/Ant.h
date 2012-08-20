@@ -24,9 +24,12 @@ class Ant : private THelper::UsesRandom
 {
 public:
   /**
-   * Default constructor.
+   * Contructor to create Ant from nest.
+   * @param id Nest id.
+   * @param nx Nest X position.
+   * @param ny Nest Y position.
    */
-  Ant();
+  Ant(int id, int nx, int ny);
   /**
    * Default destructor.
    */
@@ -56,6 +59,11 @@ public:
   {
     return y;
   }
+
+  /**
+   * Sets ant position to home nest position.
+   */
+  void setPositionToNestPosition();
 
 private:
   //distrubution for movement

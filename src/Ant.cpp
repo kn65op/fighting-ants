@@ -11,13 +11,14 @@
 
 #include "../include/Ground.h"
 
-Ant::Ant()
+Ant::Ant(int id, int nx, int ny)
 {
   //First ant will wolk completly randomly
   dis = new std::uniform_int_distribution<>(1,8);
 
-  //tmp
-  x = y = 50;
+  this->id = id;
+  nest_x = nx;
+  nest_y = ny;
 }
 
 Ant::~Ant()
@@ -86,4 +87,10 @@ bool Ant::move(Ground& ground)
   }
 
   //TODO: dopisać
+}
+
+void Ant::setPositionToNestPosition()
+{
+  x = nest_x;
+  y = nest_y;
 }

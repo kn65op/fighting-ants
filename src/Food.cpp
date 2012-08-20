@@ -11,6 +11,7 @@ Food::Food()
 {
   bcolor = rcolor = 0;
   gcolor = 1;
+  amount = 100;
 }
 
 Food::~Food()

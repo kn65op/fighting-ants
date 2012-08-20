@@ -23,7 +23,7 @@ public:
   /**
    * Default contructor.
    */
-  Nest();
+  Nest(int n);
   /**
    * Default destructor.
    */
@@ -63,6 +63,8 @@ private:
   int food;
   //coordinates
   int x, y;
+  //ants in nest
+  std::list<Ant*> ants;
 
 
 };
