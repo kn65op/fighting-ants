@@ -9,10 +9,13 @@
 
 #include <algorithm>
 #include <random>
+
+#include "../include/Food.h"
+
 //tmp
 #include <iostream>
 
-Ground::Ground()
+Ground::Ground() : dis(1,100)
 {
   is_map = false;
 }
@@ -44,7 +47,15 @@ void Ground::createBlankMap()
     map.push_back(tmp);
     for (int j=0; j<length; ++j)
     {
-      tmp->push_back(new Field()); //temporary making blank fields
+ //temporary making blank and food fields (aprox 99:1)
+      if (dis(*gen) == 1)
+      {
+	tmp->push_back(new Food());
+      }
+      else
+      {
+	tmp->push_back(new Field());
+      }
     }
   }
   is_map = true;

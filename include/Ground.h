@@ -89,7 +89,7 @@ private:
    */
   void deleteMap();
 
-
+  std::uniform_int_distribution<> dis;
 
 
 protected:

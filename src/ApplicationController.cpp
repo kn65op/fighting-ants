@@ -64,7 +64,7 @@ void ApplicationController::processSimulation()
       tmp = nest->nextStep();
       ants.insert(ants.begin(), tmp.begin(), tmp.end());
     }
-    std::this_thread::sleep_for(std::chrono::milliseconds(1));
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));
 
     //painting area
     ground->setAnts(&ants);
