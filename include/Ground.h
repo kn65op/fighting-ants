@@ -11,6 +11,7 @@
 
 #include <vector>
 #include <list>
+#include <map>
 
 #include "Field.h"
 #include "Ant.h"
@@ -32,7 +33,7 @@ public:
   typedef std::list<Ant*>* ants_type;
   /** Container for nests
    */
-  typedef std::list<Nest*>* nests_type;
+  typedef std::map<int, Nest*>* nests_type;
 
   /**
    * Default constructor.

@@ -90,9 +90,29 @@ public:
   }
 
   /**
+   * Returns ant's nest id.
+   * @return Ant's nest id.
+   */
+  int getId() const
+  {
+    return id;
+  }
+  
+
+  /**
    * Sets ant position to home nest position.
    */
   void setPositionToNestPosition();
+
+  /**
+   * Set max time which ant can spend outside nest.
+   * @param max_time Time to set.
+   */
+  static void setMaxTime(int max_time)
+  {
+    max_time = max_time;
+  }
+
 
 private:
   //distrubution for movement
@@ -100,7 +120,7 @@ private:
 
   //nest id from which ant come from
   int id;
-  //time (in steps) which ants spent on ground (means that it don't eat)
+  //time (in steps) which ants spent on ground (means that ant don't eat)
   int time;
 
   //maksimum time which ant can spent on ground without eating
@@ -115,7 +135,11 @@ private:
 
   // funtions to moving in different ways.
   void freeMove(Ground & ground);
+  void getFood(Ground & ground);
+  void goToNest(Ground & ground);
 
+  //pointer to move function
+  void (Ant::*move_function)(Ground & ground);
 };
 
 #endif	/* ANT_H */

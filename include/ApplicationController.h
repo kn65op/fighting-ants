@@ -13,6 +13,7 @@
 #include "GroundArea.h"
 
 #include <thread>
+#include <map>
 
 /**
  * @brief Class which control simulation.
@@ -57,7 +58,7 @@ private:
   //ants
   std::list<Ant*> ants;
   //nests
-  std::list<Nest*> nests;
+  std::map<int, Nest*> nests;
   //ground
   GroundArea* ground;
 

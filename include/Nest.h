@@ -22,9 +22,10 @@ class Nest
 public:
   /**
    * Contructor which creates ants in nest.
+   * @param id Nest id.
    * @param n Number of ants which will be created in nest.
    */
-  Nest(int n);
+  Nest(int id, int n);
   /**
    * Default destructor.
    */
@@ -59,6 +60,12 @@ public:
    * @param amount Amount of food to add to nest.
    */
   void addFood(int amount);
+
+  /**
+   * Add ant to nest.
+   * @param ant Ant to add to nest.
+   */
+  void addAnt(Ant* ant);
 
   
 private:

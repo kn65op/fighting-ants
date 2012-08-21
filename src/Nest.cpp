@@ -7,8 +7,9 @@
 
 #include "../include/Nest.h"
 
-Nest::Nest(int n)
+Nest::Nest(int id, int n)
 {
+  this->id = id;
   //TMP
   x = y = 25;
   //TMP
@@ -57,4 +58,9 @@ void Nest::produceAnts()
       ants.push_back(new Ant(id, x, y));
     }
   }
+}
+
+void Nest::addAnt(Ant* ant)
+{
+  ants.push_back(ant);
 }

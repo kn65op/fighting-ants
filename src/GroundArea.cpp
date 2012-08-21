@@ -53,10 +53,10 @@ bool GroundArea::on_draw(const Cairo::RefPtr<Cairo::Context>& cr)
   //draw nests
   if (nests)
   {
-    for (auto nest : *nests)
+    for (auto nest : *nests) //std::pair<id, Nest*>
     {
       cr->set_source_rgb(1, 1, 1);
-      cr->rectangle(nest->getX() * xsquare, nest->getY() * ysquare, xsquare, ysquare);
+      cr->rectangle(nest.second->getX() * xsquare, nest.second->getY() * ysquare, xsquare, ysquare);
       cr->fill();
       //TODO: draw nests
     }

@@ -19,6 +19,8 @@ Ant::Ant(int id, int nx, int ny)
   this->id = id;
   nest_x = nx;
   nest_y = ny;
+
+  move_function = nullptr;
 }
 
 Ant::~Ant()
@@ -95,6 +97,10 @@ void Ant::setPositionToNestPosition()
 
 bool Ant::move(Ground& ground)
 {
+  if (move_function == nullptr)
+  {
+    move_function = &Ant::freeMove;
+  }
   freeMove(ground);
   return true;
 }
