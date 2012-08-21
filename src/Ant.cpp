@@ -6,6 +6,7 @@
  */
 
 #include <exception>
+#include <stdlib.h>
 
 #include "../include/Ant.h"
 
@@ -13,7 +14,9 @@
 
 int Ant::can_carry_food = 10;
 
-Ant::Ant(int id, int nx, int ny)
+int Ant::max_time;
+
+Ant::Ant(int id, int nx, int ny) : starting_time_distribution(-10, -5)
 {
   //First ant will wolk completly randomly
   dis = new std::uniform_int_distribution<>(1,8);
@@ -24,6 +27,8 @@ Ant::Ant(int id, int nx, int ny)
 
   move_function = nullptr;
   food = 0;
+
+  time = starting_time_distribution(*gen);
 }
 
 Ant::~Ant()
@@ -108,11 +113,17 @@ bool Ant::move(Ground& ground)
   if (move_function == nullptr) //ant just go out nest
   {
     move_function = &Ant::freeMove;
+    time = max_time;
+  }
+  if (distanceToNest() > (--time - 10))
+  {
+    move_function = &Ant::goToNest;
   }
   (this->*move_function)(ground);
   if (x == nest_x && y == nest_y) //going into nest
   {
     move_function = nullptr;
+    time = -10;
     return false;
   }
   return true;
@@ -160,4 +171,9 @@ double Ant::getRColor() const
 double Ant::getGColor() const
 {
   return 0;
+}
+
+int Ant::distanceToNest() const
+{
+  return std::max(abs(x - nest_x), abs(y - nest_y)); //TODO check
 }

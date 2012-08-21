@@ -110,7 +110,7 @@ public:
    */
   static void setMaxTime(int max_time)
   {
-    max_time = max_time;
+    Ant::max_time = max_time;
   }
 
   /**
@@ -144,6 +144,7 @@ public:
 private:
   //distrubution for movement
   std::uniform_int_distribution<> *dis;
+  std::uniform_int_distribution<> starting_time_distribution;
 
   //nest id from which ant come from
   int id;
@@ -170,6 +171,9 @@ private:
 
   //pointer to move function
   void (Ant::*move_function)(Ground & ground);
+
+  //calculatedistance to nest
+  int distanceToNest() const;
 };
 
 #endif	/* ANT_H */
