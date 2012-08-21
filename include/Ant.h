@@ -24,14 +24,27 @@ class Ground;
 class Ant : private THelper::UsesRandom
 {
 public:
+  /**
+   * @brief Class for really unexpected errors, almost impossible.
+   * 
+   * This excepction should never be thrown.
+   */
   class UnexpectedException
   {
   public:
+    /**
+     * Constructor with setting message .
+     * @param mes Message to be setted.
+     */
     UnexpectedException(std::string mes)
     {
       message = mes;
     }
 
+    /**
+     * Returns message.
+     * @return Message as std::string.
+     */
     operator std::string()
     {
       return message;

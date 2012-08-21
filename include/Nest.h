@@ -15,7 +15,7 @@
 /**
  * @brief Class represents nest.
  * 
- * 
+ * Nest task is storaging food for ants and making new ants. During this task it's important to keep some amount of food all time.
  */
 class Nest
 {
