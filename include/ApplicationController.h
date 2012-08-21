@@ -37,9 +37,19 @@ public:
   void startSimulation();
 
   /**
+   * Initializate simulation (so it can work).
+   */
+  void initSimulation();
+
+  /**
    * Function stops simulation.
    */
   void stopSimulation();
+
+  /**
+   * Procced one step of simulation.
+   */
+  void stepSimulation();
 
   /**
    * Function resets simulation to initial state.
@@ -72,6 +82,8 @@ private:
    * Processing simulation.
    */
   void processSimulation();
+
+  void paintArea();
 };
 
 #endif	/* APPLICATIONCONTROLLER_H */

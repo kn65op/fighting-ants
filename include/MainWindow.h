@@ -37,6 +37,10 @@ private:
   GroundArea* field;
   //start/stop button
   Gtk::Button ss_button;
+  //step simulation button;
+  Gtk::Button step_button;
+  //init simulation button
+  Gtk::Button init_button;
   //state of this button
   bool is_started;
 
@@ -52,6 +56,8 @@ private:
 
   //signal handlers
   void on_start_stop_button_clicked();
+  void on_init_button_clicked();
+  void on_step_button_clicked();
 };
 
 #endif	/* MAINWINDOWS_H */

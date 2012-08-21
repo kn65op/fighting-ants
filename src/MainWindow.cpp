@@ -10,6 +10,7 @@
 #include <cairomm-1.0/cairomm/context.h>
 
 #include "../include/MainWindow.h"
+#include "../include/GroundArea.h"
 
 MainWindow::MainWindow()
 {
@@ -27,12 +28,19 @@ MainWindow::MainWindow()
   main_box.pack_end(buttons_box, Gtk::PACK_SHRINK);
 
   //setting buttons_box
+  buttons_box.pack_start(init_button);
   buttons_box.pack_end(ss_button);
+  buttons_box.pack_end(step_button);
   is_started = false;
 
   //setting buttons
   ss_button.set_label("Start");
+  init_button.set_label("Init");
+  step_button.set_label("Step");
+  step_button.set_visible(false);
   ss_button.signal_clicked().connect(sigc::mem_fun(*this, &MainWindow::on_start_stop_button_clicked));
+  init_button.signal_clicked().connect(sigc::mem_fun(*this, &MainWindow::on_init_button_clicked));
+  step_button.signal_clicked().connect(sigc::mem_fun(*this, &MainWindow::on_step_button_clicked));
 
   //showing widgets
   main_box.show();
@@ -58,4 +66,15 @@ void MainWindow::on_start_stop_button_clicked()
     ss_button.set_label("Start");
     ap.stopSimulation();
   }
+}
+
+void MainWindow::on_step_button_clicked()
+{
+  ap.stepSimulation();
+}
+
+void MainWindow::on_init_button_clicked()
+{
+  ap.initSimulation();
+  step_button.set_visible(true);
 }
