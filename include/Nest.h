@@ -31,7 +31,7 @@ public:
   virtual ~Nest();
 
   /**
-   * Proced job in simulation which nest do (check if some Ants going out form nest).
+   * Proced job in simulation which nest do (check if some Ants going out form nest). Also produce new ants if it's possible.
    * @return List with pointers to Ant which went out in std::list<Ant*>.
    */
   std::list<Ant*> nextStep();
@@ -72,6 +72,7 @@ private:
   std::list<Ant*> ants;
 
 
+  void produceAnts();
 };
 
 #endif	/* NEST_H */

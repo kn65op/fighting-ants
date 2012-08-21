@@ -26,6 +26,9 @@ Nest::~Nest()
 
 std::list<Ant*> Nest::nextStep()
 {
+  produceAnts();
+
+  //TODO: zmienić
   std::list<Ant*> tmp;
   if (ants.empty())
   {
@@ -40,4 +43,18 @@ std::list<Ant*> Nest::nextStep()
 void Nest::addFood(int amount)
 {
   food += amount;
+}
+
+void Nest::produceAnts()
+{
+  if (food > 4 *ants.size())
+  {
+    int number = food - 4 * ants.size();
+    number /= 4;
+    number = number > 10 ? 10 : number;
+    for (int i = 0; i < number; i++)
+    {
+      ants.push_back(new Ant(id, x, y));
+    }
+  }
 }
