@@ -120,4 +120,28 @@ bool Ant::move(Ground& ground)
 void Ant::getFood(Ground& ground)
 {
   food += ground.getFoodFromField(x, y, can_carry_food - food);
+  move_function = &Ant::goToNest;
+}
+
+void Ant::goToNest(Ground& ground)
+{
+  //for now it's closest way
+  if (x > nest_x && ground.checkifInGround(x - 1, y))
+  {
+    --x;
+  }
+  if (x < nest_x && ground.checkifInGround(x + 1, y))
+  {
+    ++x;
+  }
+
+  if(y > nest_y && ground.checkifInGround(x, y - 1))
+  {
+    --y;
+  }
+  if(y < nest_x && ground.checkifInGround(x, y + 1))
+  {
+    ++y;
+  }
+	  
 }
