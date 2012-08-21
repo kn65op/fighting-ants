@@ -61,6 +61,8 @@ protected:
    */
   double rcolor;
 
+  /** Indicates if this field can be changed into food
+   */
   bool can_be_changed_into_food;
 };
 
