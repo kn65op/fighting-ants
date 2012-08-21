@@ -33,11 +33,11 @@ void ApplicationController::startSimulation()
 
 void ApplicationController::initSimulation()
 {
+  //antmax time
+  Ant::setMaxTime(100);
+
   nests[1] = new Nest(1, 5);
   ground->setSize(100, 100);
-
-  //antmax time
-  Ant::setMaxTime(1000);
 
   paintArea();
 }
@@ -78,7 +78,6 @@ void ApplicationController::stepSimulation()
     return !ant;
   });
 
-  int rttaeta = ants.size();
   //simulate nests
   std::list<Ant*> tmp;
   for (auto & pair : nests) //std::pair<int, Nest*>

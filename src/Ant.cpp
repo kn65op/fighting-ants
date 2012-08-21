@@ -16,7 +16,7 @@ int Ant::can_carry_food = 10;
 
 int Ant::max_time;
 
-Ant::Ant(int id, int nx, int ny) : starting_time_distribution(-10, -5)
+Ant::Ant(int id, int nx, int ny) : nest_time_distribution(-10, -5)
 {
   //First ant will wolk completly randomly
   dis = new std::uniform_int_distribution<>(1,8);
@@ -28,7 +28,8 @@ Ant::Ant(int id, int nx, int ny) : starting_time_distribution(-10, -5)
   move_function = nullptr;
   food = 0;
 
-  time = starting_time_distribution(*gen);
+  time = max_time;
+  time_in_nest = nest_time_distribution(*gen);
 }
 
 Ant::~Ant()
@@ -113,7 +114,6 @@ bool Ant::move(Ground& ground)
   if (move_function == nullptr) //ant just go out nest
   {
     move_function = &Ant::freeMove;
-    time = max_time;
   }
   if (distanceToNest() > (--time - 10))
   {
@@ -123,7 +123,7 @@ bool Ant::move(Ground& ground)
   if (x == nest_x && y == nest_y) //going into nest
   {
     move_function = nullptr;
-    time = -10;
+    time_in_nest = nest_time_distribution(*gen);
     return false;
   }
   return true;
@@ -176,4 +176,14 @@ double Ant::getGColor() const
 int Ant::distanceToNest() const
 {
   return std::max(abs(x - nest_x), abs(y - nest_y)); //TODO check
+}
+
+bool Ant::canGoOut()
+{
+  return !(++time_in_nest);
+}
+
+void Ant::feed()
+{
+  time = max_time;
 }

@@ -5,6 +5,8 @@
  * Created on 24 lipiec 2012, 16:23
  */
 
+#include <algorithm>
+
 #include "../include/Nest.h"
 
 Nest::Nest(int id, int n)
@@ -34,13 +36,20 @@ std::list<Ant*> Nest::nextStep()
 
   //TODO: zmienić
   std::list<Ant*> tmp;
-  if (ants.empty())
+  std::for_each(ants.begin(), ants.end(), [&tmp](Ant * & ant)
   {
-    return tmp;
-  }
-  tmp.push_back(ants.back());
-  ants.pop_back(); //todo ant esating
-  tmp.front()->setPositionToNestPosition();
+    if (ant->canGoOut())
+    {
+      ant->setPositionToNestPosition();
+      tmp.push_back(ant);
+      ant = 0;
+    }
+  });
+  ants.remove_if([](Ant * ant)
+  {
+    return !ant;
+  });
+
   return tmp;
 }
 
@@ -51,7 +60,8 @@ void Nest::addFood(int amount)
 
 void Nest::produceAnts()
 {
-  if (food > 4 *ants.size())
+  //TODO change this
+  if (food > 4 * (ants.size() + 1))
   {
     int number = food - 4 * ants.size();
     number /= 4;
@@ -59,8 +69,6 @@ void Nest::produceAnts()
     for (int i = 0; i < number; i++)
     {
       ants.push_back(new Ant(id, x, y));
-
-      --food; //TODO usunąć.
     }
   }
 }
@@ -68,4 +76,10 @@ void Nest::produceAnts()
 void Nest::addAnt(Ant* ant)
 {
   ants.push_back(ant);
+  if (food > 1)
+  {
+    double a = Ant::getMaxTime() - ant->getTime();
+    food -= (double)(Ant::getMaxTime() - ant->getTime()) / (double)Ant::getMaxTime();
+    ant->feed();
+  }
 }

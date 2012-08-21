@@ -72,7 +72,7 @@ private:
   //nest id (id differ ants from different nests).
   int id;
   //food to eat
-  int food;
+  double food;
   //coordinates
   int x, y;
   //ants in nest
