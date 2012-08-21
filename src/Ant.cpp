@@ -180,7 +180,7 @@ int Ant::distanceToNest() const
 
 bool Ant::canGoOut()
 {
-  return !(++time_in_nest);
+  return (++time_in_nest) >= 0;
 }
 
 void Ant::feed()

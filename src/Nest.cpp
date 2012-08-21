@@ -36,10 +36,16 @@ std::list<Ant*> Nest::nextStep()
 
   //TODO: zmienić
   std::list<Ant*> tmp;
-  std::for_each(ants.begin(), ants.end(), [&tmp](Ant * & ant)
+  std::for_each(ants.begin(), ants.end(), [&tmp, this](Ant * & ant)
   {
     if (ant->canGoOut())
     {
+      if (food > 1)
+      {
+        double a = Ant::getMaxTime() - ant->getTime();
+        food -= (double)(Ant::getMaxTime() - ant->getTime()) / (double)Ant::getMaxTime();
+        ant->feed();
+      }
       ant->setPositionToNestPosition();
       tmp.push_back(ant);
       ant = 0;
@@ -76,10 +82,4 @@ void Nest::produceAnts()
 void Nest::addAnt(Ant* ant)
 {
   ants.push_back(ant);
-  if (food > 1)
-  {
-    double a = Ant::getMaxTime() - ant->getTime();
-    food -= (double)(Ant::getMaxTime() - ant->getTime()) / (double)Ant::getMaxTime();
-    ant->feed();
-  }
 }
