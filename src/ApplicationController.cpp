@@ -71,6 +71,9 @@ void ApplicationController::processSimulation()
     //check food
     ground->checkFood();
 
+    //generate new food
+    ground->generateFood();
+
     //painting area
     ground->setAnts(&ants);
     ground->setNests(&nests);

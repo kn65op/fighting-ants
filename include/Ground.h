@@ -84,6 +84,11 @@ public:
    * Checks if some food are empty and generate randomly new food.
    */
   void checkFood();
+
+  /**
+   * Generates new food on ground corresponding to parameters (i.e. probability of generation new food).
+   */
+  void generateFood();
 private:
   /**
    * Creates map with size from length and width.
@@ -94,7 +99,20 @@ private:
    */
   void deleteMap();
 
-  std::uniform_int_distribution<> dis;
+  /**
+   * Deletes row and column distributions.
+   */
+  void deleteDistributions();
+  /**
+   * Creates row and column distributions.
+   */
+  void makeDistributions();
+
+  //distribution for different purposes
+  std::uniform_int_distribution<> start_food_distribution;
+  std::uniform_int_distribution<> new_food_distribution;
+  std::uniform_int_distribution<> *row_distribution;
+  std::uniform_int_distribution<> *column_distribution;
 
 
 protected:

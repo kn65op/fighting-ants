@@ -14,8 +14,9 @@
 
 //tmp
 #include <iostream>
+#include <gtkmm-3.0/gtkmm/treeviewcolumn.h>
 
-Ground::Ground() : dis(1,100)
+Ground::Ground() : start_food_distribution(1,100), new_food_distribution(1,1000)
 {
   is_map = false;
 }
@@ -28,11 +29,13 @@ Ground::~Ground()
 void Ground::setSize(int l, int w)
 {
   deleteMap();
+  deleteDistributions();
 
   //save values
   length = l;
   width = w;
-
+  
+  makeDistributions();
   createBlankMap();
 }
 
@@ -48,7 +51,7 @@ void Ground::createBlankMap()
     for (int j=0; j<length; ++j)
     {
  //temporary making blank and food fields (aprox 99:1)
-      if (dis(*gen) == 1)
+      if (start_food_distribution(*gen) == 1)
       {
 	tmp->push_back(new Food());
       }
@@ -108,4 +111,30 @@ void Ground::checkFood()
       });
     });
   }
+}
+
+
+void Ground::generateFood()
+{
+  if (new_food_distribution(*gen) == 1)
+  {
+    Field *tmp;
+    do
+    {
+      tmp = map[(*row_distribution)(*gen)]->at((*column_distribution)(*gen));
+    }
+    while (typeid(tmp) == typeid(Field*));
+  }
+}
+
+void Ground::makeDistributions()
+{
+  row_distribution = new std::uniform_int_distribution<>(0, length - 1);
+  column_distribution = new std::uniform_int_distribution<>(0, width - 1);
+}
+
+void Ground::deleteDistributions()
+{
+  delete row_distribution;
+  delete column_distribution;
 }
