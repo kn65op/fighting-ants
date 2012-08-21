@@ -14,7 +14,6 @@
 
 //tmp
 #include <iostream>
-#include <gtkmm-3.0/gtkmm/treeviewcolumn.h>
 
 Ground::Ground() : start_food_distribution(1,100), new_food_distribution(1,1000)
 {
@@ -119,11 +118,23 @@ void Ground::generateFood()
   if (new_food_distribution(*gen) == 1)
   {
     Field *tmp;
-    do
+    int x, y;
+    int i = 0;
+    do //searching for field where food can be placed
     {
-      tmp = map[(*row_distribution)(*gen)]->at((*column_distribution)(*gen));
+      x = (*row_distribution)(*gen);
+      y = (*column_distribution)(*gen);
+      tmp = map[x]->at(y);
+
+      if (++i == 100) //after 100 tries, not looking for more
+      {
+	return;
+      }
     }
-    while (typeid(tmp) == typeid(Field*));
+    while (!tmp->canBeChangedIntoFood());
+    delete tmp;
+    tmp = new Food();
+    map[x]->at(y) = tmp;
   }
 }
 

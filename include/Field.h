@@ -43,6 +43,13 @@ public:
    * @return Blue color.
    */
   double getBColor() const;
+
+  /**
+   * Returns information if this type of field can be changed into food.
+   * @return true if this type of field can be changed into food, false otherwise.
+   */
+  bool canBeChangedIntoFood() const;
+  
 protected:
   /** Blue element of field color.
    */
@@ -53,6 +60,8 @@ protected:
   /** Red element of field color.
    */
   double rcolor;
+
+  bool can_be_changed_into_food;
 };
 
 #endif	/* FIELD_H */

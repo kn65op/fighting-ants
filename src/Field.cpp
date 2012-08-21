@@ -7,7 +7,7 @@
 
 #include "../include/Field.h"
 
-Field::Field()
+Field::Field() : can_be_changed_into_food(true)
 {
   bcolor = 0.1647;
   gcolor = 0.1647;
@@ -35,4 +35,9 @@ double Field::getGColor() const
 double Field::getRColor() const
 {
   return rcolor;
+}
+
+bool Field::canBeChangedIntoFood() const
+{
+  return can_be_changed_into_food;
 }
