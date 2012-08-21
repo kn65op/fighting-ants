@@ -13,7 +13,7 @@
 #include "Ant.h"
 
 /**
- * @brief Class reprezents nest.
+ * @brief Class represents nest.
  * 
  * 
  */
@@ -53,6 +53,12 @@ public:
   {
     return y;
   }
+
+  /**
+   * Add food to nest storage.
+   * @param amount Amount of food to add to nest.
+   */
+  void addFood(int amount);
 
   
 private:

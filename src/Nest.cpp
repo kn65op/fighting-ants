@@ -36,3 +36,8 @@ std::list<Ant*> Nest::nextStep()
   tmp.front()->setPositionToNestPosition();
   return tmp;
 }
+
+void Nest::addFood(int amount)
+{
+  food += amount;
+}
