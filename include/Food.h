@@ -36,6 +36,12 @@ public:
    * @return Real food taken.
    */
   int getFood(int n);
+
+  /**
+   * Checks if food is empty.
+   * @return true if food is empty, false otherwise.
+   */
+  bool isEmpty();
 private:
   int amount;
 };

@@ -24,3 +24,8 @@ int Food::getFood(int n)
   amount -= tmp;
   return tmp;
 }
+
+bool Food::isEmpty()
+{
+  return !amount;
+}

@@ -79,6 +79,11 @@ public:
   {
     this->nests = nests;
   }
+
+  /**
+   * Checks if some food are empty and generate randomly new food.
+   */
+  void checkFood();
 private:
   /**
    * Creates map with size from length and width.

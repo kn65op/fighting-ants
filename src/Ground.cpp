@@ -90,3 +90,22 @@ bool Ground::checkifInGround(int x, int y)
 {
   return !(x < 0 || y < 0 || x > width - 1 || y > length - 1);
 }
+
+void Ground::checkFood()
+{
+  if (!map.empty()) //erase old map
+  {
+    std::for_each(map.begin(), map.end(), [](row_type * row)
+    {
+      std::for_each(row->begin(), row->end(), [](Field * field)
+      {
+	Food * food = dynamic_cast<Food*> (field);
+  	if (food && food->isEmpty())
+  	{
+	  delete food;
+    	  field = new Field();
+    	}
+      });
+    });
+  }
+}
