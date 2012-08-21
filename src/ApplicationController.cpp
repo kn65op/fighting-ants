@@ -6,6 +6,7 @@
  */
 
 #include "../include/ApplicationController.h"
+#include "../include/GroundArea.h"
 
 #include <chrono>
 

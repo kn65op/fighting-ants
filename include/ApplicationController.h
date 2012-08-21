@@ -10,10 +10,11 @@
 
 #include "Ant.h"
 #include "Nest.h"
-#include "GroundArea.h"
 
 #include <thread>
 #include <map>
+
+class GroundArea;
 
 /**
  * @brief Class which control simulation.

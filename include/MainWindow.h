@@ -8,10 +8,11 @@
 #ifndef MAINWINDOWS_H
 #define	MAINWINDOWS_H
 
+#include "ApplicationController.h"
+
 #include <gtkmm-3.0/gtkmm.h>
 
-#include "ApplicationController.h"
-#include "GroundArea.h"
+class GroundArea;
 
 /**
  * @brief Class reprezenting main window.

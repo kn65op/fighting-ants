@@ -90,6 +90,23 @@ public:
    * Generates new food on ground corresponding to parameters (i.e. probability of generation new food).
    */
   void generateFood();
+
+  /**
+   * Checks if on field on this coordinates is food.
+   * @param x X coordinate.
+   * @param y Y coordinate.
+   * @return true if on this field is food, else otherwise.
+   */
+  bool isFood(int x, int y) const;
+
+  /**
+   * Get food from field and return food which was gotten.
+   * @param x X coordinate.
+   * @param y Y coordinate.
+   * @param requested_food Food which are requested to get.
+   * @return Amount of food which was gotten.
+   */
+  int getFoodFromField(int x, int y, int requested_food) const;
 private:
   /**
    * Creates map with size from length and width.

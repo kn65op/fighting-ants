@@ -132,6 +132,9 @@ private:
   //nest position
   int nest_x, nest_y;
 
+  //carried food
+  int food;
+  static int can_carry_food;
 
   // funtions to moving in different ways.
   void freeMove(Ground & ground);

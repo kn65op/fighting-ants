@@ -45,7 +45,6 @@ bool GroundArea::on_draw(const Cairo::RefPtr<Cairo::Context>& cr)
       cr->rectangle(i * xsquare, j*ysquare, xsquare, ysquare);
       cr->fill();
       ++i;
-      //TODO: draw fields
     }
     ++j;
   }
@@ -58,7 +57,6 @@ bool GroundArea::on_draw(const Cairo::RefPtr<Cairo::Context>& cr)
       cr->set_source_rgb(1, 1, 1);
       cr->rectangle(nest.second->getX() * xsquare, nest.second->getY() * ysquare, xsquare, ysquare);
       cr->fill();
-      //TODO: draw nests
     }
   }
 
@@ -70,7 +68,6 @@ bool GroundArea::on_draw(const Cairo::RefPtr<Cairo::Context>& cr)
       cr->set_source_rgb(0, 0, 0);
       cr->rectangle(ant->getX() * xsquare, ant->getY() * ysquare, xsquare, ysquare);
       cr->fill();
-      //TODO: draw ants
     }
   }
 

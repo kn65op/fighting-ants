@@ -21,7 +21,7 @@ Food::~Food()
 
 int Food::getFood(int n)
 {
-  int tmp = n > amount ? n : amount;
+  int tmp = n < amount ? n : amount;
   amount -= tmp;
   return tmp;
 }

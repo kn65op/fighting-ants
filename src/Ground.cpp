@@ -149,3 +149,21 @@ void Ground::deleteDistributions()
   delete row_distribution;
   delete column_distribution;
 }
+
+bool Ground::isFood(int x, int y) const
+{
+  return dynamic_cast<Food*>(map[x]->at(y)) != nullptr;
+}
+
+int Ground::getFoodFromField(int x, int y, int requested_food) const
+{
+  Food *tmp = dynamic_cast<Food*>(map[x]->at(y));
+  if (tmp)
+  {
+    return tmp->getFood(requested_food);
+  }
+  else
+  {
+    return 0;
+  }
+}

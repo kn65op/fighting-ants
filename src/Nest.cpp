@@ -11,7 +11,8 @@ Nest::Nest(int id, int n)
 {
   this->id = id;
   //TMP
-  x = y = 25;
+  x = 0;
+  y = 0;
   //TMP
   //creating starting number of ants
   for (int i=0; i<n; ++i)

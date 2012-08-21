@@ -11,6 +11,8 @@
 
 #include "../include/Ground.h"
 
+int Ant::can_carry_food = 10;
+
 Ant::Ant(int id, int nx, int ny)
 {
   //First ant will wolk completly randomly
@@ -21,6 +23,7 @@ Ant::Ant(int id, int nx, int ny)
   nest_y = ny;
 
   move_function = nullptr;
+  food = 0;
 }
 
 Ant::~Ant()
@@ -87,6 +90,11 @@ void Ant::freeMove(Ground& ground)
   default:
     throw new UnexpectedException("Random number is outside range!");
   }
+  
+  if (food != can_carry_food && ground.isFood(x,y)) //on food field
+  {
+    move_function = &Ant::getFood;
+  }
 }
 
 void Ant::setPositionToNestPosition()
@@ -97,10 +105,19 @@ void Ant::setPositionToNestPosition()
 
 bool Ant::move(Ground& ground)
 {
-  if (move_function == nullptr)
+  if (move_function == nullptr) //ant just go out nest
   {
     move_function = &Ant::freeMove;
   }
-  freeMove(ground);
+  (this->*move_function)(ground);
+  if (x == nest_x && y == nest_y) //going into nest
+  {
+    //TODO
+  }
   return true;
+}
+
+void Ant::getFood(Ground& ground)
+{
+  food += ground.getFoodFromField(x, y, can_carry_food - food);
 }
