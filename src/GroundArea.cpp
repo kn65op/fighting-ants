@@ -65,7 +65,7 @@ bool GroundArea::on_draw(const Cairo::RefPtr<Cairo::Context>& cr)
   {
     for (auto ant : *ants)
     {
-      cr->set_source_rgb(0, 0, 0);
+      cr->set_source_rgb(ant->getRColor(), ant->getGColor(), ant->getBColor());
       cr->rectangle(ant->getX() * xsquare, ant->getY() * ysquare, xsquare, ysquare);
       cr->fill();
     }

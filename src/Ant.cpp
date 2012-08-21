@@ -145,3 +145,18 @@ void Ant::goToNest(Ground& ground)
   }
 	  
 }
+
+double Ant::getBColor() const
+{
+  return 0.1 * food;
+}
+
+double Ant::getRColor() const
+{
+  return 0;
+}
+
+double Ant::getGColor() const
+{
+  return 0;
+}

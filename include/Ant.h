@@ -113,6 +113,9 @@ public:
     max_time = max_time;
   }
 
+  double getBColor() const;
+  double getGColor() const;
+  double getRColor() const;
 
 private:
   //distrubution for movement

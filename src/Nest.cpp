@@ -20,6 +20,8 @@ Nest::Nest(int id, int n)
     //create ants
     ants.push_back(new Ant(id, x, y));
   }
+
+  food = 0;
 }
 
 Nest::~Nest()

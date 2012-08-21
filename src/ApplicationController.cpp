@@ -34,7 +34,7 @@ void ApplicationController::startSimulation()
 
 void ApplicationController::initSimulation()
 {
-  nests[1] = new Nest(1, 50);
+  nests[1] = new Nest(1, 5);
   ground->setSize(100, 100);
 
   //antmax time
@@ -74,7 +74,7 @@ void ApplicationController::stepSimulation()
 
   ants.remove_if([](Ant * ant)
   {
-                 return !ant;
+    return !ant;
   });
 
   //simulate nests
