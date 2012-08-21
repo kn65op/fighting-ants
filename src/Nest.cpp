@@ -12,7 +12,6 @@ Nest::Nest(int n)
   //TMP
   x = y = 25;
   //TMP
-  ants_in = n;
   //creating starting number of ants
   for (int i=0; i<n; ++i)
   {

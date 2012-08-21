@@ -21,7 +21,8 @@ class Nest
 {
 public:
   /**
-   * Default contructor.
+   * Contructor which creates ants in nest.
+   * @param n Number of ants which will be created in nest.
    */
   Nest(int n);
   /**
@@ -55,8 +56,6 @@ public:
 
   
 private:
-  //number of ants in nest
-  int ants_in;
   //nest id (id differ ants from different nests).
   int id;
   //food to eat

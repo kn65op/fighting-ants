@@ -11,6 +11,7 @@
 #include <UsesRandom.h>
 
 #include <random>
+#include <string>
 
 class Ground;
 
@@ -18,11 +19,26 @@ class Ground;
 /**
  * @brief Class represents ant.
  * 
- * 
+ * Ant move around ground and search for food, after that it returns to nest to bring food to other ants.
  */
 class Ant : private THelper::UsesRandom
 {
 public:
+  class UnexpectedException
+  {
+  public:
+    UnexpectedException(std::string mes)
+    {
+      message = mes;
+    }
+
+    operator std::string()
+    {
+      return message;
+    }
+  private:
+    std::string message;
+  };
   /**
    * Contructor to create Ant from nest.
    * @param id Nest id.
@@ -82,6 +98,10 @@ private:
   
   //nest position
   int nest_x, nest_y;
+
+
+  // funtions to moving in different ways.
+  void freeMove(Ground & ground);
 
 };
 

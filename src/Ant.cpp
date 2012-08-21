@@ -26,7 +26,7 @@ Ant::~Ant()
   delete dis;
 }
 
-bool Ant::move(Ground& ground)
+void Ant::freeMove(Ground& ground)
 {
   switch ((*dis)(*gen))
   {
@@ -83,14 +83,18 @@ bool Ant::move(Ground& ground)
     }
     break;
   default:
-    throw std::exception();
+    throw new UnexpectedException("Random number is outside range!");
   }
-
-  //TODO: dopisać
 }
 
 void Ant::setPositionToNestPosition()
 {
   x = nest_x;
   y = nest_y;
+}
+
+bool Ant::move(Ground& ground)
+{
+  freeMove(ground);
+  return true;
 }
