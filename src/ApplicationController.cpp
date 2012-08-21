@@ -26,7 +26,6 @@ void ApplicationController::startSimulation()
     ants.push_back(new Ant());
   }*/
   //for test one nest created
-  initSimulation();
 
   simulate = true;
   simulation_thread = new std::thread(&ApplicationController::processSimulation, this);
@@ -62,12 +61,14 @@ void ApplicationController::processSimulation()
 void ApplicationController::stepSimulation()
 {
   //simulate ants
-  for (auto ant : ants) //pinter to Ant
+  for (auto & ant : ants) //pinter to Ant
   {
     if (!ant->move(*ground)) //ant moves, if false it go to nest
     {
-      nests[ant->getId()]->addAnt(ant);
-      ant = 0; //remove ant from list
+      Nest *tmp = nests[ant->getId()];
+      tmp->addAnt(ant);
+      tmp->addFood(ant->getFood());
+      ant = nullptr; //remove ant from list
     }
   }
   //remove ant which come into nest
@@ -77,6 +78,7 @@ void ApplicationController::stepSimulation()
     return !ant;
   });
 
+  int rttaeta = ants.size();
   //simulate nests
   std::list<Ant*> tmp;
   for (auto & pair : nests) //std::pair<int, Nest*>
@@ -84,7 +86,6 @@ void ApplicationController::stepSimulation()
     tmp = pair.second->nextStep();
     ants.insert(ants.begin(), tmp.begin(), tmp.end());
   }
-  std::this_thread::sleep_for(std::chrono::milliseconds(100));
 
   //check food
   ground->checkFood();
@@ -93,6 +94,7 @@ void ApplicationController::stepSimulation()
   ground->generateFood();
 
   paintArea();
+  std::this_thread::sleep_for(std::chrono::milliseconds(100));
 }
 
 void ApplicationController::paintArea()

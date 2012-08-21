@@ -11,8 +11,8 @@ Nest::Nest(int id, int n)
 {
   this->id = id;
   //TMP
-  x = 0;
-  y = 0;
+  x = 50;
+  y = 50;
   //TMP
   //creating starting number of ants
   for (int i=0; i<n; ++i)
@@ -39,7 +39,7 @@ std::list<Ant*> Nest::nextStep()
     return tmp;
   }
   tmp.push_back(ants.back());
-  ants.pop_back();
+  ants.pop_back(); //todo ant esating
   tmp.front()->setPositionToNestPosition();
   return tmp;
 }
@@ -59,6 +59,8 @@ void Nest::produceAnts()
     for (int i = 0; i < number; i++)
     {
       ants.push_back(new Ant(id, x, y));
+
+      --food; //TODO usunąć.
     }
   }
 }

@@ -112,7 +112,8 @@ bool Ant::move(Ground& ground)
   (this->*move_function)(ground);
   if (x == nest_x && y == nest_y) //going into nest
   {
-    //TODO
+    move_function = nullptr;
+    return false;
   }
   return true;
 }

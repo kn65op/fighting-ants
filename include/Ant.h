@@ -113,9 +113,33 @@ public:
     max_time = max_time;
   }
 
+  /**
+   * Get blue element of color.
+   * @return Blue element of color.
+   */
   double getBColor() const;
+  /**
+   * Get Green element of color.
+   * @return Green element of color.
+   */
   double getGColor() const;
+  /**
+   * Get Red element of color.
+   * @return Red element of color.
+   */
   double getRColor() const;
+
+  /**
+   * Get food from ant (and removes it from ant).
+   * @return Amount of food which ant carried.
+   */
+  int getFood() 
+  {
+    int tmp = food;
+    food = 0;
+    return tmp;
+  }
+  
 
 private:
   //distrubution for movement

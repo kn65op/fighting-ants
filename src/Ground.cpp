@@ -15,7 +15,7 @@
 //tmp
 #include <iostream>
 
-Ground::Ground() : start_food_distribution(1,100), new_food_distribution(1,1000)
+Ground::Ground() : start_food_distribution(1,1), new_food_distribution(1,1000)
 {
   is_map = false;
 }

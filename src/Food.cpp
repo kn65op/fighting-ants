@@ -11,7 +11,7 @@ Food::Food()
 {
   bcolor = rcolor = 0;
   gcolor = 1;
-  amount = 100;
+  amount = 10;
   can_be_changed_into_food = false;
 }
 
