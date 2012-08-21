@@ -51,7 +51,7 @@ void ApplicationController::processSimulation()
     {
       if (!ant->move(*ground)) //ant moves, if false it go to nest
       {
-	nests[ant->getId()];
+	nests[ant->getId()]->addAnt(ant);
         ant = 0; //remove ant from list
       }
     }
