@@ -29,6 +29,13 @@ public:
    * Default destructor.
    */
   virtual ~Food();
+
+  /**
+   * Get food from field.
+   * @param n Requested food to take.
+   * @return Real food taken.
+   */
+  int getFood(int n);
 private:
   int amount;
 };
