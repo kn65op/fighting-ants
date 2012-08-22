@@ -15,9 +15,11 @@
 //tmp
 #include <iostream>
 
-Ground::Ground() : start_food_distribution(1,100), new_food_distribution(1,1000)
+Ground::Ground() : start_food_distribution(1,1), new_food_distribution(1,1)
 {
   is_map = false;
+  column_distribution = nullptr;  
+  row_distribution = nullptr;
 }
 
 Ground::~Ground()
@@ -99,7 +101,7 @@ void Ground::checkFood()
   {
     std::for_each(map.begin(), map.end(), [](row_type * row)
     {
-      std::for_each(row->begin(), row->end(), [](Field * field)
+      std::for_each(row->begin(), row->end(), [](Field * & field)
       {
 	Food * food = dynamic_cast<Food*> (field);
   	if (food && food->isEmpty())
@@ -146,8 +148,16 @@ void Ground::makeDistributions()
 
 void Ground::deleteDistributions()
 {
-  delete row_distribution;
-  delete column_distribution;
+  if (row_distribution != nullptr) 
+  {
+    delete row_distribution;
+    row_distribution = nullptr;
+  }
+  if (column_distribution != nullptr)
+  {
+    delete column_distribution;
+    column_distribution = nullptr;
+  }
 }
 
 bool Ground::isFood(int x, int y) const
