@@ -17,13 +17,15 @@ int Ant::can_carry_food = 10;
 #include <iostream>
 
 int Ant::max_time;
+int Ant::max_time_without_feeding;
+int Ant::noa;
 
 Ant::Ant(int id, int nx, int ny) : nest_time_distribution(-10, -5)
 {
-  static int noa = 0;
+  live = true;
   std::cout << (++noa) << "\n";
   //First ant will wolk completly randomly
-  dis = new std::uniform_int_distribution<>(1,8);
+  dis = new std::uniform_int_distribution<>(1, 8);
 
   this->id = id;
   nest_x = nx;
@@ -38,6 +40,7 @@ Ant::Ant(int id, int nx, int ny) : nest_time_distribution(-10, -5)
 
 Ant::~Ant()
 {
+  std::cout << (--noa) << "\n";
   delete dis;
 }
 
@@ -58,40 +61,40 @@ void Ant::freeMove(Ground& ground)
     }
     break;
   case 3:
-    if (ground.checkifInGround(x, y+1))
+    if (ground.checkifInGround(x, y + 1))
     {
       ++y;
     }
     break;
   case 4:
-    if (ground.checkifInGround(x, y-1))
+    if (ground.checkifInGround(x, y - 1))
     {
       --y;
     }
     break;
   case 5:
-    if (ground.checkifInGround(x+1, y+1))
+    if (ground.checkifInGround(x + 1, y + 1))
     {
       ++y;
       ++x;
     }
     break;
   case 6:
-    if (ground.checkifInGround(x+1, y-1))
+    if (ground.checkifInGround(x + 1, y - 1))
     {
       ++x;
       --y;
     }
     break;
   case 7:
-    if (ground.checkifInGround(x-1, y+1))
+    if (ground.checkifInGround(x - 1, y + 1))
     {
       --x;
       ++y;
     }
     break;
   case 8:
-    if (ground.checkifInGround(x-1, y-1))
+    if (ground.checkifInGround(x - 1, y - 1))
     {
       --x;
       --y;
@@ -100,8 +103,8 @@ void Ant::freeMove(Ground& ground)
   default:
     throw new UnexpectedException("Random number is outside range!");
   }
-  
-  if (food != can_carry_food && ground.isFood(x,y)) //on food field
+
+  if (food != can_carry_food && ground.isFood(x, y)) //on food field
   {
     move_function = &Ant::getFood;
   }
@@ -151,15 +154,15 @@ void Ant::goToNest(Ground& ground)
     ++x;
   }
 
-  if(y > nest_y && ground.checkifInGround(x, y - 1))
+  if (y > nest_y && ground.checkifInGround(x, y - 1))
   {
     --y;
   }
-  if(y < nest_x && ground.checkifInGround(x, y + 1))
+  if (y < nest_x && ground.checkifInGround(x, y + 1))
   {
     ++y;
   }
-	  
+
 }
 
 double Ant::getBColor() const
@@ -184,10 +187,27 @@ int Ant::distanceToNest() const
 
 bool Ant::canGoOut()
 {
-  return (++time_in_nest) >= 0;
+  if ((++time_in_nest) > 0)
+  {
+    if (--time < max_time_without_feeding)
+    {
+      die();
+      return false;
+    }
+    else
+    {
+      return true;
+    }
+  }
+  return !time_in_nest;
 }
 
 void Ant::feed()
 {
   time = max_time;
+}
+
+void Ant::die()
+{
+  live = false;
 }

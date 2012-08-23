@@ -114,6 +114,15 @@ public:
   }
 
   /**
+   * Set max time which ant can live without feeding.
+   * @param max Time to set.
+   */
+  static void setMaxTimeWithoutFeeding(int max)
+  {
+    max_time_without_feeding = -max;
+  }
+
+  /**
    * Returns max time which ant can spend outside nest.
    * @return max time which ant can spend outside nest.
    */
@@ -170,6 +179,15 @@ public:
    */
   bool canGoOut();
 
+  /**
+   * Checks if ant is dead.
+   * @return true if ant is dead, else otherwise.
+   */
+  bool isDead()
+  {
+    return !live;
+  }
+
 private:
   //distrubution for movement
   std::uniform_int_distribution<> *dis;
@@ -184,7 +202,14 @@ private:
 
   //maksimum time which ant can spent on ground without eating
   static int max_time;
+  //maksimum time which ant can live without feeding
+  static int max_time_without_feeding;
 
+//tmp
+  static int noa;
+  //tmp
+
+  
   //ant position
   int x, y;
   
@@ -203,8 +228,14 @@ private:
   //pointer to move function
   void (Ant::*move_function)(Ground & ground);
 
+  //die
+  void die();
+
   //calculatedistance to nest
   int distanceToNest() const;
+
+  //if ant live
+  bool live;
 };
 
 #endif	/* ANT_H */

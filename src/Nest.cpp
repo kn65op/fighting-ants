@@ -14,8 +14,8 @@ Nest::Nest(int id, int n)
 {
   this->id = id;
   //TMP
-  x = 50;
-  y = 50;
+  x = 5;
+  y = 5;
   //TMP
   //creating starting number of ants
   for (int i=0; i<n; ++i)
@@ -40,14 +40,21 @@ std::list<Ant*> Nest::nextStep()
   {
     if (ant->canGoOut())
     {
-      if (food > 1)
+      if (food > 1) //can be feeded
       {
-        double a = Ant::getMaxTime() - ant->getTime();
         food -= (double)(Ant::getMaxTime() - ant->getTime()) / (double)Ant::getMaxTime();
         ant->feed();
       }
-      ant->setPositionToNestPosition();
-      tmp.push_back(ant);
+      if (ant->getTime() > 0.1 * Ant::getMaxTime()) //going out it's not useless
+      {
+      	ant->setPositionToNestPosition();
+      	tmp.push_back(ant);
+      	ant = 0;
+      }
+    }
+    else if (ant->isDead()) //check if is dead
+    {
+      delete ant;
       ant = 0;
     }
   });

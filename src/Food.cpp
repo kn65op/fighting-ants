@@ -11,7 +11,7 @@ Food::Food()
 {
   bcolor = rcolor = 0;
   gcolor = 1;
-  amount = 100; //TODO losowe
+  amount = 10; //TODO losowe
   can_be_changed_into_food = false;
 }
 
