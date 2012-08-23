@@ -9,6 +9,7 @@
 
 #include "../include/Nest.h"
 
+#include <iostream>
 Nest::Nest(int id, int n)
 {
   this->id = id;
@@ -60,7 +61,7 @@ std::list<Ant*> Nest::nextStep()
 
 void Nest::addFood(int amount)
 {
-  food += amount;
+  std::cout << "FOOD: " << (food += amount) << "\n";
 }
 
 void Nest::produceAnts()

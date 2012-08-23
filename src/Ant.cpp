@@ -14,10 +14,14 @@
 
 int Ant::can_carry_food = 10;
 
+#include <iostream>
+
 int Ant::max_time;
 
 Ant::Ant(int id, int nx, int ny) : nest_time_distribution(-10, -5)
 {
+  static int noa = 0;
+  std::cout << (++noa) << "\n";
   //First ant will wolk completly randomly
   dis = new std::uniform_int_distribution<>(1,8);
 

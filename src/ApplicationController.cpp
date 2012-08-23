@@ -12,6 +12,8 @@
 
 ApplicationController::ApplicationController()
 {
+  //antmax time
+  Ant::setMaxTime(1000);
 }
 
 ApplicationController::~ApplicationController()
@@ -33,10 +35,15 @@ void ApplicationController::startSimulation()
 
 void ApplicationController::initSimulation()
 {
-  //antmax time
-  Ant::setMaxTime(100);
-
-  nests[1] = new Nest(1, 5);
+  //remove ants
+  std::for_each(ants.begin(), ants.end(), [](Ant * ant)
+  {
+    delete ant;
+  });
+  ants.clear();
+  
+  //create field 
+  nests[1] = new Nest(1, 5); //TODO: losowa pozycja lub coś
   ground->setSize(100, 100);
 
   paintArea();
