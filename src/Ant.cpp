@@ -25,7 +25,7 @@ Ant::Ant(int id, int nx, int ny) : nest_time_distribution(-10, -5)
   live = true;
   std::cout << (++noa) << "\n";
   //First ant will wolk completly randomly
-  dis = new std::uniform_int_distribution<>(1, 8);
+  move_distribution = nullptr;
 
   this->id = id;
   nest_x = nx;
@@ -36,68 +36,74 @@ Ant::Ant(int id, int nx, int ny) : nest_time_distribution(-10, -5)
 
   time = max_time;
   time_in_nest = nest_time_distribution(*gen);
+
+  last_direction = Direction::NO_DIRECTION;
 }
 
 Ant::~Ant()
 {
   std::cout << (--noa) << "\n";
-  delete dis;
+  if (move_distribution != nullptr)
+  {
+    delete move_distribution;
+  }
 }
 
 void Ant::freeMove(Ground& ground)
 {
-  switch ((*dis)(*gen))
+  createMoveDistribution();
+  switch ((*move_distribution)(*gen))
   {
-  case 1:
-    if (ground.checkifInGround(x - 1, y))
+  case 0:
+    if (ground.checkifInGround(x - 1, y - 1))
     {
       --x;
+      --y;
     }
     break;
-  case 2:
-    if (ground.checkifInGround(x + 1, y))
-    {
-      ++x;
-    }
-    break;
-  case 3:
-    if (ground.checkifInGround(x, y + 1))
-    {
-      ++y;
-    }
-    break;
-  case 4:
+  case 1:
     if (ground.checkifInGround(x, y - 1))
     {
       --y;
     }
     break;
-  case 5:
-    if (ground.checkifInGround(x + 1, y + 1))
-    {
-      ++y;
-      ++x;
-    }
-    break;
-  case 6:
+  case 2:
     if (ground.checkifInGround(x + 1, y - 1))
     {
-      ++x;
       --y;
+      ++x;
     }
     break;
-  case 7:
+  case 3:
+    if (ground.checkifInGround(x - 1, y))
+    {
+      --x;
+    }
+    break;
+  case 4:
+    if (ground.checkifInGround(x + 1, y))
+    {
+      ++x;
+    }
+    break;
+  case 5:
     if (ground.checkifInGround(x - 1, y + 1))
     {
       --x;
       ++y;
     }
     break;
-  case 8:
-    if (ground.checkifInGround(x - 1, y - 1))
+  case 6:
+    if (ground.checkifInGround(x, y + 1))
     {
-      --x;
-      --y;
+      ++y;
+    }
+    break;
+  case 7:
+    if (ground.checkifInGround(x + 1, y + 1))
+    {
+      ++x;
+      ++y;
     }
     break;
   default:
@@ -210,4 +216,48 @@ void Ant::feed()
 void Ant::die()
 {
   live = false;
+}
+
+void Ant::createMoveDistribution()
+{
+  Direction act_direction = getDirectionFromDifferenceSigns(x - nest_x, y - nest_y);
+  if (act_direction == last_direction && move_distribution != nullptr)
+  {
+    return;
+  }
+  if (move_distribution != nullptr)
+  {
+    delete move_distribution;
+  }
+  last_direction = act_direction;
+  switch (act_direction)
+  {
+  case Direction::UL:
+    move_distribution = new std::discrete_distribution<> ({100,1,1,1,1,1,1,1});
+    break;
+  case Direction::UR:
+    move_distribution = new std::discrete_distribution<> ({1,1,100,1,1,1,1,1});
+    break;
+  case Direction::U:
+    move_distribution = new std::discrete_distribution<> ({1,100,1,1,1,1,1,1});
+    break;
+  case Direction::DL:
+    move_distribution = new std::discrete_distribution<> ({1,1,1,1,1,100,1,1});
+    break;
+  case Direction::DR:
+    move_distribution = new std::discrete_distribution<> ({1,1,1,1,1,1,1,100});
+    break;
+  case Direction::D:
+    move_distribution = new std::discrete_distribution<> ({1,1,1,1,1,1,100,1});
+    break;
+  case Direction::L:
+    move_distribution = new std::discrete_distribution<> ({1,1,1,100,1,1,1,1});
+    break;
+  case Direction::R:
+    move_distribution = new std::discrete_distribution<> ({1,1,1,1,100,1,1,1});
+    break;
+  case Direction::NO_DIRECTION:
+    move_distribution = new std::discrete_distribution<> ({1,1,1,1,1,1,1,1});
+    break;
+  }
 }

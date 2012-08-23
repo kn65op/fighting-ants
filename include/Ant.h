@@ -9,9 +9,11 @@
 #define	ANT_H
 
 #include <UsesRandom.h>
+#include "Direction.h"
 
 #include <random>
 #include <string>
+
 
 class Ground;
 
@@ -190,7 +192,7 @@ public:
 
 private:
   //distrubution for movement
-  std::uniform_int_distribution<> *dis;
+  std::discrete_distribution<> *move_distribution;
   std::uniform_int_distribution<> nest_time_distribution;
 
   //nest id from which ant come from
@@ -236,6 +238,12 @@ private:
 
   //if ant live
   bool live;
+
+  //old direction
+  Direction last_direction;
+  
+  //creating (or not if it is not necesarry)
+  void createMoveDistribution();
 };
 
 #endif	/* ANT_H */

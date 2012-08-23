@@ -42,6 +42,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/GroundArea.o \
 	${OBJECTDIR}/src/Ground.o \
 	${OBJECTDIR}/src/Nest.o \
+	${OBJECTDIR}/src/Direction.o \
 	${OBJECTDIR}/src/ApplicationController.o
 
 
@@ -110,6 +111,11 @@ ${OBJECTDIR}/src/Nest.o: src/Nest.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
 	$(COMPILE.cc) -g -ILibHelper/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Nest.o src/Nest.cpp
+
+${OBJECTDIR}/src/Direction.o: src/Direction.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -g -ILibHelper/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Direction.o src/Direction.cpp
 
 ${OBJECTDIR}/src/ApplicationController.o: src/ApplicationController.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
