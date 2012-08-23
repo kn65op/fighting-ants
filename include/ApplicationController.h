@@ -12,7 +12,9 @@
 #include "Nest.h"
 
 #include <thread>
+#include <atomic>
 #include <map>
+
 
 class GroundArea;
 
@@ -76,7 +78,7 @@ private:
   //threads
   std::thread *simulation_thread;
   //if simulation should continue
-  bool simulate;
+  std::atomic<bool> simulate;
 
   /**
    * Processing simulation.

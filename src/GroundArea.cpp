@@ -25,6 +25,8 @@ bool GroundArea::on_draw(const Cairo::RefPtr<Cairo::Context>& cr)
     return true;
   }
 
+  lock();
+
   Gtk::Allocation allocation = get_allocation();
   const int width = allocation.get_width();
   const int height = allocation.get_height();
@@ -74,7 +76,12 @@ bool GroundArea::on_draw(const Cairo::RefPtr<Cairo::Context>& cr)
   //cr->set_source_rgb(0.8,0.8,0.0);
   //cr->rectangle(0, 0, 100, 5);
   //cr->fill();
-
+  unlock();
+  
   return true;
 }
 
+void GroundArea::redraw(const Cairo::RefPtr<Cairo::Context>& cr)
+{
+  on_draw(cr);
+}

@@ -60,6 +60,7 @@ void ApplicationController::processSimulation()
 
 void ApplicationController::stepSimulation()
 {
+  ground->lock();
   //simulate ants
   for (auto & ant : ants) //pinter to Ant
   {
@@ -92,6 +93,7 @@ void ApplicationController::stepSimulation()
   //generate new food
   ground->generateFood();
 
+  ground->unlock();
   paintArea();
   std::this_thread::sleep_for(std::chrono::milliseconds(100));
 }
@@ -101,7 +103,9 @@ void ApplicationController::paintArea()
   //painting area
   ground->setAnts(&ants);
   ground->setNests(&nests);
+
   Glib::RefPtr<Gdk::Window> win = ground->get_window();
+  
   if (win)
   {
     Gdk::Rectangle r(0, 0, ground->get_allocation().get_width(), ground->get_allocation().get_height());
