@@ -34,7 +34,6 @@ std::list<Ant*> Nest::nextStep()
 {
   produceAnts();
 
-  //TODO: zmienić
   std::list<Ant*> tmp;
   std::for_each(ants.begin(), ants.end(), [&tmp, this](Ant * & ant)
   {

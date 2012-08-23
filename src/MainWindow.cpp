@@ -35,9 +35,10 @@ MainWindow::MainWindow()
 
   //setting buttons
   ss_button.set_label("Start");
+  ss_button.set_sensitive(false);
   init_button.set_label("Init");
   step_button.set_label("Step");
-  step_button.set_visible(false);
+  step_button.set_sensitive(false);
   ss_button.signal_clicked().connect(sigc::mem_fun(*this, &MainWindow::on_start_stop_button_clicked));
   init_button.signal_clicked().connect(sigc::mem_fun(*this, &MainWindow::on_init_button_clicked));
   step_button.signal_clicked().connect(sigc::mem_fun(*this, &MainWindow::on_step_button_clicked));
@@ -76,5 +77,6 @@ void MainWindow::on_step_button_clicked()
 void MainWindow::on_init_button_clicked()
 {
   ap.initSimulation();
-  step_button.set_visible(true);
+  step_button.set_sensitive(true);
+  ss_button.set_sensitive(true);
 }

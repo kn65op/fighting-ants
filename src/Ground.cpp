@@ -15,7 +15,7 @@
 //tmp
 #include <iostream>
 
-Ground::Ground() : start_food_distribution(1,1), new_food_distribution(1,1)
+Ground::Ground() : start_food_distribution(1,100), new_food_distribution(1,100)
 {
   is_map = false;
   column_distribution = nullptr;  
@@ -85,9 +85,11 @@ void Ground::deleteMap()
       {
 	delete field;
       });
+      row->clear();
       delete row;
     });
   }
+  map.clear();
 }
 
 bool Ground::checkifInGround(int x, int y)
