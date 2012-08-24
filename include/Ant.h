@@ -244,6 +244,9 @@ private:
   
   //creating (or not if it is not necesarry)
   void createMoveDistribution(Ground & ground);
+
+  //moving using move distribution
+  void directMove(Ground & ground);
 };
 
 #endif	/* ANT_H */

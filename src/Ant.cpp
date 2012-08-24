@@ -52,63 +52,8 @@ Ant::~Ant()
 void Ant::freeMove(Ground& ground)
 {
   createMoveDistribution(ground);
-  switch ((*move_distribution)(*gen))
-  {
-  case 0:
-    if (ground.checkifInGround(x - 1, y - 1))
-    {
-      --x;
-      --y;
-    }
-    break;
-  case 1:
-    if (ground.checkifInGround(x, y - 1))
-    {
-      --y;
-    }
-    break;
-  case 2:
-    if (ground.checkifInGround(x + 1, y - 1))
-    {
-      --y;
-      ++x;
-    }
-    break;
-  case 3:
-    if (ground.checkifInGround(x - 1, y))
-    {
-      --x;
-    }
-    break;
-  case 4:
-    if (ground.checkifInGround(x + 1, y))
-    {
-      ++x;
-    }
-    break;
-  case 5:
-    if (ground.checkifInGround(x - 1, y + 1))
-    {
-      --x;
-      ++y;
-    }
-    break;
-  case 6:
-    if (ground.checkifInGround(x, y + 1))
-    {
-      ++y;
-    }
-    break;
-  case 7:
-    if (ground.checkifInGround(x + 1, y + 1))
-    {
-      ++x;
-      ++y;
-    }
-    break;
-  default:
-    throw new UnexpectedException("Random number is outside range!");
-  }
+
+  directMove(ground);
 
   if (food != can_carry_food && ground.isFood(x, y)) //on food field
   {
@@ -150,24 +95,62 @@ void Ant::getFood(Ground& ground)
 
 void Ant::goToNest(Ground& ground)
 {
-  //for now it's closest way
-  if (x > nest_x && ground.checkifInGround(x - 1, y))
+  Direction act_direction = getDirectionFromDifferenceSigns(nest_x - x, nest_y - y);
+  if (move_distribution != nullptr)
   {
-    --x;
-  }
-  if (x < nest_x && ground.checkifInGround(x + 1, y))
-  {
-    ++x;
+    delete move_distribution;
   }
 
-  if (y > nest_y && ground.checkifInGround(x, y - 1))
+  switch (act_direction)
   {
-    --y;
+  case Direction::UL:
+    move_distribution = new std::discrete_distribution<> ({2, 1, 0, 1, 0, 0, 0, 0});
+    break;
+  case Direction::UR:
+    move_distribution = new std::discrete_distribution<> ({0, 1, 2, 0, 1, 0, 0, 0});
+    break;
+  case Direction::U:
+    move_distribution = new std::discrete_distribution<> ({1, 2, 1, 0, 0, 0, 0, 0});
+    break;
+  case Direction::DL:
+    move_distribution = new std::discrete_distribution<> ({0, 0, 0, 1, 0, 2, 1, 0});
+    break;
+  case Direction::DR:
+    move_distribution = new std::discrete_distribution<> ({0, 0, 0, 0, 1, 0, 1, 2});
+    break;
+  case Direction::D:
+    move_distribution = new std::discrete_distribution<> ({0, 0, 0, 0, 0, 1, 2, 1});
+    break;
+  case Direction::L:
+    move_distribution = new std::discrete_distribution<> ({1, 0, 0, 2, 0, 1, 0, 0});
+    break;
+  case Direction::R:
+    move_distribution = new std::discrete_distribution<> ({0, 0, 1, 0, 2, 0, 0, 1});
+    break;
+  case Direction::NO_DIRECTION:
+    move_distribution = new std::discrete_distribution<> ({1, 1, 1, 1, 1, 1, 1, 1});
+    break;
   }
-  if (y < nest_y && ground.checkifInGround(x, y + 1))
-  {
-    ++y;
-  }
+
+  directMove(ground);
+//  //for now it's closest way
+//  if (x > nest_x && ground.checkifInGround(x - 1, y))
+//  {
+//    --x;
+//  }
+//  if (x < nest_x && ground.checkifInGround(x + 1, y))
+//  {
+//    ++x;
+//  }
+//
+//  if (y > nest_y && ground.checkifInGround(x, y - 1))
+//  {
+//    --y;
+//  }
+//  if (y < nest_y && ground.checkifInGround(x, y + 1))
+//  {
+//    ++y;
+//  }
 
 }
 
@@ -284,5 +267,66 @@ void Ant::createMoveDistribution(Ground & ground)
   case Direction::NO_DIRECTION:
     move_distribution = new std::discrete_distribution<> ({1, 1, 1, 1, 1, 1, 1, 1});
     break;
+  }
+}
+
+void Ant::directMove(Ground& ground)
+{
+  switch ((*move_distribution)(*gen))
+  {
+  case 0:
+    if (ground.checkifInGround(x - 1, y - 1))
+    {
+      --x;
+      --y;
+    }
+    break;
+  case 1:
+    if (ground.checkifInGround(x, y - 1))
+    {
+      --y;
+    }
+    break;
+  case 2:
+    if (ground.checkifInGround(x + 1, y - 1))
+    {
+      --y;
+      ++x;
+    }
+    break;
+  case 3:
+    if (ground.checkifInGround(x - 1, y))
+    {
+      --x;
+    }
+    break;
+  case 4:
+    if (ground.checkifInGround(x + 1, y))
+    {
+      ++x;
+    }
+    break;
+  case 5:
+    if (ground.checkifInGround(x - 1, y + 1))
+    {
+      --x;
+      ++y;
+    }
+    break;
+  case 6:
+    if (ground.checkifInGround(x, y + 1))
+    {
+      ++y;
+    }
+    break;
+  case 7:
+    if (ground.checkifInGround(x + 1, y + 1))
+    {
+      ++x;
+      ++y;
+    }
+    break;
+  default:
+    throw new UnexpectedException("Random number is outside range!");
   }
 }
