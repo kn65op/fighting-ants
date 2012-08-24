@@ -13,7 +13,7 @@
 ApplicationController::ApplicationController()
 {
   //antmax time
-  Ant::setMaxTime(100);
+  Ant::setMaxTime(1000);
 }
 
 ApplicationController::~ApplicationController()
@@ -44,7 +44,7 @@ void ApplicationController::initSimulation()
   
   //create field 
   nests[1] = new Nest(1, 5); //TODO: losowa pozycja lub coś
-  ground->setSize(10, 10);
+  ground->setSize(100, 100);
 
   paintArea();
 }

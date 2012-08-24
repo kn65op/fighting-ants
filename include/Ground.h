@@ -108,6 +108,32 @@ public:
    * @return Amount of food which was gotten.
    */
   int getFoodFromField(int x, int y, int requested_food) const;
+
+  /**
+   * Returns distance form nest to left border.
+   * @param i Nest id.
+   * @return Distance.
+   */
+  int getLeftDistanceFromNestToBorder(int i) const;
+  /**
+   * Returns distance form nest to down border.
+   * @param i Nest id.
+   * @return Distance.
+   */
+  int getDownDistanceFromNestToBorder(int i) const;
+  /**
+   * Returns distance form nest to up border.
+   * @param i Nest id.
+   * @return Distance.
+   */
+  int getUpDistanceFromNestToBorder(int i) const;
+  /**
+   * Returns distance form nest to right border.
+   * @param i Nest id.
+   * @return Distance.
+   */
+  int getRightDistanceFromNestToBorder(int i) const;
+
 private:
   /**
    * Creates map with size from length and width.
@@ -132,7 +158,6 @@ private:
   std::uniform_int_distribution<> new_food_distribution;
   std::uniform_int_distribution<> *row_distribution;
   std::uniform_int_distribution<> *column_distribution;
-
 
 protected:
   /** true if map is ready, false otherwise

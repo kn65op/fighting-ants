@@ -67,6 +67,12 @@ public:
    */
   void addAnt(Ant* ant);
 
+  /**
+   * Set nest position.
+   * @param x X coordinate.
+   * @param y Y coordinate.
+   */
+  void setPosition(int x, int y);
   
 private:
   //nest id (id differ ants from different nests).
@@ -77,7 +83,6 @@ private:
   int x, y;
   //ants in nest
   std::list<Ant*> ants;
-
 
   void produceAnts();
 };

@@ -13,10 +13,6 @@
 Nest::Nest(int id, int n)
 {
   this->id = id;
-  //TMP
-  x = 5;
-  y = 5;
-  //TMP
   //creating starting number of ants
   for (int i=0; i<n; ++i)
   {
@@ -89,4 +85,11 @@ void Nest::produceAnts()
 void Nest::addAnt(Ant* ant)
 {
   ants.push_back(ant);
+}
+
+void Nest::setPosition(int x, int y)
+{
+  //set position
+  this->x = x;
+  this->y = y;
 }

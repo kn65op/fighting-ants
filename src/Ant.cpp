@@ -51,7 +51,7 @@ Ant::~Ant()
 
 void Ant::freeMove(Ground& ground)
 {
-  createMoveDistribution();
+  createMoveDistribution(ground);
   switch ((*move_distribution)(*gen))
   {
   case 0:
@@ -218,7 +218,7 @@ void Ant::die()
   live = false;
 }
 
-void Ant::createMoveDistribution()
+void Ant::createMoveDistribution(Ground & ground)
 {
   Direction act_direction = getDirectionFromDifferenceSigns(x - nest_x, y - nest_y);
   if (act_direction == last_direction && move_distribution != nullptr)

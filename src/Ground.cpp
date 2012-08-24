@@ -179,3 +179,23 @@ int Ground::getFoodFromField(int x, int y, int requested_food) const
     return 0;
   }
 }
+
+int Ground::getLeftDistanceFromNestToBorder(int i) const
+{
+  return nests->at(i)->getX() - 1;
+}
+
+int Ground::getUpDistanceFromNestToBorder(int i) const
+{
+  return nests->at(i)->getY() - 1;
+}
+
+int Ground::getRightDistanceFromNestToBorder(int i) const
+{
+  return length - nests->at(i)->getX();
+}
+
+int Ground::getDownDistanceFromNestToBorder(int i) const
+{
+  return width - nests->at(i)->getY();
+}

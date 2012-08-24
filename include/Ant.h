@@ -243,7 +243,7 @@ private:
   Direction last_direction;
   
   //creating (or not if it is not necesarry)
-  void createMoveDistribution();
+  void createMoveDistribution(Ground & ground);
 };
 
 #endif	/* ANT_H */
