@@ -164,7 +164,7 @@ void Ant::goToNest(Ground& ground)
   {
     --y;
   }
-  if (y < nest_x && ground.checkifInGround(x, y + 1))
+  if (y < nest_y && ground.checkifInGround(x, y + 1))
   {
     ++y;
   }
@@ -220,7 +220,11 @@ void Ant::die()
 
 void Ant::createMoveDistribution(Ground & ground)
 {
-  Direction act_direction = getDirectionFromDifferenceSigns(x - nest_x, y - nest_y);
+  int range = 10;
+  int dirrl = abs(x - nest_x) > range ? x - nest_x : 0;
+  int dirud = abs(y - nest_y) > range ? y - nest_y : 0;
+  
+  Direction act_direction = getDirectionFromDifferenceSigns(dirrl, dirud);
 //  if (act_direction == last_direction && move_distribution != nullptr)
 //  {
 //    return;
@@ -230,7 +234,7 @@ void Ant::createMoveDistribution(Ground & ground)
     delete move_distribution;
   }
   last_direction = act_direction;
-  int zones = 5;
+  int zones = 4;
   int left_max = ground.getLeftDistanceFromNestToBorder(id);
   int up_max = ground.getUpDistanceFromNestToBorder(id);
   int right_max = ground.getRightDistanceFromNestToBorder(id);
@@ -238,36 +242,44 @@ void Ant::createMoveDistribution(Ground & ground)
   int lr = abs(nest_x - x);
   int ud = abs(nest_y - y);
 
-  int probl = lr ? zones - lr / (left_max / zones) : 1;
-  int probr = lr ? zones - lr / (right_max / zones) : 1;
-  int probu = ud ? zones - ud / (up_max / zones) : 1;
-  int probd = ud ? zones - ud / (down_max / zones) : 1;
+  int iprobl = lr ? zones - lr / (left_max / zones) : 1;
+  int iprobr = lr ? zones - lr / (right_max / zones) : 1;
+  int iprobu = ud ? zones - ud / (up_max / zones) : 1;
+  int iprobd = ud ? zones - ud / (down_max / zones) : 1;
+
+  double a = 0.25;
+  double b = 0.75;
+  
+  double probl = iprobl ? iprobl * a + b : 1;
+  double probr = iprobr ? iprobr * a + b : 1;
+  double probu = iprobu ? iprobu * a + b : 1;
+  double probd = iprobd ? iprobd * a + b : 1;
 
   switch (act_direction)
   {
   case Direction::UL:
-    move_distribution = new std::discrete_distribution<> ({100, 1, 1, 1, 1, 1, 1, 1});
+    move_distribution = new std::discrete_distribution<> ({std::min(probl, probu), probu, probu, probl, 1, probl, 1, 1});
     break;
   case Direction::UR:
-    move_distribution = new std::discrete_distribution<> ({1, 1, 100, 1, 1, 1, 1, 1});
+    move_distribution = new std::discrete_distribution<> ({probu, probu, std::min(probr, probu), 1, probr, 1, 1, probr});
     break;
   case Direction::U:
-    move_distribution = new std::discrete_distribution<> ({1, 100, 1, 1, 1, 1, 1, 1});
+    move_distribution = new std::discrete_distribution<> ({probu, probu, probu, 1, 1, 1, 1, 1});
     break;
   case Direction::DL:
-    move_distribution = new std::discrete_distribution<> ({1, 1, 1, 1, 1, 100, 1, 1});
+    move_distribution = new std::discrete_distribution<> ({probl, 1, 1, probl, 1, std::min(probd, probl), probd, probd});
     break;
   case Direction::DR:
-    move_distribution = new std::discrete_distribution<> ({1, 1, 1, 1, 1, 1, 1, 100});
+    move_distribution = new std::discrete_distribution<> ({1, 1, probr, 1, probr, probd, probd, std::min(probd, probr)});
     break;
   case Direction::D:
-    move_distribution = new std::discrete_distribution<> ({1, 1, 1, 1, 1, 1, 100, 1});
+    move_distribution = new std::discrete_distribution<> ({1, 1, 1, 1, 1, probd, probd, probd});
     break;
   case Direction::L:
-    move_distribution = new std::discrete_distribution<> ({1, 1, 1, 100, 1, 1, 1, 1});
+    move_distribution = new std::discrete_distribution<> ({probl, 1, 1, probl, 1, probl, 1, 1});
     break;
   case Direction::R:
-    move_distribution = new std::discrete_distribution<> ({1, 1, 1, 1, 100, 1, 1, 1});
+    move_distribution = new std::discrete_distribution<> ({1, 1, probr, 1, probr, 1, 1, probr});
     break;
   case Direction::NO_DIRECTION:
     move_distribution = new std::discrete_distribution<> ({1, 1, 1, 1, 1, 1, 1, 1});
