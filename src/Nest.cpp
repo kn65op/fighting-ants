@@ -19,6 +19,10 @@ Nest::Nest(int id)
 
 Nest::~Nest()
 {
+  std::for_each(ants.begin(), ants.end(), [](Ant * ant)
+  {
+    delete ant;
+  });
 }
 
 std::list<Ant*> Nest::nextStep()

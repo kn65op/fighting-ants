@@ -13,7 +13,7 @@
 ApplicationController::ApplicationController()
 {
   //antmax time
-  Ant::setMaxTime(1000);
+  Ant::setMaxTime(100);
 }
 
 ApplicationController::~ApplicationController()
@@ -44,6 +44,15 @@ void ApplicationController::initSimulation()
 
 
   //destroy nests.
+  for (auto & pair : nests)
+  {
+    delete pair.second;
+  };
+//  std::for_each(nests.begin(), nests.end(), [](Nest * nest)
+//  {
+//    delete nest;
+//  });
+  nests.clear();
   
   //create field 
   nests[1] = new Nest(1); //TODO: losowa pozycja lub coś
