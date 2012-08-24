@@ -221,43 +221,56 @@ void Ant::die()
 void Ant::createMoveDistribution(Ground & ground)
 {
   Direction act_direction = getDirectionFromDifferenceSigns(x - nest_x, y - nest_y);
-  if (act_direction == last_direction && move_distribution != nullptr)
-  {
-    return;
-  }
+//  if (act_direction == last_direction && move_distribution != nullptr)
+//  {
+//    return;
+//  }
   if (move_distribution != nullptr)
   {
     delete move_distribution;
   }
   last_direction = act_direction;
+  int zones = 5;
+  int left_max = ground.getLeftDistanceFromNestToBorder(id);
+  int up_max = ground.getUpDistanceFromNestToBorder(id);
+  int right_max = ground.getRightDistanceFromNestToBorder(id);
+  int down_max = ground.getDownDistanceFromNestToBorder(id);
+  int lr = abs(nest_x - x);
+  int ud = abs(nest_y - y);
+
+  int probl = lr ? zones - lr / (left_max / zones) : 1;
+  int probr = lr ? zones - lr / (right_max / zones) : 1;
+  int probu = ud ? zones - ud / (up_max / zones) : 1;
+  int probd = ud ? zones - ud / (down_max / zones) : 1;
+
   switch (act_direction)
   {
   case Direction::UL:
-    move_distribution = new std::discrete_distribution<> ({100,1,1,1,1,1,1,1});
+    move_distribution = new std::discrete_distribution<> ({100, 1, 1, 1, 1, 1, 1, 1});
     break;
   case Direction::UR:
-    move_distribution = new std::discrete_distribution<> ({1,1,100,1,1,1,1,1});
+    move_distribution = new std::discrete_distribution<> ({1, 1, 100, 1, 1, 1, 1, 1});
     break;
   case Direction::U:
-    move_distribution = new std::discrete_distribution<> ({1,100,1,1,1,1,1,1});
+    move_distribution = new std::discrete_distribution<> ({1, 100, 1, 1, 1, 1, 1, 1});
     break;
   case Direction::DL:
-    move_distribution = new std::discrete_distribution<> ({1,1,1,1,1,100,1,1});
+    move_distribution = new std::discrete_distribution<> ({1, 1, 1, 1, 1, 100, 1, 1});
     break;
   case Direction::DR:
-    move_distribution = new std::discrete_distribution<> ({1,1,1,1,1,1,1,100});
+    move_distribution = new std::discrete_distribution<> ({1, 1, 1, 1, 1, 1, 1, 100});
     break;
   case Direction::D:
-    move_distribution = new std::discrete_distribution<> ({1,1,1,1,1,1,100,1});
+    move_distribution = new std::discrete_distribution<> ({1, 1, 1, 1, 1, 1, 100, 1});
     break;
   case Direction::L:
-    move_distribution = new std::discrete_distribution<> ({1,1,1,100,1,1,1,1});
+    move_distribution = new std::discrete_distribution<> ({1, 1, 1, 100, 1, 1, 1, 1});
     break;
   case Direction::R:
-    move_distribution = new std::discrete_distribution<> ({1,1,1,1,100,1,1,1});
+    move_distribution = new std::discrete_distribution<> ({1, 1, 1, 1, 100, 1, 1, 1});
     break;
   case Direction::NO_DIRECTION:
-    move_distribution = new std::discrete_distribution<> ({1,1,1,1,1,1,1,1});
+    move_distribution = new std::discrete_distribution<> ({1, 1, 1, 1, 1, 1, 1, 1});
     break;
   }
 }

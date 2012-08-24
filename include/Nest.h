@@ -23,9 +23,8 @@ public:
   /**
    * Contructor which creates ants in nest.
    * @param id Nest id.
-   * @param n Number of ants which will be created in nest.
    */
-  Nest(int id, int n);
+  Nest(int id);
   /**
    * Default destructor.
    */
@@ -73,6 +72,12 @@ public:
    * @param y Y coordinate.
    */
   void setPosition(int x, int y);
+
+  /**
+   * Set starting number of ants.
+   * @param n Number of ants, which nest will have on beginning.
+   */
+  void setStartingAnts(int n);
   
 private:
   //nest id (id differ ants from different nests).

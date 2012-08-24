@@ -10,15 +10,9 @@
 #include "../include/Nest.h"
 
 #include <iostream>
-Nest::Nest(int id, int n)
+Nest::Nest(int id)
 {
   this->id = id;
-  //creating starting number of ants
-  for (int i=0; i<n; ++i)
-  {
-    //create ants
-    ants.push_back(new Ant(id, x, y));
-  }
 
   food = 0;
 }
@@ -93,3 +87,14 @@ void Nest::setPosition(int x, int y)
   this->x = x;
   this->y = y;
 }
+
+void Nest::setStartingAnts(int n)
+{
+  //creating starting number of ants
+  for (int i=0; i<n; ++i)
+  {
+    //create ants
+    ants.push_back(new Ant(id, x, y));
+  }
+}
+

@@ -43,7 +43,9 @@ void ApplicationController::initSimulation()
   ants.clear();
   
   //create field 
-  nests[1] = new Nest(1, 5); //TODO: losowa pozycja lub coś
+  nests[1] = new Nest(1); //TODO: losowa pozycja lub coś
+  nests[1]->setPosition(40,55);
+  nests[1]->setStartingAnts(5);
   ground->setSize(100, 100);
 
   paintArea();
