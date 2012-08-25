@@ -55,6 +55,9 @@ void Ant::freeMove(Ground& ground)
 
   directMove(ground);
 
+//TODO: Check if some path to food is.
+  //check if some enemy is near.
+
   if (food != can_carry_food && ground.isFood(x, y)) //on food field
   {
     move_function = &Ant::getFood;

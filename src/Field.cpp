@@ -41,3 +41,9 @@ bool Field::canBeChangedIntoFood() const
 {
   return can_be_changed_into_food;
 }
+
+void Field::makeSmell(int id)
+{
+  smell_id = id;
+  smell = 1.0;
+}

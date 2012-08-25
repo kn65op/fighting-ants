@@ -49,6 +49,12 @@ public:
    * @return true if this type of field can be changed into food, false otherwise.
    */
   bool canBeChangedIntoFood() const;
+
+  /**
+   * Creates path on this field.
+   * @param id This path nest id.
+   */
+  void makeSmell(int id);
   
 protected:
   /** Blue element of field color.
@@ -64,6 +70,13 @@ protected:
   /** Indicates if this field can be changed into food
    */
   bool can_be_changed_into_food;
+  
+  /** path to food.
+   */
+  double smell;
+  /** nest id, which made path to food
+   */
+  int smell_id;
 };
 
 #endif	/* FIELD_H */

@@ -142,7 +142,7 @@ ${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/DistanceToBorder.o ${OBJECTFILES:%.o=%
 ${TESTDIR}/tests/DistanceToBorder.o: tests/DistanceToBorder.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} $@.d
-	$(COMPILE.cc) -g -I. -I../gtest-1.6.0/include -ILibHelper/include -MMD -MP -MF $@.d -o ${TESTDIR}/tests/DistanceToBorder.o tests/DistanceToBorder.cpp
+	$(COMPILE.cc) -g -I. -I. -I../gtest-1.6.0/include -ILibHelper/include -MMD -MP -MF $@.d -o ${TESTDIR}/tests/DistanceToBorder.o tests/DistanceToBorder.cpp
 
 
 ${OBJECTDIR}/main_nomain.o: ${OBJECTDIR}/main.o main.cpp 
