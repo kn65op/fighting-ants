@@ -21,9 +21,9 @@ class GroundTest : public ::testing::Test
     void SetUp()
     {
       ground.setSize(100, 120);
-      ul = new Nest(1, 0);
-      dr = new Nest(2, 0);
-      m = new Nest(3,0);
+      ul = new Nest(1);
+      dr = new Nest(2);
+      m = new Nest(3);
 
       ul->setPosition(1,1);
       dr->setPosition(100,120);

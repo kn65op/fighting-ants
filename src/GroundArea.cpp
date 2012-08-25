@@ -38,6 +38,21 @@ bool GroundArea::on_draw(const Cairo::RefPtr<Cairo::Context>& cr)
   int i, j;
   i = 0;
 
+
+  //draw all fields
+  for (row_type* row : Ground::map)
+  {
+    j = 0;
+    for (Field* field : *row)
+    {
+      cr->set_source_rgb(field->getRColor(), field->getGColor(), field->getBColor());
+      cr->rectangle(i * xsquare, j*ysquare, xsquare, ysquare);
+      cr->fill();
+      ++j;
+    }
+    ++i;
+  }
+
   //draw ants with are on the ground
   if (ants)
   {
@@ -59,21 +74,6 @@ bool GroundArea::on_draw(const Cairo::RefPtr<Cairo::Context>& cr)
       cr->fill();
     }
   }
-
-  //draw all fields
-  for (row_type* row : Ground::map)
-  {
-    j = 0;
-    for (Field* field : *row)
-    {
-      cr->set_source_rgb(field->getRColor(), field->getGColor(), field->getBColor());
-      cr->rectangle(i * xsquare, j*ysquare, xsquare, ysquare);
-      cr->fill();
-      ++j;
-    }
-    ++i;
-  }
-
  
 
   //cr->set_source_rgb(0.8,0.8,0.0);
