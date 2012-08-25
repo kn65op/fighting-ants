@@ -13,7 +13,7 @@
 ApplicationController::ApplicationController()
 {
   //antmax time
-  Ant::setMaxTime(100);
+  Ant::setMaxTime(1000);
 }
 
 ApplicationController::~ApplicationController()

@@ -74,6 +74,7 @@ double Field::getSmell(int id)
 
 void Field::makeSmell(int id, Direction dir)
 {
+  smell = 1.0;
   smell_id = id;
   direction = dir;
 }

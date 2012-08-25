@@ -72,7 +72,7 @@ void Nest::produceAnts()
   {
     int number = food - 4 * ants.size();
     number /= 4;
-    number = number > 10 ? 10 : number;
+    number = number > 1 ? 1 : number;
     for (int i = 0; i < number; i++)
     {
       ants.push_back(new Ant(id, x, y));

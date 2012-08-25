@@ -37,6 +37,29 @@ bool GroundArea::on_draw(const Cairo::RefPtr<Cairo::Context>& cr)
 
   int i, j;
   i = 0;
+
+  //draw ants with are on the ground
+  if (ants)
+  {
+    for (auto ant : *ants)
+    {
+      cr->set_source_rgb(ant->getRColor(), ant->getGColor(), ant->getBColor());
+      cr->rectangle(ant->getX() * xsquare, ant->getY() * ysquare, xsquare, ysquare);
+      cr->fill();
+    }
+  }
+
+  //draw nests
+  if (nests)
+  {
+    for (auto nest : *nests) //std::pair<id, Nest*>
+    {
+      cr->set_source_rgb(1, 1, 1);
+      cr->rectangle(nest.second->getX() * xsquare, nest.second->getY() * ysquare, xsquare, ysquare);
+      cr->fill();
+    }
+  }
+
   //draw all fields
   for (row_type* row : Ground::map)
   {
@@ -51,27 +74,7 @@ bool GroundArea::on_draw(const Cairo::RefPtr<Cairo::Context>& cr)
     ++i;
   }
 
-  //draw nests
-  if (nests)
-  {
-    for (auto nest : *nests) //std::pair<id, Nest*>
-    {
-      cr->set_source_rgb(1, 1, 1);
-      cr->rectangle(nest.second->getX() * xsquare, nest.second->getY() * ysquare, xsquare, ysquare);
-      cr->fill();
-    }
-  }
-
-  //draw ants with are on the ground
-  if (ants)
-  {
-    for (auto ant : *ants)
-    {
-      cr->set_source_rgb(ant->getRColor(), ant->getGColor(), ant->getBColor());
-      cr->rectangle(ant->getX() * xsquare, ant->getY() * ysquare, xsquare, ysquare);
-      cr->fill();
-    }
-  }
+ 
 
   //cr->set_source_rgb(0.8,0.8,0.0);
   //cr->rectangle(0, 0, 100, 5);

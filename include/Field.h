@@ -73,7 +73,7 @@ public:
   /**
    * Checks if is smell on field.
    * @param id Nest id.
-   * @return true if here it's smell, false otherwise.
+//   * @return true if here it's smell, false otherwise.
    */
   bool isSmell(int id);
 
@@ -83,6 +83,21 @@ public:
    * @return Value of smell.
    */
   double getSmell(int id);
+
+  /**
+   * Get direction.
+   * @param id Nest id.
+   * @return Direction.
+   */
+  Direction getDirection(int id) const
+  {
+    if (smell_id != id)
+    {
+      return Direction::NO_DIRECTION;
+    }
+    return direction;
+  }
+
   
 protected:
   /** Blue element of field color.

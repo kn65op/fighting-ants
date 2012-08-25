@@ -111,11 +111,11 @@ void Ant::getFood(Ground& ground)
 void Ant::goToNest(Ground& ground)
 {
   //leave smell
-  if (food)
-  {
-//    ground.makeSmell(x, y, id);
-    ground.makeSmell(x, y, id, getDirectionFromDifferenceSigns(x - last_x, y - last_y));
-  }
+//  if (food)
+//  {
+////    ground.makeSmell(x, y, id);
+//    ground.makeSmell(x, y, id, getDirectionFromDifferenceSigns(x - last_x, y - last_y));
+//  }
 
   Direction act_direction = getDirectionFromDifferenceSigns(nest_x - x, nest_y - y);
   if (move_distribution != nullptr)
@@ -155,6 +155,13 @@ void Ant::goToNest(Ground& ground)
   }
 
   directMove(ground);
+
+  if (food)
+  {
+//    ground.makeSmell(x, y, id);
+    ground.makeSmell(x, y, id, getDirectionFromDifferenceSigns(last_x - x, last_y - y));
+  }
+  
 //  //for now it's closest way
 //  if (x > nest_x && ground.checkifInGround(x - 1, y))
 //  {
