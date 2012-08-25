@@ -144,6 +144,15 @@ public:
   void makeSmell(int x, int y, int id);
 
   /**
+   * Make smell on field with direction.
+   * @param x X coordinate.
+   * @param y Y coordinate.
+   * @param id Nest id.
+   * @param dir Direction where to go next.
+   */
+  void makeSmell(int x, int y, int id, Direction dir);
+
+  /**
    * Check if on field is smell.
    * @param x X coordinate.
    * @param y Y coordinate.

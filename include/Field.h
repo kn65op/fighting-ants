@@ -57,6 +57,13 @@ public:
   void makeSmell(int id);
 
   /**
+   * Creates path with direction on field.
+   * @param id Nest id.
+   * @param dir Direction, where to go next.
+   */
+  void makeSmell(int id, Direction dir);
+
+  /**
    * Make smell less perceptible. Finally the smell disappear.
    */
   void flowAwaySmell();
@@ -96,6 +103,10 @@ protected:
   /** nest id, which made path to food
    */
   int smell_id;
+
+  /** direction 
+   */
+  Direction direction;
 };
 
 #endif	/* FIELD_H */

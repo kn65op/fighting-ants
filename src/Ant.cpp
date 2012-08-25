@@ -89,6 +89,10 @@ bool Ant::move(Ground& ground)
     move_function = &Ant::followSmell;
   }
   (this->*move_function)(ground);
+  
+  last_x = x;
+  last_y = y;
+  
   if (x == nest_x && y == nest_y) //going into nest
   {
     move_function = nullptr;
@@ -109,7 +113,8 @@ void Ant::goToNest(Ground& ground)
   //leave smell
   if (food)
   {
-    ground.makeSmell(x, y, id);
+//    ground.makeSmell(x, y, id);
+    ground.makeSmell(x, y, id, getDirectionFromDifferenceSigns(x - last_x, y - last_y));
   }
 
   Direction act_direction = getDirectionFromDifferenceSigns(nest_x - x, nest_y - y);

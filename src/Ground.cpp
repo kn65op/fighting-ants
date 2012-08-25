@@ -332,3 +332,8 @@ Direction Ground::followSmell(int x, int y, int id)
 
   return dir;
 }
+
+void Ground::makeSmell(int x, int y, int id, Direction dir)
+{
+  map[x]->at(y)->makeSmell(id, dir);
+}

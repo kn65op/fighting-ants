@@ -215,6 +215,9 @@ private:
   //ant position
   int x, y;
   
+  //last ant position
+  int last_x, last_y;
+  
   //nest position
   int nest_x, nest_y;
 
