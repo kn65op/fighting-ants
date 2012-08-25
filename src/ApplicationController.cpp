@@ -48,10 +48,6 @@ void ApplicationController::initSimulation()
   {
     delete pair.second;
   };
-//  std::for_each(nests.begin(), nests.end(), [](Nest * nest)
-//  {
-//    delete nest;
-//  });
   nests.clear();
   
   //create field 

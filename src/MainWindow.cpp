@@ -60,11 +60,13 @@ void MainWindow::on_start_stop_button_clicked()
   if (is_started = !is_started) //starting
   {
     ss_button.set_label("Stop");
+    init_button.set_sensitive(false);
     ap.startSimulation();
   }
   else //stopping
   {
     ss_button.set_label("Start");
+    init_button.set_sensitive(true);
     ap.stopSimulation();
   }
 }
