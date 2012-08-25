@@ -17,6 +17,7 @@
 #include "Field.h"
 #include "Ant.h"
 #include "Nest.h"
+#include "Direction.h"
 
 #include <UsesRandom.h>
 
@@ -141,6 +142,15 @@ public:
    * @param id Nest id.
    */
   void makeSmell(int x, int y, int id);
+
+  /**
+   * Check if on field is smell.
+   * @param x X coordinate.
+   * @param y Y coordinate.
+   * @param id Nest id.
+   * @return Direction in which smell point.
+   */
+  Direction isSmell(int x, int y, int id);
 
 private:
   /**

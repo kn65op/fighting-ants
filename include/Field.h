@@ -60,6 +60,13 @@ public:
    * Make smell less perceptible. Finally the smell disappear.
    */
   void flowAwaySmell();
+
+  /**
+   * Checks if is smell on field.
+   * @param id Nest id.
+   * @return true if here it's smell, false otherwise.
+   */
+  bool isSmell(int id);
   
 protected:
   /** Blue element of field color.

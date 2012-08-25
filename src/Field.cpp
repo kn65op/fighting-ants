@@ -58,3 +58,8 @@ void Field::flowAwaySmell()
     smell -= 0.01;
   }
 }
+
+bool Field::isSmell(int id)
+{
+  return smell > 0 && id == smell_id;
+}

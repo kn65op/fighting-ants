@@ -216,3 +216,11 @@ void Ground::makeSmell(int x, int y, int id)
 {
   map[x]->at(y)->makeSmell(id);
 }
+
+Direction Ground::isSmell(int x, int y, int id)
+{
+  if (map[x]->at(y)->isSmell(id))
+  {
+    
+  }
+}
