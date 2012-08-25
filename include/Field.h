@@ -55,6 +55,11 @@ public:
    * @param id This path nest id.
    */
   void makeSmell(int id);
+
+  /**
+   * Make smell less perceptible. Finally the smell disappear.
+   */
+  void flowAwaySmell();
   
 protected:
   /** Blue element of field color.

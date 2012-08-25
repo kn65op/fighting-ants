@@ -72,6 +72,7 @@ void ApplicationController::processSimulation()
   while (simulate)
   {
     stepSimulation();
+  std::this_thread::sleep_for(std::chrono::milliseconds(100));
   }
 }
 
@@ -104,6 +105,9 @@ void ApplicationController::stepSimulation()
     ants.insert(ants.begin(), tmp.begin(), tmp.end());
   }
 
+  //make smell to flow away
+  ground->proceedNextStep();
+
   //check food
   ground->checkFood();
 
@@ -112,7 +116,6 @@ void ApplicationController::stepSimulation()
 
   ground->unlock();
   paintArea();
-  std::this_thread::sleep_for(std::chrono::milliseconds(1));
 }
 
 void ApplicationController::paintArea()

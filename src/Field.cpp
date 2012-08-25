@@ -11,7 +11,10 @@ Field::Field() : can_be_changed_into_food(true)
 {
   bcolor = 0.1647;
   gcolor = 0.1647;
-  rcolor = 0.6471;
+//  rcolor = 0.6471;
+  rcolor = 1;
+
+  smell = 0;
 }
 
 /**Field::Field(const Field& orig)
@@ -34,7 +37,7 @@ double Field::getGColor() const
 
 double Field::getRColor() const
 {
-  return rcolor;
+  return rcolor * smell;
 }
 
 bool Field::canBeChangedIntoFood() const
@@ -46,4 +49,12 @@ void Field::makeSmell(int id)
 {
   smell_id = id;
   smell = 1.0;
+}
+
+void Field::flowAwaySmell()
+{
+  if (smell > 0)
+  {
+    smell -= 0.01;
+  }
 }

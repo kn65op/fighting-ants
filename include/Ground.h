@@ -134,6 +134,14 @@ public:
    */
   int getRightDistanceFromNestToBorder(int i) const;
 
+  /**
+   * Make smell on field.
+   * @param x X coordinate.
+   * @param y Y coordinate.
+   * @param id Nest id.
+   */
+  void makeSmell(int x, int y, int id);
+
 private:
   /**
    * Creates map with size from length and width.

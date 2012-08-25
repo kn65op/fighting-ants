@@ -199,3 +199,20 @@ int Ground::getDownDistanceFromNestToBorder(int i) const
 {
   return width - nests->at(i)->getY();
 }
+
+void Ground::proceedNextStep()
+{
+
+  std::for_each(map.begin(), map.end(), [](row_type * row)
+  {
+    std::for_each(row->begin(), row->end(), [](Field * & field)
+    {
+      field->flowAwaySmell();
+    });
+  });
+}
+
+void Ground::makeSmell(int x, int y, int id)
+{
+  map[x]->at(y)->makeSmell(id);
+}

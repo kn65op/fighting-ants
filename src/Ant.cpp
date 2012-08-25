@@ -98,6 +98,12 @@ void Ant::getFood(Ground& ground)
 
 void Ant::goToNest(Ground& ground)
 {
+  //leave smell
+  if (food)
+  {
+    ground.makeSmell(x, y, id);
+  }
+
   Direction act_direction = getDirectionFromDifferenceSigns(nest_x - x, nest_y - y);
   if (move_distribution != nullptr)
   {
