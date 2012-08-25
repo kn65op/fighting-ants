@@ -8,6 +8,8 @@
 #ifndef FIELD_H
 #define	FIELD_H
 
+#include "Direction.h"
+
 /**
  * @brief Class reprezents one field from ground.
  */
