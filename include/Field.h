@@ -67,6 +67,13 @@ public:
    * @return true if here it's smell, false otherwise.
    */
   bool isSmell(int id);
+
+  /**
+   * Get value of smell.
+   * @param id Nest id.
+   * @return Value of smell.
+   */
+  double getSmell(int id);
   
 protected:
   /** Blue element of field color.

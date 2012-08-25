@@ -168,7 +168,7 @@ public:
    * Get food from ant (and removes it from ant).
    * @return Amount of food which ant carried.
    */
-  int getFood() 
+int getFood() 
   {
     int tmp = food;
     food = 0;
@@ -226,6 +226,10 @@ private:
   void freeMove(Ground & ground);
   void getFood(Ground & ground);
   void goToNest(Ground & ground);
+  void followSmell(Ground & ground);
+
+  //going to specified direction without border check
+  void goToDirectionNoCheck(Direction dir);
 
   //pointer to move function
   void (Ant::*move_function)(Ground & ground);

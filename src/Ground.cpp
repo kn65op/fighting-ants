@@ -14,6 +14,7 @@
 
 //tmp
 #include <iostream>
+#include <stdexcept>
 
 Ground::Ground() : start_food_distribution(1,100), new_food_distribution(1,100)
 {
@@ -217,10 +218,117 @@ void Ground::makeSmell(int x, int y, int id)
   map[x]->at(y)->makeSmell(id);
 }
 
-Direction Ground::isSmell(int x, int y, int id)
+bool Ground::isSmell(int x, int y, int id)
 {
+  return map[x]->at(y)->isSmell(id);
+}
+
+Direction Ground::followSmell(int x, int y, int id)
+{
+  Direction dir = Direction::NO_DIRECTION;
   if (map[x]->at(y)->isSmell(id))
-  {
-    
+  { //search for decreasing smell
+    double act = map[x]->at(y)->getSmell(id);
+    double min = act;
+    double tmp;
+
+    try
+    {
+      if ((tmp = map.at(x - 1)->at(y - 1)->getSmell(id)) > 0 && tmp < act) //smaller
+      {
+        min = tmp;
+        dir = Direction::UL;
+      }
+    }
+    catch (std::out_of_range e)
+    {
+    }
+
+    try
+    {
+      if ((tmp = map.at(x)->at(y - 1)->getSmell(id)) > 0 && tmp < act) //smaller
+      {
+        min = tmp;
+        dir = Direction::U;
+      }
+    }
+    catch (std::out_of_range e)
+    {
+    }
+
+    try
+    {
+      if ((tmp = map.at(x + 1)->at(y - 1)->getSmell(id)) > 0 && tmp < act) //smaller
+      {
+        min = tmp;
+        dir = Direction::UR;
+      }
+    }
+    catch (std::out_of_range e)
+    {
+    }
+
+    try
+    {
+      if ((tmp = map.at(x - 1)->at(y)->getSmell(id)) > 0 && tmp < act) //smaller
+      {
+        min = tmp;
+        dir = Direction::L;
+      }
+    }
+    catch (std::out_of_range e)
+    {
+    }
+
+    try
+    {
+      if ((tmp = map.at(x + 1)->at(y)->getSmell(id)) > 0 && tmp < act) //smaller
+      {
+        min = tmp;
+        dir = Direction::R;
+      }
+    }
+    catch (std::out_of_range e)
+    {
+    }
+
+    try
+    {
+      if ((tmp = map.at(x - 1)->at(y + 1)->getSmell(id)) > 0 && tmp < act) //smaller
+      {
+        min = tmp;
+        dir = Direction::DL;
+      }
+    }
+    catch (std::out_of_range e)
+    {
+    }
+
+    try
+    {
+      if ((tmp = map.at(x)->at(y + 1)->getSmell(id)) > 0 && tmp < act) //smaller
+      {
+        min = tmp;
+        dir = Direction::D;
+      }
+    }
+    catch (std::out_of_range e)
+    {
+    }
+
+    try
+    {
+      if ((tmp = map.at(x + 1)->at(y + 1)->getSmell(id)) > 0 && tmp < act) //smaller
+      {
+        min = tmp;
+        dir = Direction::DR;
+      }
+    }
+    catch (std::out_of_range e)
+    {
+    }
+
   }
+
+  return dir;
 }

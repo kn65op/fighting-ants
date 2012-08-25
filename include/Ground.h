@@ -148,9 +148,17 @@ public:
    * @param x X coordinate.
    * @param y Y coordinate.
    * @param id Nest id.
-   * @return Direction in which smell point.
    */
-  Direction isSmell(int x, int y, int id);
+  bool isSmell(int x, int y, int id);
+
+  /**
+   * Get direction to food.
+   * @param x X coordinate of field.
+   * @param y Y coordinate of field.
+   * @param id Nest id.
+   * @return Direction to food, which should be at end of smell.
+   */
+  Direction followSmell(int x, int y, int id);
 
 private:
   /**

@@ -51,17 +51,13 @@ Ant::~Ant()
 
 void Ant::freeMove(Ground& ground)
 {
+  
   createMoveDistribution(ground);
 
   directMove(ground);
 
-//TODO: Check if some path to food is.
   //check if some enemy is near.
 
-  if (food != can_carry_food && ground.isFood(x, y)) //on food field
-  {
-    move_function = &Ant::getFood;
-  }
 }
 
 void Ant::setPositionToNestPosition()
@@ -76,9 +72,21 @@ bool Ant::move(Ground& ground)
   {
     move_function = &Ant::freeMove;
   }
-  if (distanceToNest() > (--time - 10))
+  if (food == can_carry_food)
   {
     move_function = &Ant::goToNest;
+  }
+  else if (--time < 0) //out of stamina ;] 
+  {
+    move_function = &Ant::goToNest;
+  }
+  else if (food != can_carry_food && ground.isFood(x, y)) //on food field
+  {
+    move_function = &Ant::getFood;
+  }
+  else if (ground.isSmell(x, y, id)) //smell
+  {
+    move_function = &Ant::followSmell;
   }
   (this->*move_function)(ground);
   if (x == nest_x && y == nest_y) //going into nest
@@ -337,5 +345,50 @@ void Ant::directMove(Ground& ground)
     break;
   default:
     throw new UnexpectedException("Random number is outside range!");
+  }
+}
+
+void Ant::followSmell(Ground& ground)
+{
+  Direction dir = ground.followSmell(x, y, id);
+  
+  goToDirectionNoCheck(dir);
+}
+
+void Ant::goToDirectionNoCheck(Direction dir)
+{
+  switch (dir)
+  {
+    case Direction::UL:
+      --x;
+      --y;
+    break;
+  case Direction::UR:
+    ++x;
+    --y;
+    break;
+  case Direction::U:
+    --y;
+    break;
+  case Direction::DL:
+    --x;
+    ++y;
+    break;
+  case Direction::DR:
+    ++x;
+    ++y;
+    break;
+  case Direction::D:
+    ++y;
+    break;
+  case Direction::L:
+    --x;
+    break;
+  case Direction::R:
+    ++x;
+    break;
+  case Direction::NO_DIRECTION:
+    move_function = &Ant::freeMove;
+    break;
   }
 }

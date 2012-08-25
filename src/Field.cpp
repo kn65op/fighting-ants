@@ -63,3 +63,11 @@ bool Field::isSmell(int id)
 {
   return smell > 0 && id == smell_id;
 }
+
+double Field::getSmell(int id)
+{
+  if (smell_id == id)
+  {
+    return smell;
+  }
+}
