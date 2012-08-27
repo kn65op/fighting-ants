@@ -1,5 +1,5 @@
 /* 
- * File:   DistanceToBorder.cpp
+ * File:   DistanceToBorderTest.cpp
  * Author: tomko
  *
  * Created on 2012-08-24, 11:29:36
