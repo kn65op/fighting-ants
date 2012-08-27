@@ -92,6 +92,7 @@ bool Ant::move(Ground& ground)
   else if (--time < 0) //out of stamina ;] 
   {
     move_function = &Ant::goToNest;
+    make_path = false;
   }
   else if (food != can_carry_food && ground.isFood(x, y)) //on food field
   {
@@ -118,6 +119,7 @@ bool Ant::move(Ground& ground)
 void Ant::getFood(Ground& ground)
 {
   food += ground.getFoodFromField(x, y, can_carry_food - food);
+  make_path = ground.isFood(x, y);
   move_function = &Ant::goToNest;
 }
 
@@ -169,7 +171,7 @@ void Ant::goToNest(Ground& ground)
 
   directMove(ground);
 
-  if (food)
+  if (make_path)
   {
 //    ground.makeSmell(x, y, id);
     ground.makeSmell(x, y, id, getDirectionFromDifferenceSigns(last_x - x, last_y - y));
@@ -203,12 +205,12 @@ double Ant::getBColor() const
 
 double Ant::getRColor() const
 {
-  return 0;
+  return 0.5;
 }
 
 double Ant::getGColor() const
 {
-  return 0.3 * id;
+  return 0.2 * id;
 }
 
 int Ant::distanceToNest() const

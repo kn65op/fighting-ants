@@ -16,7 +16,7 @@
 #include <iostream>
 #include <stdexcept>
 
-Ground::Ground() : start_food_distribution(1,5000), new_food_distribution(1,1000)
+Ground::Ground() : start_food_distribution(1,50), new_food_distribution(1,1000)
 {
   is_map = false;
   column_distribution = nullptr;  
@@ -165,7 +165,8 @@ void Ground::deleteDistributions()
 
 bool Ground::isFood(int x, int y) const
 {
-  return dynamic_cast<Food*>(map[x]->at(y)) != nullptr;
+  Food* food = dynamic_cast<Food*>(map[x]->at(y));
+  return food != nullptr && !food->isEmpty();
 }
 
 int Ground::getFoodFromField(int x, int y, int requested_food) const

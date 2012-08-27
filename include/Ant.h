@@ -234,6 +234,7 @@ private:
   //carried food
   int food;
   static int can_carry_food;
+  bool make_path;
 
   // funtions to moving in different ways.
   void freeMove(Ground & ground);
