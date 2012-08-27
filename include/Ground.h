@@ -177,6 +177,15 @@ public:
    */
   Direction findFoodNextTo(int x, int y);
 
+  /**
+   * Find all ants from other nest in fields next to specified field.
+   * @param x X coordinate of field.
+   * @param y Y coorginate of field.
+   * @param id Ant id, searching is only for ants with different id.
+   * @return std::list<Ant*> with ants founded. Empty list if no ant is found.
+   */
+  std::list<Ant*> findAntsNextTo(int x, int y, int id);
+
 private:
   /**
    * Creates map with size from length and width.

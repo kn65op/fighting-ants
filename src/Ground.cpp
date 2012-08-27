@@ -439,3 +439,18 @@ Direction Ground::findFoodNextTo(int x, int y)
 
   return dir;
 }
+
+std::list<Ant*> Ground::findAntsNextTo(int x, int y, int id)
+{
+  std::list<Ant*> ret;
+
+  std::for_each(ants->begin(), ants->end(), [x, y, id, & ret](Ant * ant)
+  {
+    if (abs(x - ant->getX()) <= 1 && abs(y - ant->getY()) <= 1 && ant->getId() != id) //  distance is 1 or less
+    {
+      ret.push_back(ant);
+    }
+  });
+  
+  return ret;
+}
