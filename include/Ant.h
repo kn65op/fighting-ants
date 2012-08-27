@@ -190,10 +190,20 @@ int getFood()
     return !live;
   }
 
+  /**
+   * Fight between ants.
+   * @param ant Ant* with to fight.
+   * @return true if ant starting fight won, else otherwise.
+   */
+  bool fight(Ant * ant);
+
 private:
   //distrubution for movement
   std::discrete_distribution<> *move_distribution;
   std::uniform_int_distribution<> nest_time_distribution;
+
+  //distribution for fighting
+  std::uniform_int_distribution<> fight_distribution;
 
   //nest id from which ant come from
   int id;

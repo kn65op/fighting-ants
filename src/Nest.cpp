@@ -107,3 +107,7 @@ void Nest::setStartingAnts(int n)
   }
 }
 
+void Nest::removeAnt()
+{
+  --number_of_ants;
+}

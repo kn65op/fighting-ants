@@ -78,8 +78,7 @@ bool Ant::move(Ground& ground)
   std::list<Ant*> ants_near = ground.findAntsNextTo(x,y,id);
   if (!ants_near.empty())
   {
-    //fighting
-    return true;
+    return fight(ants_near.front());
   }
   
   if (move_function == nullptr) //ant just go out nest
@@ -209,7 +208,7 @@ double Ant::getRColor() const
 
 double Ant::getGColor() const
 {
-  return 0;
+  return 0.3 * id;
 }
 
 int Ant::distanceToNest() const
@@ -417,4 +416,20 @@ void Ant::goToDirectionNoCheck(Direction dir)
     move_function = &Ant::freeMove;
     break;
   }
+}
+
+bool Ant::fight(Ant* ant)
+{
+  if (fight_distribution(*gen)) //won
+  {
+    ant->live = false;
+    return true;
+  }
+  else //lost
+  {
+    live = false;
+    return false;
+  }
+  //fighthing return true if this won, false if not
+  //also set dead
 }

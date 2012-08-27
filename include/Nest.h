@@ -78,6 +78,11 @@ public:
    * @param n Number of ants, which nest will have on beginning.
    */
   void setStartingAnts(int n);
+
+  /**
+   * Remove ants from counting.
+   */
+  void removeAnt();
   
 private:
   //nest id (id differ ants from different nests).

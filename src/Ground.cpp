@@ -16,7 +16,7 @@
 #include <iostream>
 #include <stdexcept>
 
-Ground::Ground() : start_food_distribution(1,500), new_food_distribution(1,1000)
+Ground::Ground() : start_food_distribution(1,5000), new_food_distribution(1,1000)
 {
   is_map = false;
   column_distribution = nullptr;  
@@ -446,7 +446,7 @@ std::list<Ant*> Ground::findAntsNextTo(int x, int y, int id)
 
   std::for_each(ants->begin(), ants->end(), [x, y, id, & ret](Ant * ant)
   {
-    if (abs(x - ant->getX()) <= 1 && abs(y - ant->getY()) <= 1 && ant->getId() != id) //  distance is 1 or less
+    if (ant && abs(x - ant->getX()) <= 1 && abs(y - ant->getY()) <= 1 && ant->getId() != id) //  distance is 1 or less
     {
       ret.push_back(ant);
     }

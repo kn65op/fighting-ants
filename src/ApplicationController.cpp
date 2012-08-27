@@ -53,7 +53,12 @@ void ApplicationController::initSimulation()
   //create field 
   nests[1] = new Nest(1); //TODO: losowa pozycja lub coś
   nests[1]->setPosition(40,55);
-  nests[1]->setStartingAnts(5);
+  nests[1]->setStartingAnts(15);
+
+  nests[2] = new Nest(2);
+  nests[2]->setPosition(55,40);
+  nests[2]->setStartingAnts(15);
+  
   ground->setSize(100, 100);
 
   paintArea();
@@ -82,11 +87,25 @@ void ApplicationController::stepSimulation()
   //simulate ants
   for (auto & ant : ants) //pinter to Ant
   {
-    if (!ant->move(*ground)) //ant moves, if false it go to nest
+    if (ant->isDead())
+    {
+      nests[ant->getId()]->removeAnt();
+      delete ant; //TODO: leave food on ground
+      ant = nullptr;
+    }
+    else if (!ant->move(*ground)) //ant moves, if false it go to nest
     {
       Nest *tmp = nests[ant->getId()];
-      tmp->addAnt(ant);
-      tmp->addFood(ant->getFood());
+      if (ant->isDead()) //after fighting
+      {
+        tmp->removeAnt();
+        delete ant;
+      }
+      else
+      {
+	tmp->addAnt(ant);
+        tmp->addFood(ant->getFood());
+      }
       ant = nullptr; //remove ant from list
     }
   }
