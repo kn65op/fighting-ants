@@ -169,6 +169,14 @@ public:
    */
   Direction followSmell(int x, int y, int id);
 
+  /**
+   * Get direction to food, which is on field next to specified field.
+   * @param x X coordinate of field.
+   * @param y Y coordinage of field.
+   * @return  Direction to food.
+   */
+  Direction findFoodNextTo(int x, int y);
+
 private:
   /**
    * Creates map with size from length and width.

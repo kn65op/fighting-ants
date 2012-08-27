@@ -134,15 +134,15 @@ ${OBJECTDIR}/src/ApplicationController.o: src/ApplicationController.cpp
 
 # Build Test Targets
 .build-tests-conf: .build-conf ${TESTFILES}
-${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/DistanceToBorder.o ${OBJECTFILES:%.o=%_nomain.o}
+${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/DistanceToBorderTest.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.cc} -lpthread `pkg-config gtkmm-3.0 --libs`  -o ${TESTDIR}/TestFiles/f1 $^ ${LDLIBSOPTIONS} ../gtest-1.6.0/libgtest.a 
 
 
-${TESTDIR}/tests/DistanceToBorder.o: tests/DistanceToBorder.cpp 
+${TESTDIR}/tests/DistanceToBorderTest.o: tests/DistanceToBorderTest.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} $@.d
-	$(COMPILE.cc) -g -I. -I. -I../gtest-1.6.0/include -ILibHelper/include -MMD -MP -MF $@.d -o ${TESTDIR}/tests/DistanceToBorder.o tests/DistanceToBorder.cpp
+	$(COMPILE.cc) -g -I. -I. -I. -I../gtest-1.6.0/include -ILibHelper/include -MMD -MP -MF $@.d -o ${TESTDIR}/tests/DistanceToBorderTest.o tests/DistanceToBorderTest.cpp
 
 
 ${OBJECTDIR}/main_nomain.o: ${OBJECTDIR}/main.o main.cpp 

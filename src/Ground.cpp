@@ -235,7 +235,7 @@ Direction Ground::followSmell(int x, int y, int id)
 //
 //    try
 //    {
-//      if ((tmp = map.at(x - 1)->at(y - 1)->getSmell(id)) > 0 && tmp < act) //smaller
+//      if ((tmp = map.at(x - 1)->at(y - 1)) //smaller
 //      {
 //        min = tmp;
 //        dir = Direction::UL;
@@ -247,7 +247,7 @@ Direction Ground::followSmell(int x, int y, int id)
 //
 //    try
 //    {
-//      if ((tmp = map.at(x)->at(y - 1)->getSmell(id)) > 0 && tmp < act) //smaller
+//      if ((tmp = map.at(x)->at(y - 1)) //smaller
 //      {
 //        min = tmp;
 //        dir = Direction::U;
@@ -259,7 +259,7 @@ Direction Ground::followSmell(int x, int y, int id)
 //
 //    try
 //    {
-//      if ((tmp = map.at(x + 1)->at(y - 1)->getSmell(id)) > 0 && tmp < act) //smaller
+//      if ((tmp = map.at(x + 1)->at(y - 1)) //smaller
 //      {
 //        min = tmp;
 //        dir = Direction::UR;
@@ -271,7 +271,7 @@ Direction Ground::followSmell(int x, int y, int id)
 //
 //    try
 //    {
-//      if ((tmp = map.at(x - 1)->at(y)->getSmell(id)) > 0 && tmp < act) //smaller
+//      if ((tmp = map.at(x - 1)->at(y)) //smaller
 //      {
 //        min = tmp;
 //        dir = Direction::L;
@@ -283,7 +283,7 @@ Direction Ground::followSmell(int x, int y, int id)
 //
 //    try
 //    {
-//      if ((tmp = map.at(x + 1)->at(y)->getSmell(id)) > 0 && tmp < act) //smaller
+//      if ((tmp = map.at(x + 1)->at(y)) //smaller
 //      {
 //        min = tmp;
 //        dir = Direction::R;
@@ -295,7 +295,7 @@ Direction Ground::followSmell(int x, int y, int id)
 //
 //    try
 //    {
-//      if ((tmp = map.at(x - 1)->at(y + 1)->getSmell(id)) > 0 && tmp < act) //smaller
+//      if ((tmp = map.at(x - 1)->at(y + 1)) //smaller
 //      {
 //        min = tmp;
 //        dir = Direction::DL;
@@ -307,7 +307,7 @@ Direction Ground::followSmell(int x, int y, int id)
 //
 //    try
 //    {
-//      if ((tmp = map.at(x)->at(y + 1)->getSmell(id)) > 0 && tmp < act) //smaller
+//      if ((tmp = map.at(x)->at(y + 1)) //smaller
 //      {
 //        min = tmp;
 //        dir = Direction::D;
@@ -319,7 +319,7 @@ Direction Ground::followSmell(int x, int y, int id)
 //
 //    try
 //    {
-//      if ((tmp = map.at(x + 1)->at(y + 1)->getSmell(id)) > 0 && tmp < act) //smaller
+//      if ((tmp = map.at(x + 1)->at(y + 1)) //smaller
 //      {
 //        min = tmp;
 //        dir = Direction::DR;
@@ -337,4 +337,105 @@ Direction Ground::followSmell(int x, int y, int id)
 void Ground::makeSmell(int x, int y, int id, Direction dir)
 {
   map[x]->at(y)->makeSmell(id, dir);
+}
+
+Direction Ground::findFoodNextTo(int x, int y)
+{
+  Direction dir = Direction::NO_DIRECTION;
+  try
+  {
+    if (dynamic_cast<Food*> (map.at(x - 1)->at(y - 1)))
+    {
+      dir = Direction::UL;
+    }
+  }
+  catch (std::out_of_range e)
+  {
+  }
+
+  try
+  {
+
+    if (dynamic_cast<Food*> (map.at(x)->at(y - 1)))
+    {
+      dir = Direction::U;
+    }
+  }
+  catch (std::out_of_range e)
+  {
+  }
+
+  try
+  {
+
+    if (dynamic_cast<Food*> (map.at(x + 1)->at(y - 1)))
+      {
+        dir = Direction::UR;
+      }
+  }
+  catch (std::out_of_range e)
+  {
+  }
+
+  try
+  {
+
+    if (dynamic_cast<Food*> (map.at(x - 1)->at(y)))
+      {
+        dir = Direction::L;
+      }
+  }
+  catch (std::out_of_range e)
+  {
+  }
+
+  try
+  {
+
+    if (dynamic_cast<Food*> (map.at(x + 1)->at(y)))
+      {
+        dir = Direction::R;
+      }
+  }
+  catch (std::out_of_range e)
+  {
+  }
+
+  try
+  {
+
+    if (dynamic_cast<Food*> (map.at(x - 1)->at(y + 1)))
+      {
+        dir = Direction::DL;
+      }
+  }
+  catch (std::out_of_range e)
+  {
+  }
+
+  try
+  {
+
+    if (dynamic_cast<Food*> (map.at(x)->at(y + 1)))
+      {
+        dir = Direction::D;
+      }
+  }
+  catch (std::out_of_range e)
+  {
+  }
+
+  try
+  {
+
+    if (dynamic_cast<Food*> (map.at(x + 1)->at(y + 1)))
+      {
+        dir = Direction::DR;
+      }
+  }
+  catch (std::out_of_range e)
+  {
+  }
+
+  return dir;
 }

@@ -51,6 +51,12 @@ Ant::~Ant()
 
 void Ant::freeMove(Ground& ground)
 {
+  Direction tmp;
+  if ((tmp = ground.findFoodNextTo(x,y)) != Direction::NO_DIRECTION)
+  {
+    goToDirectionNoCheck(tmp);
+    return;
+  }
   
   createMoveDistribution(ground);
 
