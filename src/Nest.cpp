@@ -15,6 +15,8 @@ Nest::Nest(int id)
   this->id = id;
 
   food = 0;
+
+  number_of_ants = 0;
 }
 
 Nest::~Nest()
@@ -48,6 +50,7 @@ std::list<Ant*> Nest::nextStep()
     }
     else if (ant->isDead()) //check if is dead
     {
+      --number_of_ants;
       delete ant;
       ant = 0;
     }
@@ -68,13 +71,14 @@ void Nest::addFood(int amount)
 void Nest::produceAnts()
 {
   //TODO change this
-  if (food > 4 * (ants.size() + 1))
+  if (food > 3 * (number_of_ants + 1))
   {
-    int number = food - 4 * ants.size();
-    number /= 4;
-    number = number > 1 ? 1 : number;
+    int number = food - 3 * ants.size();
+    number /= 3;
+    number = number > 3 ? 3 : number;
     for (int i = 0; i < number; i++)
     {
+      ++number_of_ants;
       ants.push_back(new Ant(id, x, y));
     }
   }
@@ -99,6 +103,7 @@ void Nest::setStartingAnts(int n)
   {
     //create ants
     ants.push_back(new Ant(id, x, y));
+    ++number_of_ants;
   }
 }
 

@@ -88,6 +88,8 @@ private:
   int x, y;
   //ants in nest
   std::list<Ant*> ants;
+  //number of all ants from this nest
+  int number_of_ants;
 
   void produceAnts();
 };
