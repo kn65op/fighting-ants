@@ -132,7 +132,7 @@ ${OBJECTDIR}/src/ApplicationController.o: src/ApplicationController.cpp
 
 # Build Test Targets
 .build-tests-conf: .build-conf ${TESTFILES}
-${TESTDIR}/TestFiles/f2: ${TESTDIR}/tests/findingantstest.o ${OBJECTFILES:%.o=%_nomain.o}
+${TESTDIR}/TestFiles/f2: ${TESTDIR}/tests/FindingAntsTest.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.cc}   -o ${TESTDIR}/TestFiles/f2 $^ ${LDLIBSOPTIONS} 
 
@@ -141,10 +141,10 @@ ${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/DistanceToBorderTest.o ${OBJECTFILES:%
 	${LINK.cc}   -o ${TESTDIR}/TestFiles/f1 $^ ${LDLIBSOPTIONS} 
 
 
-${TESTDIR}/tests/findingantstest.o: tests/findingantstest.cpp 
+${TESTDIR}/tests/FindingAntsTest.o: tests/FindingAntsTest.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I. -MMD -MP -MF $@.d -o ${TESTDIR}/tests/findingantstest.o tests/findingantstest.cpp
+	$(COMPILE.cc) -O2 -I. -MMD -MP -MF $@.d -o ${TESTDIR}/tests/FindingAntsTest.o tests/FindingAntsTest.cpp
 
 
 ${TESTDIR}/tests/DistanceToBorderTest.o: tests/DistanceToBorderTest.cpp 

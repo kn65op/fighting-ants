@@ -135,7 +135,7 @@ ${OBJECTDIR}/src/ApplicationController.o: src/ApplicationController.cpp
 
 # Build Test Targets
 .build-tests-conf: .build-conf ${TESTFILES}
-${TESTDIR}/TestFiles/f2: ${TESTDIR}/tests/findingantstest.o ${OBJECTFILES:%.o=%_nomain.o}
+${TESTDIR}/TestFiles/f2: ${TESTDIR}/tests/FindingAntsTest.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.cc} -lpthread `pkg-config gtkmm-3.0 --libs`  -o ${TESTDIR}/TestFiles/f2 $^ ${LDLIBSOPTIONS} ../gtest-1.6.0/libgtest.a 
 
@@ -144,10 +144,10 @@ ${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/DistanceToBorderTest.o ${OBJECTFILES:%
 	${LINK.cc} -lpthread `pkg-config gtkmm-3.0 --libs`  -o ${TESTDIR}/TestFiles/f1 $^ ${LDLIBSOPTIONS} ../gtest-1.6.0/libgtest.a 
 
 
-${TESTDIR}/tests/findingantstest.o: tests/findingantstest.cpp 
+${TESTDIR}/tests/FindingAntsTest.o: tests/FindingAntsTest.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} $@.d
-	$(COMPILE.cc) -g -I. -I../gtest-1.6.0/include -ILibHelper/include -MMD -MP -MF $@.d -o ${TESTDIR}/tests/findingantstest.o tests/findingantstest.cpp
+	$(COMPILE.cc) -g -I. -I../gtest-1.6.0/include -ILibHelper/include -MMD -MP -MF $@.d -o ${TESTDIR}/tests/FindingAntsTest.o tests/FindingAntsTest.cpp
 
 
 ${TESTDIR}/tests/DistanceToBorderTest.o: tests/DistanceToBorderTest.cpp 
