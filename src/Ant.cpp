@@ -74,6 +74,14 @@ void Ant::setPositionToNestPosition()
 
 bool Ant::move(Ground& ground)
 {
+  //first fight
+  std::list<Ant*> ants_near = ground.findAntsNextTo(x,y,id);
+  if (!ants_near.empty())
+  {
+    //fighting
+    return true;
+  }
+  
   if (move_function == nullptr) //ant just go out nest
   {
     move_function = &Ant::freeMove;

@@ -10,6 +10,7 @@
 #include "include/Ant.h"
 #include "include/Ground.h"
 
+#include <algorithm>
 #include <map>
 
 class GroundTest : public ::testing::Test
@@ -41,6 +42,10 @@ protected:
 
   void TearDown()
   {
+    std::for_each(ants->begin(), ants->end(), [](Ant * ant)
+    {
+      delete ant;
+    });
 
     delete ants;
   }
