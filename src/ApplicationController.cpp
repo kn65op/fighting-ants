@@ -58,7 +58,15 @@ void ApplicationController::initSimulation()
   nests[2] = new Nest(2);
   nests[2]->setPosition(55,40);
   nests[2]->setStartingAnts(15);
+
+  nests[3] = new Nest(3);
+  nests[3]->setPosition(40,40);
+  nests[3]->setStartingAnts(15);
   
+  nests[4] = new Nest(4);
+  nests[4]->setPosition(55,55);
+  nests[4]->setStartingAnts(15);
+
   ground->setSize(100, 100);
 
   paintArea();

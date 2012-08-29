@@ -205,7 +205,7 @@ double Ant::getBColor() const
 
 double Ant::getRColor() const
 {
-  return 0.5;
+  return 1;
 }
 
 double Ant::getGColor() const

@@ -36,8 +36,8 @@ MainWindow::MainWindow()
   //setting buttons
   ss_button.set_label("Start");
   ss_button.set_sensitive(false);
-  init_button.set_label("Init");
-  step_button.set_label("Step");
+  init_button.set_label("Utwórz mapę");
+  step_button.set_label("Krok");
   step_button.set_sensitive(false);
   ss_button.signal_clicked().connect(sigc::mem_fun(*this, &MainWindow::on_start_stop_button_clicked));
   init_button.signal_clicked().connect(sigc::mem_fun(*this, &MainWindow::on_init_button_clicked));
@@ -61,12 +61,14 @@ void MainWindow::on_start_stop_button_clicked()
   {
     ss_button.set_label("Stop");
     init_button.set_sensitive(false);
+    step_button.set_sensitive(false);
     ap.startSimulation();
   }
   else //stopping
   {
     ss_button.set_label("Start");
     init_button.set_sensitive(true);
+    step_button.set_sensitive(true);
     ap.stopSimulation();
   }
 }

@@ -16,7 +16,7 @@
 #include <iostream>
 #include <stdexcept>
 
-Ground::Ground() : start_food_distribution(1,50), new_food_distribution(1,1000)
+Ground::Ground() : start_food_distribution(1,100), new_food_distribution(1,300)
 {
   is_map = false;
   column_distribution = nullptr;  

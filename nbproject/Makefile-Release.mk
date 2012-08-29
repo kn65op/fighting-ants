@@ -38,6 +38,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/Food.o \
 	${OBJECTDIR}/src/Field.o \
 	${OBJECTDIR}/src/Ant.o \
+	${OBJECTDIR}/src/SimulationPropertiesWindow.o \
 	${OBJECTDIR}/src/MainWindow.o \
 	${OBJECTDIR}/src/GroundArea.o \
 	${OBJECTDIR}/src/Ground.o \
@@ -97,6 +98,11 @@ ${OBJECTDIR}/src/Ant.o: src/Ant.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Ant.o src/Ant.cpp
 
+${OBJECTDIR}/src/SimulationPropertiesWindow.o: src/SimulationPropertiesWindow.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/SimulationPropertiesWindow.o src/SimulationPropertiesWindow.cpp
+
 ${OBJECTDIR}/src/MainWindow.o: src/MainWindow.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
@@ -144,13 +150,13 @@ ${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/DistanceToBorderTest.o ${OBJECTFILES:%
 ${TESTDIR}/tests/FindingAntsTest.o: tests/FindingAntsTest.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I. -MMD -MP -MF $@.d -o ${TESTDIR}/tests/FindingAntsTest.o tests/FindingAntsTest.cpp
+	$(COMPILE.cc) -O2 -I. -I. -MMD -MP -MF $@.d -o ${TESTDIR}/tests/FindingAntsTest.o tests/FindingAntsTest.cpp
 
 
 ${TESTDIR}/tests/DistanceToBorderTest.o: tests/DistanceToBorderTest.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I. -I. -I. -MMD -MP -MF $@.d -o ${TESTDIR}/tests/DistanceToBorderTest.o tests/DistanceToBorderTest.cpp
+	$(COMPILE.cc) -O2 -I. -I. -I. -I. -MMD -MP -MF $@.d -o ${TESTDIR}/tests/DistanceToBorderTest.o tests/DistanceToBorderTest.cpp
 
 
 ${OBJECTDIR}/main_nomain.o: ${OBJECTDIR}/main.o main.cpp 
@@ -203,6 +209,19 @@ ${OBJECTDIR}/src/Ant_nomain.o: ${OBJECTDIR}/src/Ant.o src/Ant.cpp
 	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Ant_nomain.o src/Ant.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/src/Ant.o ${OBJECTDIR}/src/Ant_nomain.o;\
+	fi
+
+${OBJECTDIR}/src/SimulationPropertiesWindow_nomain.o: ${OBJECTDIR}/src/SimulationPropertiesWindow.o src/SimulationPropertiesWindow.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/src/SimulationPropertiesWindow.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/SimulationPropertiesWindow_nomain.o src/SimulationPropertiesWindow.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/src/SimulationPropertiesWindow.o ${OBJECTDIR}/src/SimulationPropertiesWindow_nomain.o;\
 	fi
 
 ${OBJECTDIR}/src/MainWindow_nomain.o: ${OBJECTDIR}/src/MainWindow.o src/MainWindow.cpp 
