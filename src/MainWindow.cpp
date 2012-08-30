@@ -8,6 +8,8 @@
 
 #include "../include/MainWindow.h"
 #include "../include/GroundArea.h"
+#include "../include/EnginePropertiesDialog.h"
+#include "../include/SimulationPropertiesDialog.h"
 
 #include <fstream>
 #include <string>
@@ -139,7 +141,8 @@ void MainWindow::on_simulation_settings_menu_item_clicked()
 
 void MainWindow::on_engine_settings_menu_item_clicked()
 {
-
+  EnginePropertiesDialog epw;
+  
   std::cout << "engine\n";
 }
 

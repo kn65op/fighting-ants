@@ -1,5 +1,5 @@
 /* 
- * File:   SimulationPropertiesWindow.cpp
+ * File:   SimulationPropertiesDialog.cpp
  * Author: tomko
  * 
  * Created on 29 sierpień 2012, 15:23
@@ -7,9 +7,9 @@
 
 #include <gtkmm-3.0/gtkmm/adjustment.h>
 
-#include "../include/SimulationPropertiesWindow.h"
+#include "../include/SimulationPropertiesDialog.h"
 
-SimulationPropertiesWindow::SimulationPropertiesWindow() :
+SimulationPropertiesDialog::SimulationPropertiesDialog() :
 starting_ants_button(Gtk::Adjustment::create(10, 1, 100, 1, 10, 0.0)),
 nests_button(Gtk::Adjustment::create(2, 1, 10, 1, 2, 0.0)),
 placing_food_button(Gtk::Adjustment::create(0.001, 0, 1, 0.0001, 0.1, 0.0)),
@@ -19,7 +19,7 @@ amount_of_food_button(Gtk::Adjustment::create(50, 1, 1000, 1, 10, 0.0))
 {
 }
 
-SimulationPropertiesWindow::~SimulationPropertiesWindow()
+SimulationPropertiesDialog::~SimulationPropertiesDialog()
 {
 }
 

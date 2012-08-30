@@ -34,11 +34,13 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/src/Properties.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/src/Food.o \
 	${OBJECTDIR}/src/Field.o \
+	${OBJECTDIR}/src/SimulationPropertiesDialog.o \
+	${OBJECTDIR}/src/EnginePropertiesDialog.o \
 	${OBJECTDIR}/src/Ant.o \
-	${OBJECTDIR}/src/SimulationPropertiesWindow.o \
 	${OBJECTDIR}/src/MainWindow.o \
 	${OBJECTDIR}/src/GroundArea.o \
 	${OBJECTDIR}/src/Ground.o \
@@ -80,6 +82,11 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/fighting-ants: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} `pkg-config gtkmm-3.0 --libs` -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/fighting-ants  ${OBJECTFILES} ${LDLIBSOPTIONS} 
 
+${OBJECTDIR}/src/Properties.o: src/Properties.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -g -ILibHelper/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Properties.o src/Properties.cpp
+
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
@@ -95,15 +102,20 @@ ${OBJECTDIR}/src/Field.o: src/Field.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -ILibHelper/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Field.o src/Field.cpp
 
+${OBJECTDIR}/src/SimulationPropertiesDialog.o: src/SimulationPropertiesDialog.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -g -ILibHelper/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/SimulationPropertiesDialog.o src/SimulationPropertiesDialog.cpp
+
+${OBJECTDIR}/src/EnginePropertiesDialog.o: src/EnginePropertiesDialog.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -g -ILibHelper/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/EnginePropertiesDialog.o src/EnginePropertiesDialog.cpp
+
 ${OBJECTDIR}/src/Ant.o: src/Ant.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
 	$(COMPILE.cc) -g -ILibHelper/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Ant.o src/Ant.cpp
-
-${OBJECTDIR}/src/SimulationPropertiesWindow.o: src/SimulationPropertiesWindow.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src
-	${RM} $@.d
-	$(COMPILE.cc) -g -ILibHelper/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/SimulationPropertiesWindow.o src/SimulationPropertiesWindow.cpp
 
 ${OBJECTDIR}/src/MainWindow.o: src/MainWindow.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
@@ -162,6 +174,19 @@ ${TESTDIR}/tests/DistanceToBorderTest.o: tests/DistanceToBorderTest.cpp
 	$(COMPILE.cc) -g -I. -I. -I. -I. -I. -I../gtest-1.6.0/include -ILibHelper/include -MMD -MP -MF $@.d -o ${TESTDIR}/tests/DistanceToBorderTest.o tests/DistanceToBorderTest.cpp
 
 
+${OBJECTDIR}/src/Properties_nomain.o: ${OBJECTDIR}/src/Properties.o src/Properties.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/src/Properties.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -g -ILibHelper/include -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Properties_nomain.o src/Properties.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/src/Properties.o ${OBJECTDIR}/src/Properties_nomain.o;\
+	fi
+
 ${OBJECTDIR}/main_nomain.o: ${OBJECTDIR}/main.o main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	@NMOUTPUT=`${NM} ${OBJECTDIR}/main.o`; \
@@ -201,6 +226,32 @@ ${OBJECTDIR}/src/Field_nomain.o: ${OBJECTDIR}/src/Field.o src/Field.cpp
 	    ${CP} ${OBJECTDIR}/src/Field.o ${OBJECTDIR}/src/Field_nomain.o;\
 	fi
 
+${OBJECTDIR}/src/SimulationPropertiesDialog_nomain.o: ${OBJECTDIR}/src/SimulationPropertiesDialog.o src/SimulationPropertiesDialog.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/src/SimulationPropertiesDialog.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -g -ILibHelper/include -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/SimulationPropertiesDialog_nomain.o src/SimulationPropertiesDialog.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/src/SimulationPropertiesDialog.o ${OBJECTDIR}/src/SimulationPropertiesDialog_nomain.o;\
+	fi
+
+${OBJECTDIR}/src/EnginePropertiesDialog_nomain.o: ${OBJECTDIR}/src/EnginePropertiesDialog.o src/EnginePropertiesDialog.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/src/EnginePropertiesDialog.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -g -ILibHelper/include -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/EnginePropertiesDialog_nomain.o src/EnginePropertiesDialog.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/src/EnginePropertiesDialog.o ${OBJECTDIR}/src/EnginePropertiesDialog_nomain.o;\
+	fi
+
 ${OBJECTDIR}/src/Ant_nomain.o: ${OBJECTDIR}/src/Ant.o src/Ant.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	@NMOUTPUT=`${NM} ${OBJECTDIR}/src/Ant.o`; \
@@ -212,19 +263,6 @@ ${OBJECTDIR}/src/Ant_nomain.o: ${OBJECTDIR}/src/Ant.o src/Ant.cpp
 	    $(COMPILE.cc) -g -ILibHelper/include -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Ant_nomain.o src/Ant.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/src/Ant.o ${OBJECTDIR}/src/Ant_nomain.o;\
-	fi
-
-${OBJECTDIR}/src/SimulationPropertiesWindow_nomain.o: ${OBJECTDIR}/src/SimulationPropertiesWindow.o src/SimulationPropertiesWindow.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/src/SimulationPropertiesWindow.o`; \
-	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
-	then  \
-	    ${RM} $@.d;\
-	    $(COMPILE.cc) -g -ILibHelper/include -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/SimulationPropertiesWindow_nomain.o src/SimulationPropertiesWindow.cpp;\
-	else  \
-	    ${CP} ${OBJECTDIR}/src/SimulationPropertiesWindow.o ${OBJECTDIR}/src/SimulationPropertiesWindow_nomain.o;\
 	fi
 
 ${OBJECTDIR}/src/MainWindow_nomain.o: ${OBJECTDIR}/src/MainWindow.o src/MainWindow.cpp 

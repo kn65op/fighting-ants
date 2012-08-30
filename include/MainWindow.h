@@ -9,6 +9,8 @@
 #define	MAINWINDOWS_H
 
 #include "ApplicationController.h"
+#include "Properties.h"
+
 
 #include <gtkmm-3.0/gtkmm.h>
 
@@ -56,6 +58,8 @@ private:
 
   //application controller
   ApplicationController ap;
+  //properties
+  Properties properties;
 
   //signal handlers
   void on_start_stop_button_clicked();

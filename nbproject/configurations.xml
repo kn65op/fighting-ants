@@ -7,12 +7,15 @@
       <itemPath>include/Ant.h</itemPath>
       <itemPath>include/ApplicationController.h</itemPath>
       <itemPath>include/Direction.h</itemPath>
+      <itemPath>include/EnginePropertiesDialog.h</itemPath>
       <itemPath>include/Field.h</itemPath>
       <itemPath>include/Food.h</itemPath>
       <itemPath>include/Ground.h</itemPath>
       <itemPath>include/GroundArea.h</itemPath>
       <itemPath>include/MainWindow.h</itemPath>
       <itemPath>include/Nest.h</itemPath>
+      <itemPath>include/Properties.h</itemPath>
+      <itemPath>include/SimulationPropertiesDialog.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -24,14 +27,15 @@
       <itemPath>src/Ant.cpp</itemPath>
       <itemPath>src/ApplicationController.cpp</itemPath>
       <itemPath>src/Direction.cpp</itemPath>
+      <itemPath>src/EnginePropertiesDialog.cpp</itemPath>
       <itemPath>src/Field.cpp</itemPath>
       <itemPath>src/Food.cpp</itemPath>
       <itemPath>src/Ground.cpp</itemPath>
       <itemPath>src/GroundArea.cpp</itemPath>
       <itemPath>src/MainWindow.cpp</itemPath>
       <itemPath>src/Nest.cpp</itemPath>
-      <itemPath>src/SimulationPropertiesWindow.cpp</itemPath>
-      <itemPath>header/SimulationPropertiesWindow.h</itemPath>
+      <itemPath>src/Properties.cpp</itemPath>
+      <itemPath>src/SimulationPropertiesDialog.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
