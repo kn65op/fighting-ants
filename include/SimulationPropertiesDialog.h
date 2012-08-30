@@ -10,13 +10,16 @@
 
 #include <gtkmm-3.0/gtkmm.h>
 
+#include "Properties.h"
+
 class SimulationPropertiesDialog : public Gtk::Dialog
 {
 public:
   /**
-   * Default constructor.
+   * Constructor with properties.
+   * @param properties Actual properties.
    */
-  SimulationPropertiesDialog();
+  SimulationPropertiesDialog(Properties properties);
   
   /**
    * Copying is not allowed.

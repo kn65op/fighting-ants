@@ -135,15 +135,14 @@ void MainWindow::on_quit_menu_item_clicked()
 
 void MainWindow::on_simulation_settings_menu_item_clicked()
 {
-
-  std::cout << "simulation\n";
+  SimulationPropertiesDialog spd(properties);
+  spd.run();
 }
 
 void MainWindow::on_engine_settings_menu_item_clicked()
 {
-  EnginePropertiesDialog epw;
-  
-  std::cout << "engine\n";
+  EnginePropertiesDialog epd(properties);
+  epd.run();
 }
 
 bool MainWindow::on_delete_event(GdkEventAny* event)

@@ -7,11 +7,7 @@
 
 #include "../include/EnginePropertiesDialog.h"
 
-EnginePropertiesDialog::EnginePropertiesDialog()
-{
-}
-
-EnginePropertiesDialog::EnginePropertiesDialog(const EnginePropertiesDialog& orig)
+EnginePropertiesDialog::EnginePropertiesDialog(Properties properties)
 {
 }
 
