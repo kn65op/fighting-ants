@@ -39,6 +39,19 @@ private:
   Gtk::SpinButton starting_food_button;
   Gtk::SpinButton ant_can_walk_button;
   Gtk::SpinButton amount_of_food_button;
+
+  //labels
+  Gtk::Label starting_ants_label;
+  Gtk::Label nests_label;
+  Gtk::Label placing_food_label;
+  Gtk::Label starting_food_label;
+  Gtk::Label ant_can_walk_label;
+  Gtk::Label amount_of_food_label;
+  
+  //boxes
+  Gtk::HBox main_box;
+  Gtk::VBox labels_box;
+  Gtk::VBox buttons_box;
   
 };
 

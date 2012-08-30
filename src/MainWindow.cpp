@@ -18,6 +18,9 @@
 
 MainWindow::MainWindow()
 {
+  //set title
+  set_title("Fighting ants");
+  
   //make menu
   makeMenu();
 
