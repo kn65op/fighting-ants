@@ -109,7 +109,7 @@ void MainWindow::makeMenu()
 
   m_refActionGroup->add(Gtk::Action::create("MenuFile", "_Plik"));
   m_refActionGroup->add(Gtk::Action::create("Quit", "_Wyjdź"), sigc::mem_fun(*this, &MainWindow::on_quit_menu_item_clicked));
-  
+
   m_refActionGroup->add(Gtk::Action::create("MenuSettings", "_Ustawienia"));
   m_refActionGroup->add(Gtk::Action::create("SimulationSettings", "Ustawienia symluacji"), sigc::mem_fun(*this, &MainWindow::on_simulation_settings_menu_item_clicked));
   m_refActionGroup->add(Gtk::Action::create("EngineSettings", "Ustawienia silnika"), sigc::mem_fun(*this, &MainWindow::on_engine_settings_menu_item_clicked));
@@ -125,17 +125,23 @@ void MainWindow::makeMenu()
 
 void MainWindow::on_quit_menu_item_clicked()
 {
-std::cout << "QUIT\n";  
+  std::cout << "QUIT\n";
 }
 
 void MainWindow::on_simulation_settings_menu_item_clicked()
 {
-  
-std::cout << "simulation\n";  
+
+  std::cout << "simulation\n";
 }
 
 void MainWindow::on_engine_settings_menu_item_clicked()
 {
-  
-std::cout << "engine\n";  
+
+  std::cout << "engine\n";
+}
+
+bool MainWindow::on_delete_event(GdkEventAny* event)
+{
+  //TODO: Dialog
+  return ap.isSimulationOn();
 }

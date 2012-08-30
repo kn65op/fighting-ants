@@ -14,6 +14,7 @@ ApplicationController::ApplicationController()
 {
   //antmax time
   Ant::setMaxTime(1000);
+  simulate = false;
 }
 
 ApplicationController::~ApplicationController()

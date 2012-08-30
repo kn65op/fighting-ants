@@ -66,6 +66,11 @@ public:
     this->ground = ground;
   }
 
+  bool isSimulationOn() const
+  {
+    return simulate;
+  }
+
   
 private:
   //ants

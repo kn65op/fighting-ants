@@ -73,6 +73,8 @@ private:
   Glib::RefPtr<Gtk::UIManager> m_refUIManager;
   Glib::RefPtr<Gtk::ActionGroup> m_refActionGroup;
   
+  bool on_delete_event(GdkEventAny * event) override;
+  
 };
 
 #endif	/* MAINWINDOWS_H */
