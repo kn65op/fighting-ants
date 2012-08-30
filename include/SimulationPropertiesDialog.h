@@ -15,11 +15,17 @@
 class SimulationPropertiesDialog : public Gtk::Dialog
 {
 public:
+  enum Response
+  {
+    OK,
+    CANCEL
+  };
+  
   /**
    * Constructor with properties.
    * @param properties Actual properties.
    */
-  SimulationPropertiesDialog(Properties properties);
+  SimulationPropertiesDialog(Properties & properties);
   
   /**
    * Copying is not allowed.
@@ -31,6 +37,9 @@ public:
    * Default destructor.
    */
   virtual ~SimulationPropertiesDialog();
+
+  void saveProperties(Properties & properties);
+  
 private:
   //fields
   Gtk::SpinButton starting_ants_button;

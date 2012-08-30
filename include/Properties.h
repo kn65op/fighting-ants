@@ -50,15 +50,25 @@ public:
   {
     this->nests = nests;
   }
-
-  int GetPlacing_food() const
+  
+  double GetPlacing_food() const
   {
     return placing_food;
   }
 
-  void SetPlacing_food(int placing_food)
+  void SetPlacing_food(double placing_food)
   {
     this->placing_food = placing_food;
+  }
+
+  double GetStarting_food() const
+  {
+    return starting_food;
+  }
+
+  void SetStarting_food(double starting_food)
+  {
+    this->starting_food = starting_food;
   }
 
   int GetStarting_ants() const
@@ -71,25 +81,15 @@ public:
     this->starting_ants = starting_ants;
   }
 
-  int GetStarting_food() const
-  {
-    return starting_food;
-  }
-
-  void SetStarting_food(int starting_food)
-  {
-    this->starting_food = starting_food;
-  }
-
 private:
   /** number of starting ants */
   int starting_ants;
   /** number of nest */
   int nests;
   /** frequency of placing food */
-  int placing_food;
+  double placing_food;
   /** number of starting food */
-  int starting_food;
+  double starting_food;
   /** number of fields ant can walk */
   int ant_can_walk;
   /** amount of food */

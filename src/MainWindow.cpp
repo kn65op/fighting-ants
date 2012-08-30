@@ -139,7 +139,10 @@ void MainWindow::on_quit_menu_item_clicked()
 void MainWindow::on_simulation_settings_menu_item_clicked()
 {
   SimulationPropertiesDialog spd(properties);
-  spd.run();
+  if (spd.run() == SimulationPropertiesDialog::Response::OK)
+  {
+    spd.saveProperties(properties);
+  }
 }
 
 void MainWindow::on_engine_settings_menu_item_clicked()

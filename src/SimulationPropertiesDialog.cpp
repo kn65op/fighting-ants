@@ -9,7 +9,7 @@
 
 #include "../include/SimulationPropertiesDialog.h"
 
-SimulationPropertiesDialog::SimulationPropertiesDialog(Properties properties) :
+SimulationPropertiesDialog::SimulationPropertiesDialog(Properties & properties) :
 starting_ants_label("Początkowa liczba mrówek:"),
 starting_ants_button(Gtk::Adjustment::create(properties.GetStarting_ants(), 1, 100, 1, 10, 0.0)),
 nests_label("Liczba gniazd:"),
@@ -49,6 +49,9 @@ amount_of_food_button(Gtk::Adjustment::create(properties.GetAmount_of_food(), 1,
   buttons_box.pack_end(ant_can_walk_button);
   buttons_box.pack_end(amount_of_food_button);
 
+  add_button("Anuluj", Response::CANCEL);
+  add_button("OK", Response::OK);
+  
   main_box.show();
   main_box.show_all_children(true);
 }
@@ -57,3 +60,12 @@ SimulationPropertiesDialog::~SimulationPropertiesDialog()
 {
 }
 
+void SimulationPropertiesDialog::saveProperties(Properties& properties)
+{
+  properties.SetAmount_of_food(amount_of_food_button.get_value_as_int());
+  properties.SetAnt_can_walk(ant_can_walk_button.get_value_as_int());
+  properties.SetNests(nests_button.get_value_as_int());
+  properties.SetPlacing_food(placing_food_button.get_value());
+  properties.SetStarting_ants(starting_ants_button.get_value_as_int());
+  properties.SetStarting_food(starting_food_button.get_value());
+}
