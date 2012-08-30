@@ -48,7 +48,10 @@ private:
   //box for buttons
   Gtk::VBox buttons_box;
   //box for separating field from buttons
-  Gtk::HBox main_box;
+  Gtk::HBox main_part_box;
+  // main box for menubar, main part of screen and status bar
+  Gtk::VBox main_box;
+  
 
 
   //application controller
@@ -58,6 +61,18 @@ private:
   void on_start_stop_button_clicked();
   void on_init_button_clicked();
   void on_step_button_clicked();
+  void on_quit_menu_item_clicked();
+  void on_simulation_settings_menu_item_clicked();
+  void on_engine_settings_menu_item_clicked();
+
+  void makeMenu();
+
+  Glib::ustring ui_info;
+
+  //for menu
+  Glib::RefPtr<Gtk::UIManager> m_refUIManager;
+  Glib::RefPtr<Gtk::ActionGroup> m_refActionGroup;
+  
 };
 
 #endif	/* MAINWINDOWS_H */

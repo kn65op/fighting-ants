@@ -5,15 +5,20 @@
  * Created on 24 lipiec 2012, 13:03
  */
 
-#include <cairomm-1.0/cairomm/refptr.h>
-#include <cairomm-1.0/cairomm/enums.h>
-#include <cairomm-1.0/cairomm/context.h>
 
 #include "../include/MainWindow.h"
 #include "../include/GroundArea.h"
 
+#include <fstream>
+#include <string>
+
+#include <iostream>
+
 MainWindow::MainWindow()
 {
+  //make menu
+  makeMenu();
+
   //setting widow view
   //title
   set_title("Fighting ants");
@@ -22,10 +27,14 @@ MainWindow::MainWindow()
   //setting view
   add(main_box);
 
-  //setting main box
+  //setting main box 
+  main_box.pack_start(*(m_refUIManager->get_widget("/MenuBar")), Gtk::PACK_SHRINK);
+  main_box.pack_end(main_part_box);
+
+  //setting main part box
   field = new GroundArea();
-  main_box.pack_start(*field, Gtk::PACK_EXPAND_WIDGET);
-  main_box.pack_end(buttons_box, Gtk::PACK_SHRINK);
+  main_part_box.pack_start(*field, Gtk::PACK_EXPAND_WIDGET);
+  main_part_box.pack_end(buttons_box, Gtk::PACK_SHRINK);
 
   //setting buttons_box
   buttons_box.pack_start(init_button);
@@ -83,4 +92,50 @@ void MainWindow::on_init_button_clicked()
   ap.initSimulation();
   step_button.set_sensitive(true);
   ss_button.set_sensitive(true);
+}
+
+void MainWindow::makeMenu()
+{
+  std::string tmp;
+  std::ifstream ui_file("ui_file");
+  while (!ui_file.eof() && ui_file.good())
+  {
+    std::getline(ui_file, tmp);
+    ui_info += tmp;
+  }
+
+  //actions
+  m_refActionGroup = Gtk::ActionGroup::create();
+
+  m_refActionGroup->add(Gtk::Action::create("MenuFile", "_Plik"));
+  m_refActionGroup->add(Gtk::Action::create("Quit", "_Wyjdź"), sigc::mem_fun(*this, &MainWindow::on_quit_menu_item_clicked));
+  
+  m_refActionGroup->add(Gtk::Action::create("MenuSettings", "_Ustawienia"));
+  m_refActionGroup->add(Gtk::Action::create("SimulationSettings", "Ustawienia symluacji"), sigc::mem_fun(*this, &MainWindow::on_simulation_settings_menu_item_clicked));
+  m_refActionGroup->add(Gtk::Action::create("EngineSettings", "Ustawienia silnika"), sigc::mem_fun(*this, &MainWindow::on_engine_settings_menu_item_clicked));
+
+  //ui manager
+  m_refUIManager = Gtk::UIManager::create();
+  m_refUIManager->insert_action_group(m_refActionGroup);
+  add_accel_group(m_refUIManager->get_accel_group());
+  std::cout << ui_info << "\n";
+  m_refUIManager->add_ui_from_string(ui_info);
+
+}
+
+void MainWindow::on_quit_menu_item_clicked()
+{
+std::cout << "QUIT\n";  
+}
+
+void MainWindow::on_simulation_settings_menu_item_clicked()
+{
+  
+std::cout << "simulation\n";  
+}
+
+void MainWindow::on_engine_settings_menu_item_clicked()
+{
+  
+std::cout << "engine\n";  
 }
