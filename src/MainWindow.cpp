@@ -148,7 +148,10 @@ void MainWindow::on_simulation_settings_menu_item_clicked()
 void MainWindow::on_engine_settings_menu_item_clicked()
 {
   EnginePropertiesDialog epd(properties);
-  epd.run();
+  if (epd.run() == EnginePropertiesDialog::Response::OK)
+  {
+    epd.saveProperties(properties);
+  }
 }
 
 bool MainWindow::on_delete_event(GdkEventAny* event)

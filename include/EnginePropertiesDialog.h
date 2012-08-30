@@ -20,6 +20,12 @@
 class EnginePropertiesDialog : public Gtk::Dialog
 {
 public:
+  enum Response
+  {
+    OK,
+    CANCEL
+  };
+
   /**
    * Constructor with setting properties.
    * @param properties Actual properties.
@@ -34,7 +40,20 @@ public:
    * Destructor.
    */
   virtual ~EnginePropertiesDialog();
+
+  /**
+   * Save properties.
+   * @param properties Object where to save properties.
+   */
+  void saveProperties(Properties & properties);
 private:
+  Gtk::SpinButton interval_button;
+  Gtk::Label interval_label;
+
+  //boxes
+  Gtk::HBox main_box;
+  Gtk::VBox labels_box;
+  Gtk::VBox buttons_box;
 
 };
 

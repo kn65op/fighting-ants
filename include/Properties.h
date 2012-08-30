@@ -81,6 +81,17 @@ public:
     this->starting_ants = starting_ants;
   }
 
+  int GetSimulation_interval() const
+  {
+    return simulation_interval;
+  }
+
+  void SetSimulation_interval(int simulation_interval)
+  {
+    this->simulation_interval = simulation_interval;
+  }
+
+
 private:
   /** number of starting ants */
   int starting_ants;
@@ -94,6 +105,9 @@ private:
   int ant_can_walk;
   /** amount of food */
   int amount_of_food;
+
+  /** simulation interval */
+  int simulation_interval;
 
 };
 
