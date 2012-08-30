@@ -125,7 +125,10 @@ void MainWindow::makeMenu()
 
 void MainWindow::on_quit_menu_item_clicked()
 {
-  std::cout << "QUIT\n";
+  if (!on_delete_event(nullptr))
+  {
+    hide();
+  }
 }
 
 void MainWindow::on_simulation_settings_menu_item_clicked()
