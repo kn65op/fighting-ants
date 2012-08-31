@@ -21,7 +21,7 @@ protected:
   {
     ants = new std::list<Ant*>();
     
-    ground.setSize(100, 120);
+    ground.createMap(100, 120);
 
     Ant *tmp;
 

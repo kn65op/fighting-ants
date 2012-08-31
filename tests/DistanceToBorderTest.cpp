@@ -20,7 +20,7 @@ class GroundTest : public ::testing::Test
   protected:
     void SetUp()
     {
-      ground.setSize(100, 120);
+      ground.createMap(100, 120);
       ul = new Nest(1);
       dr = new Nest(2);
       m = new Nest(3);

@@ -74,7 +74,7 @@ void ApplicationController::initSimulation()
   nests[4]->setPosition(55,55);
   nests[4]->setStartingAnts(15);
 
-  ground->setSize(100, 100);
+  ground->createMap(100, 100, start_food_proability, place_food_proability);
 
   paintArea();
 }
@@ -171,4 +171,6 @@ void ApplicationController::setProperties(Properties& properties)
 {
   starting_ants_number = properties.GetStarting_ants();
   nests_number = properties.GetNests();
+  start_food_proability = properties.GetStarting_food();
+  place_food_proability = properties.GetPlacing_food();
 }

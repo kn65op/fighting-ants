@@ -16,11 +16,13 @@
 #include <iostream>
 #include <stdexcept>
 
-Ground::Ground() : start_food_distribution(1,100), new_food_distribution(1,300)
+Ground::Ground()
 {
   is_map = false;
   column_distribution = nullptr;  
   row_distribution = nullptr;
+  new_food_distribution = nullptr;
+  start_food_distribution = nullptr;
 }
 
 Ground::~Ground()
@@ -28,10 +30,23 @@ Ground::~Ground()
   deleteMap();
 }
 
-void Ground::setSize(int l, int w)
+void Ground::createMap(int l, int w, double starting_food_probability, double placing_food_probability)
 {
   deleteMap();
   deleteDistributions();
+  if (start_food_distribution != nullptr)
+  {
+    delete start_food_distribution;
+  }
+  int tmp = static_cast<int> (1 / starting_food_probability);
+  start_food_distribution = new std::uniform_int_distribution<>(1, tmp);
+
+  if (new_food_distribution != nullptr)
+  {
+    delete new_food_distribution;
+  }
+  tmp = static_cast<int> (1 / placing_food_probability);
+  new_food_distribution = new std::uniform_int_distribution<>(1, tmp);
 
   //save values
   length = l;
@@ -53,7 +68,7 @@ void Ground::createBlankMap()
     for (int j=0; j<length; ++j)
     {
  //temporary making blank and food fields (aprox 99:1)
-      if (start_food_distribution(*gen) == 1)
+      if ((*start_food_distribution)(*gen) == 1)
       {
 	tmp->push_back(new Food());
       }
@@ -120,7 +135,7 @@ void Ground::checkFood()
 
 void Ground::generateFood()
 {
-  if (new_food_distribution(*gen) == 1)
+  if ((*new_food_distribution)(*gen) == 1)
   {
     Field *tmp;
     int x, y;

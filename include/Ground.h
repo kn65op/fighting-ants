@@ -52,11 +52,14 @@ public:
   void proceedNextStep();
 
   /**
-   * Set size of ground. It also creates ground.
+   * Creates new map.
    * @param l Length of ground.
    * @param w Width of ground.
+   * @param starting_food_probability Probability of placing food on one field at start.
+   * @param placing_food_probability Probability of placing food on ground during simulation.
    */
-  void setSize(int l, int w);
+  void createMap(int l, int w, double starting_food_probability, double placing_food_probability);
+  
   /**
    * Checks if coordinates are laying in ground.
    * @param x X coordinate.
@@ -206,8 +209,8 @@ private:
   void makeDistributions();
 
   //distribution for different purposes
-  std::uniform_int_distribution<> start_food_distribution;
-  std::uniform_int_distribution<> new_food_distribution;
+  std::uniform_int_distribution<> *start_food_distribution;
+  std::uniform_int_distribution<> *new_food_distribution;
   std::uniform_int_distribution<> *row_distribution;
   std::uniform_int_distribution<> *column_distribution;
 

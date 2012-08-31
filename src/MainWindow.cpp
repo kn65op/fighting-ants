@@ -62,6 +62,7 @@ MainWindow::MainWindow()
   main_box.show_all_children(true);
 
   //setting application controller
+  ap.setProperties(properties);
   ap.setGround(field);
 }
 

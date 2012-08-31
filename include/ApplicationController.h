@@ -94,6 +94,8 @@ private:
   //properties
   int starting_ants_number;
   int nests_number;
+  double start_food_proability;
+  double place_food_proability;
 
   /**
    * Processing simulation.
