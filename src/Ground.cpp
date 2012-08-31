@@ -470,3 +470,8 @@ std::list<Ant*> Ground::findAntsNextTo(int x, int y, int id)
   
   return ret;
 }
+
+void Ground::setAmountOfFood(int amount)
+{
+  Food::setAmountOfFood(amount);
+}

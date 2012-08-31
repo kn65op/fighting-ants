@@ -42,8 +42,17 @@ public:
    * @return true if food is empty, false otherwise.
    */
   bool isEmpty();
+
+  /**
+   * Set starting amount of food;
+   * @param amount Amount to set.
+   */
+  static void setAmountOfFood(int amount);
 private:
   int amount;
+
+  //starting amount
+  static int started_amount_of_food;
 };
 
 #endif	/* FOOD_H */

@@ -7,11 +7,13 @@
 
 #include "../include/Food.h"
 
+int Food::started_amount_of_food = 10;
+
 Food::Food()
 {
   bcolor = rcolor = 0;
   gcolor = 1;
-  amount = 100; //TODO losowe
+  amount = started_amount_of_food; //TODO losowe
   can_be_changed_into_food = false;
 }
 
@@ -29,4 +31,9 @@ int Food::getFood(int n)
 bool Food::isEmpty()
 {
   return !amount;
+}
+
+void Food::setAmountOfFood(int amount)
+{
+  started_amount_of_food = amount;
 }

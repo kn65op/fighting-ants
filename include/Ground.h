@@ -189,6 +189,12 @@ public:
    */
   std::list<Ant*> findAntsNextTo(int x, int y, int id);
 
+  /**
+   * Set amount of food that will be placed in food fields.
+   * @param amount Amount of fod to be setted.
+   */
+  static void setAmountOfFood(int amount);
+
 private:
   /**
    * Creates map with size from length and width.

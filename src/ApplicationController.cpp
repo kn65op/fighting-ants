@@ -173,4 +173,5 @@ void ApplicationController::setProperties(Properties& properties)
   start_food_proability = properties.GetStarting_food();
   place_food_proability = properties.GetPlacing_food();
   Ant::setMaxTime(properties.GetAnt_can_walk());
+  ground->setAmountOfFood(properties.GetAmount_of_food());
 }
