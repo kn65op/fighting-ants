@@ -13,7 +13,6 @@
 ApplicationController::ApplicationController()
 {
   //antmax time
-  Ant::setMaxTime(1000);
   simulate = false;
 }
 
@@ -173,4 +172,5 @@ void ApplicationController::setProperties(Properties& properties)
   nests_number = properties.GetNests();
   start_food_proability = properties.GetStarting_food();
   place_food_proability = properties.GetPlacing_food();
+  Ant::setMaxTime(properties.GetAnt_can_walk());
 }

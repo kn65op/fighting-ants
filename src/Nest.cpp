@@ -14,6 +14,8 @@ Nest::Nest(int id)
 {
   this->id = id;
 
+  x = y = 10;//TODO: Usunąć
+  
   food = 0;
 
   number_of_ants = 0;
