@@ -142,6 +142,7 @@ void MainWindow::on_simulation_settings_menu_item_clicked()
   if (spd.run() == SimulationPropertiesDialog::Response::OK)
   {
     spd.saveProperties(properties);
+    ap.setProperties(properties);
   }
 }
 

@@ -165,13 +165,13 @@ ${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/DistanceToBorderTest.o ${OBJECTFILES:%
 ${TESTDIR}/tests/FindingAntsTest.o: tests/FindingAntsTest.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} $@.d
-	$(COMPILE.cc) -g -I. -I. -I. -I../gtest-1.6.0/include -ILibHelper/include -MMD -MP -MF $@.d -o ${TESTDIR}/tests/FindingAntsTest.o tests/FindingAntsTest.cpp
+	$(COMPILE.cc) -g -I. -I. -I. -I. -I../gtest-1.6.0/include -ILibHelper/include -MMD -MP -MF $@.d -o ${TESTDIR}/tests/FindingAntsTest.o tests/FindingAntsTest.cpp
 
 
 ${TESTDIR}/tests/DistanceToBorderTest.o: tests/DistanceToBorderTest.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} $@.d
-	$(COMPILE.cc) -g -I. -I. -I. -I. -I. -I../gtest-1.6.0/include -ILibHelper/include -MMD -MP -MF $@.d -o ${TESTDIR}/tests/DistanceToBorderTest.o tests/DistanceToBorderTest.cpp
+	$(COMPILE.cc) -g -I. -I. -I. -I. -I. -I. -I../gtest-1.6.0/include -ILibHelper/include -MMD -MP -MF $@.d -o ${TESTDIR}/tests/DistanceToBorderTest.o tests/DistanceToBorderTest.cpp
 
 
 ${OBJECTDIR}/src/Properties_nomain.o: ${OBJECTDIR}/src/Properties.o src/Properties.cpp 

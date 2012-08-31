@@ -10,6 +10,7 @@
 
 #include "Ant.h"
 #include "Nest.h"
+#include "Properties.h"
 
 #include <thread>
 #include <atomic>
@@ -71,6 +72,11 @@ public:
     return simulate;
   }
 
+  /**
+   * Set all setting to passed properties. Some of them affect only map creating.
+   * @param properties Properties to set.
+   */
+  void setProperties(Properties & properties);
   
 private:
   //ants
@@ -84,6 +90,10 @@ private:
   std::thread *simulation_thread;
   //if simulation should continue
   std::atomic<bool> simulate;
+
+  //properties
+  int starting_ants_number;
+  int nests_number;
 
   /**
    * Processing simulation.

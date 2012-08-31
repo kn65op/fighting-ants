@@ -50,6 +50,12 @@ void ApplicationController::initSimulation()
     delete pair.second;
   };
   nests.clear();
+
+  for (int i=0; i < nests_number; ++i)
+  {
+    nests[i] = new Nest(i);
+    nests[i]->setStartingAnts(starting_ants_number);
+  }
   
   //create field 
   nests[1] = new Nest(1); //TODO: losowa pozycja lub coś
@@ -159,4 +165,10 @@ void ApplicationController::paintArea()
     Gdk::Rectangle r(0, 0, ground->get_allocation().get_width(), ground->get_allocation().get_height());
     win->invalidate_rect(r, false);
   }
+}
+
+void ApplicationController::setProperties(Properties& properties)
+{
+  starting_ants_number = properties.GetStarting_ants();
+  nests_number = properties.GetNests();
 }
