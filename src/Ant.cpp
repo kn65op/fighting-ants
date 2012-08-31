@@ -215,7 +215,7 @@ double Ant::getGColor() const
 
 int Ant::distanceToNest() const
 {
-  return std::max(abs(x - nest_x), abs(y - nest_y)); //TODO check
+  return std::max(abs(x - nest_x), abs(y - nest_y));
 }
 
 bool Ant::canGoOut()

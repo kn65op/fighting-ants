@@ -251,7 +251,7 @@ private:
   //die
   void die();
 
-  //calculatedistance to nest
+  //calculatedistance to nest in Euclides metric
   int distanceToNest() const;
 
   //if ant live

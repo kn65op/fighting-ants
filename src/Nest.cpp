@@ -72,7 +72,6 @@ void Nest::addFood(int amount)
 
 void Nest::produceAnts()
 {
-  //TODO change this
   if (food > 3 * (number_of_ants + 1))
   {
     int number = food - 3 * ants.size();
