@@ -5,10 +5,9 @@
  * Created on 30 sierpień 2012, 14:05
  */
 
-#include <fstream>
-#include <string>
-
 #include "../include/Properties.h"
+
+#include <fstream>
 
 Properties::Properties()
 {

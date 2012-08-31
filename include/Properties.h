@@ -8,6 +8,8 @@
 #ifndef PROPERTIES_H
 #define	PROPERTIES_H
 
+#include <string>
+
 /**
  * @brief This class holds and manage all parameters for simulation and engine.
  * 

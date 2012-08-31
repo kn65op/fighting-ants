@@ -25,3 +25,6 @@ nb-configuration.xml
 
 #doc
 doc/
+
+#project files
+prop_file
