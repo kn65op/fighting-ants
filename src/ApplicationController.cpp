@@ -57,21 +57,21 @@ void ApplicationController::initSimulation()
   }
   
   //create field 
-  nests[1] = new Nest(1); //TODO: losowa pozycja lub coś
-  nests[1]->setPosition(40,55);
-  nests[1]->setStartingAnts(15);
+  nests[10] = new Nest(10); //TODO: losowa pozycja lub coś
+  nests[10]->setPosition(40,55);
+  nests[10]->setStartingAnts(15);
 
-  nests[2] = new Nest(2);
-  nests[2]->setPosition(55,40);
-  nests[2]->setStartingAnts(15);
+  nests[20] = new Nest(20);
+  nests[20]->setPosition(55,40);
+  nests[20]->setStartingAnts(15);
 
-  nests[3] = new Nest(3);
-  nests[3]->setPosition(40,40);
-  nests[3]->setStartingAnts(15);
+  nests[30] = new Nest(30);
+  nests[30]->setPosition(40,40);
+  nests[30]->setStartingAnts(15);
   
-  nests[4] = new Nest(4);
-  nests[4]->setPosition(55,55);
-  nests[4]->setStartingAnts(15);
+  nests[40] = new Nest(40);
+  nests[40]->setPosition(55,55);
+  nests[40]->setStartingAnts(15);
 
   ground->createMap(100, 100, start_food_proability, place_food_proability);
 
@@ -91,7 +91,7 @@ void ApplicationController::processSimulation()
   while (simulate)
   {
     stepSimulation();
-  std::this_thread::sleep_for(std::chrono::milliseconds(100));
+  std::this_thread::sleep_for(std::chrono::milliseconds(interval));
   }
 }
 
@@ -174,4 +174,5 @@ void ApplicationController::setProperties(Properties& properties)
   place_food_proability = properties.GetPlacing_food();
   Ant::setMaxTime(properties.GetAnt_can_walk());
   ground->setAmountOfFood(properties.GetAmount_of_food());
+  interval = properties.GetSimulation_interval();
 }

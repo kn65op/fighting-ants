@@ -96,6 +96,7 @@ private:
   int nests_number;
   double start_food_proability;
   double place_food_proability;
+  int interval;
 
   /**
    * Processing simulation.

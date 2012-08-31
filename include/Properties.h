@@ -91,6 +91,17 @@ public:
     this->simulation_interval = simulation_interval;
   }
 
+  /**
+   * Save properties to file.
+   * @param file Filename.
+   */
+  void saveToFile(std::string file);
+
+  /**
+   * Read properties from file.
+   * @param file Filename.
+   */
+  void loadFromFile(std::string file);
 
 private:
   /** number of starting ants */

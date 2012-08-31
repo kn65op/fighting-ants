@@ -14,8 +14,6 @@
 #include <fstream>
 #include <string>
 
-#include <iostream>
-
 MainWindow::MainWindow()
 {
   //set title
@@ -61,6 +59,9 @@ MainWindow::MainWindow()
   main_box.show();
   main_box.show_all_children(true);
 
+  //load last properties.
+  properties.loadFromFile("prop_file");
+  
   //setting application controller
   ap.setProperties(properties);
   ap.setGround(field);
@@ -68,6 +69,7 @@ MainWindow::MainWindow()
 
 MainWindow::~MainWindow()
 {
+  properties.saveToFile("prop_file");
 }
 
 void MainWindow::on_start_stop_button_clicked()
@@ -124,7 +126,6 @@ void MainWindow::makeMenu()
   m_refUIManager = Gtk::UIManager::create();
   m_refUIManager->insert_action_group(m_refActionGroup);
   add_accel_group(m_refUIManager->get_accel_group());
-  std::cout << ui_info << "\n";
   m_refUIManager->add_ui_from_string(ui_info);
 
 }
@@ -153,6 +154,7 @@ void MainWindow::on_engine_settings_menu_item_clicked()
   if (epd.run() == EnginePropertiesDialog::Response::OK)
   {
     epd.saveProperties(properties);
+    ap.setProperties(properties);
   }
 }
 
