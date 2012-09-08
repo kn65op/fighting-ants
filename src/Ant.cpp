@@ -52,12 +52,13 @@ Ant::~Ant()
 void Ant::freeMove(Ground& ground)
 {
   Direction tmp;
-  if ((tmp = ground.findFoodNextTo(x,y)) != Direction::NO_DIRECTION)
+  if ((tmp = ground.findFoodNextTo(x, y)) != Direction::NO_DIRECTION)
   {
     goToDirectionNoCheck(tmp);
+    
     return;
   }
-  
+
   createMoveDistribution(ground);
 
   directMove(ground);
@@ -76,7 +77,7 @@ bool Ant::move(Ground& ground)
 {
   --time;
   //first fight
-  std::list<Ant*> ants_near = ground.findAntsNextTo(x,y,id);
+  std::list<Ant*> ants_near = ground.findAntsNextTo(x, y, id);
   if (!ants_near.empty())
   {
     return fight(ants_near.front());
@@ -103,10 +104,10 @@ bool Ant::move(Ground& ground)
     move_function = &Ant::followSmell;
   }
   (this->*move_function)(ground);
-  
+
   last_x = x;
   last_y = y;
-  
+
   if (x == nest_x && y == nest_y) //going into nest
   {
     move_function = nullptr;
@@ -126,11 +127,11 @@ void Ant::getFood(Ground& ground)
 void Ant::goToNest(Ground& ground)
 {
   //leave smell
-//  if (food)
-//  {
-////    ground.makeSmell(x, y, id);
-//    ground.makeSmell(x, y, id, getDirectionFromDifferenceSigns(x - last_x, y - last_y));
-//  }
+  //  if (food)
+  //  {
+  ////    ground.makeSmell(x, y, id);
+  //    ground.makeSmell(x, y, id, getDirectionFromDifferenceSigns(x - last_x, y - last_y));
+  //  }
 
   Direction act_direction = getDirectionFromDifferenceSigns(nest_x - x, nest_y - y);
   if (move_distribution != nullptr)
@@ -173,28 +174,28 @@ void Ant::goToNest(Ground& ground)
 
   if (make_path)
   {
-//    ground.makeSmell(x, y, id);
+    //    ground.makeSmell(x, y, id);
     ground.makeSmell(x, y, id, getDirectionFromDifferenceSigns(last_x - x, last_y - y));
   }
-  
-//  //for now it's closest way
-//  if (x > nest_x && ground.checkifInGround(x - 1, y))
-//  {
-//    --x;
-//  }
-//  if (x < nest_x && ground.checkifInGround(x + 1, y))
-//  {
-//    ++x;
-//  }
-//
-//  if (y > nest_y && ground.checkifInGround(x, y - 1))
-//  {
-//    --y;
-//  }
-//  if (y < nest_y && ground.checkifInGround(x, y + 1))
-//  {
-//    ++y;
-//  }
+
+  //  //for now it's closest way
+  //  if (x > nest_x && ground.checkifInGround(x - 1, y))
+  //  {
+  //    --x;
+  //  }
+  //  if (x < nest_x && ground.checkifInGround(x + 1, y))
+  //  {
+  //    ++x;
+  //  }
+  //
+  //  if (y > nest_y && ground.checkifInGround(x, y - 1))
+  //  {
+  //    --y;
+  //  }
+  //  if (y < nest_y && ground.checkifInGround(x, y + 1))
+  //  {
+  //    ++y;
+  //  }
 
 }
 
@@ -250,12 +251,12 @@ void Ant::createMoveDistribution(Ground & ground)
   int range = 10;
   int dirrl = abs(x - nest_x) > range ? x - nest_x : 0;
   int dirud = abs(y - nest_y) > range ? y - nest_y : 0;
-  
+
   Direction act_direction = getDirectionFromDifferenceSigns(dirrl, dirud);
-//  if (act_direction == last_direction && move_distribution != nullptr)
-//  {
-//    return;
-//  }
+  //  if (act_direction == last_direction && move_distribution != nullptr)
+  //  {
+  //    return;
+  //  }
   if (move_distribution != nullptr)
   {
     delete move_distribution;
@@ -276,7 +277,7 @@ void Ant::createMoveDistribution(Ground & ground)
 
   double a = 0.25;
   double b = 0.75;
-  
+
   double probl = iprobl ? iprobl * a + b : 1;
   double probr = iprobr ? iprobr * a + b : 1;
   double probu = iprobu ? iprobu * a + b : 1;
@@ -378,7 +379,7 @@ void Ant::directMove(Ground& ground)
 void Ant::followSmell(Ground& ground)
 {
   Direction dir = ground.followSmell(x, y, id);
-  
+
   goToDirectionNoCheck(dir);
 }
 
@@ -386,9 +387,9 @@ void Ant::goToDirectionNoCheck(Direction dir)
 {
   switch (dir)
   {
-    case Direction::UL:
-      --x;
-      --y;
+  case Direction::UL:
+    --x;
+    --y;
     break;
   case Direction::UR:
     ++x;
@@ -418,6 +419,11 @@ void Ant::goToDirectionNoCheck(Direction dir)
     move_function = &Ant::freeMove;
     break;
   }
+
+  int i =1;
+  int y = i + x;
+  i = y;
+  
 }
 
 bool Ant::fight(Ant* ant)

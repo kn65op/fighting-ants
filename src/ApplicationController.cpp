@@ -53,9 +53,10 @@ void ApplicationController::initSimulation()
   for (int i=0; i < nests_number; ++i)
   {
     nests[i] = new Nest(i);
+    nests[i]->setPosition((i + 1) * 10, (i + 1) * 10);
     nests[i]->setStartingAnts(starting_ants_number);
   }
-  
+ /* 
   //create field 
   nests[10] = new Nest(10); //TODO: losowa pozycja lub coś
   nests[10]->setPosition(40,55);
@@ -72,6 +73,7 @@ void ApplicationController::initSimulation()
   nests[40] = new Nest(40);
   nests[40]->setPosition(55,55);
   nests[40]->setStartingAnts(15);
+  */
 
   ground->createMap(100, 100, start_food_proability, place_food_proability);
 

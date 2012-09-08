@@ -14,7 +14,7 @@ Field::Field() : can_be_changed_into_food(true)
 //  rcolor = 0.6471;
   rcolor = 1;
 
-  smell = 0;
+  smell = -1;
 }
 
 /**Field::Field(const Field& orig)

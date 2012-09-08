@@ -140,7 +140,7 @@ public:
    */
   int getTime() const
   {
-    return time;
+    return time > 0 ? time : 0;
   }
 
   /**
