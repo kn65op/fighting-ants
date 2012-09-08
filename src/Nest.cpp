@@ -10,6 +10,7 @@
 #include "../include/Nest.h"
 
 #include <iostream>
+
 Nest::Nest(int id)
 {
   this->id = id;
@@ -80,6 +81,7 @@ void Nest::produceAnts()
     for (int i = 0; i < number; i++)
     {
       ++number_of_ants;
+      --food;
       ants.push_back(new Ant(id, x, y));
     }
   }
