@@ -74,29 +74,29 @@ void Ant::setPositionToNestPosition()
 
 bool Ant::move(Ground& ground)
 {
+  --time;
   //first fight
   std::list<Ant*> ants_near = ground.findAntsNextTo(x,y,id);
   if (!ants_near.empty())
   {
     return fight(ants_near.front());
   }
-  
   if (move_function == nullptr) //ant just go out nest
   {
     move_function = &Ant::freeMove;
   }
-  if (food == can_carry_food)
+  else if (food == can_carry_food) //and is going to nest, no matter what happen
   {
     move_function = &Ant::goToNest;
-  }
-  else if (--time < 0) //out of stamina ;] 
-  {
-    move_function = &Ant::goToNest;
-    make_path = false;
   }
   else if (food != can_carry_food && ground.isFood(x, y)) //on food field
   {
     move_function = &Ant::getFood;
+  }
+  else if (time < 0) //out of stamina ;] 
+  {
+    move_function = &Ant::goToNest;
+    make_path = false;
   }
   else if (ground.isSmell(x, y, id)) //smell
   {
