@@ -21,7 +21,11 @@ starting_food_button(Gtk::Adjustment::create(properties.GetStarting_food(), 0, 1
 ant_can_walk_label("Ile pól może przejść mrówka szukając jedzenia:"),
 ant_can_walk_button(Gtk::Adjustment::create(properties.GetAnt_can_walk(), 0, 100000, 1, 100, 0.0)),
 amount_of_food_label("Ile jedzenia ma być na polu z jedzeniem:"),
-amount_of_food_button(Gtk::Adjustment::create(properties.GetAmount_of_food(), 1, 1000, 1, 10, 0.0))
+amount_of_food_button(Gtk::Adjustment::create(properties.GetAmount_of_food(), 1, 1000, 1, 10, 0.0)),
+length_label("Długość planszy: "),
+length_button(Gtk::Adjustment::create(properties.GetLength(), 1, 1000, 1, 10, 0.0)),
+height_label("Szerokość planszy: "),
+height_button(Gtk::Adjustment::create(properties.GetHeight(), 1, 1000, 1, 10, 0.0))
 {
   //setting floats
   placing_food_button.set_digits(4);
@@ -35,6 +39,8 @@ amount_of_food_button(Gtk::Adjustment::create(properties.GetAmount_of_food(), 1,
   main_box.pack_start(labels_box);
   main_box.pack_end(buttons_box);
 
+  labels_box.pack_end(height_label);
+  labels_box.pack_end(length_label);
   labels_box.pack_end(starting_ants_label);
   labels_box.pack_end(nests_label);
   labels_box.pack_end(placing_food_label);
@@ -42,6 +48,8 @@ amount_of_food_button(Gtk::Adjustment::create(properties.GetAmount_of_food(), 1,
   labels_box.pack_end(ant_can_walk_label);
   labels_box.pack_end(amount_of_food_label);
 
+  buttons_box.pack_end(height_button);
+  buttons_box.pack_end(length_button);
   buttons_box.pack_end(starting_ants_button);
   buttons_box.pack_end(nests_button);
   buttons_box.pack_end(placing_food_button);
@@ -68,4 +76,6 @@ void SimulationPropertiesDialog::saveProperties(Properties& properties)
   properties.SetPlacing_food(placing_food_button.get_value());
   properties.SetStarting_ants(starting_ants_button.get_value_as_int());
   properties.SetStarting_food(starting_food_button.get_value());
+  properties.SetLength(length_button.get_value_as_int());
+  properties.SetHeight(height_button.get_value_as_int());
 }

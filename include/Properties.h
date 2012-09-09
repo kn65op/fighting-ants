@@ -93,6 +93,27 @@ public:
     this->simulation_interval = simulation_interval;
   }
 
+  int GetHeight() const
+  {
+    return height;
+  }
+
+  void SetHeight(int height)
+  {
+    this->height = height;
+  }
+
+  int GetLength() const
+  {
+    return length;
+  }
+
+  void SetLength(int length)
+  {
+    this->length = length;
+  }
+
+
   /**
    * Save properties to file.
    * @param file Filename.
@@ -118,6 +139,10 @@ private:
   int ant_can_walk;
   /** amount of food */
   int amount_of_food;
+  /** ground length */
+  int length;
+  /** ground height */
+  int height;
 
   /** simulation interval */
   int simulation_interval;

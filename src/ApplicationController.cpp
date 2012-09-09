@@ -75,7 +75,7 @@ void ApplicationController::initSimulation()
   nests[40]->setStartingAnts(15);
   */
 
-  ground->createMap(100, 100, start_food_proability, place_food_proability);
+  ground->createMap(length, height, start_food_proability, place_food_proability);
 
   paintArea();
 }
@@ -177,4 +177,6 @@ void ApplicationController::setProperties(Properties& properties)
   Ant::setMaxTime(properties.GetAnt_can_walk());
   ground->setAmountOfFood(properties.GetAmount_of_food());
   interval = properties.GetSimulation_interval();
+  length = properties.GetLength();
+  height = properties.GetHeight();
 }

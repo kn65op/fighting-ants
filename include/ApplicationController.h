@@ -97,6 +97,8 @@ private:
   double start_food_proability;
   double place_food_proability;
   int interval;
+  int length;
+  int height;
 
   /**
    * Processing simulation.

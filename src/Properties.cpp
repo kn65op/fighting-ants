@@ -18,6 +18,8 @@ Properties::Properties()
   simulation_interval = 100;
   starting_ants = 10;
   starting_food = 0.001;
+  length = 100;
+  height = 100;
 }
 
 Properties::~Properties()
@@ -34,6 +36,8 @@ void Properties::saveToFile(std::string file)
   f << simulation_interval << "\n";
   f << starting_ants << "\n";
   f << starting_food << "\n";
+  f << length << "\n";
+  f << height << "\n";
   f.close();
 }
 
@@ -51,5 +55,7 @@ void Properties::loadFromFile(std::string file)
   f >> simulation_interval;
   f >> starting_ants;
   f >> starting_food;
+  f >> length;
+  f >> height;
   f.close();
 }
