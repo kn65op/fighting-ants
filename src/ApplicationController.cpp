@@ -18,6 +18,7 @@ ApplicationController::ApplicationController()
 
 ApplicationController::~ApplicationController()
 {
+  deleteAll();
 }
 
 void ApplicationController::startSimulation()
@@ -33,7 +34,7 @@ void ApplicationController::startSimulation()
   simulation_thread = new std::thread(&ApplicationController::processSimulation, this);
 }
 
-void ApplicationController::initSimulation()
+void ApplicationController::deleteAll()
 {
   //remove ants
   std::for_each(ants.begin(), ants.end(), [](Ant * ant)
@@ -49,11 +50,15 @@ void ApplicationController::initSimulation()
     delete pair.second;
   };
   nests.clear();
+}
 
+void ApplicationController::initSimulation()
+{
+  deleteAll();
   for (int i=0; i < nests_number; ++i)
   {
     nests[i] = new Nest(i);
-    nests[i]->setPosition((i + 1) * 10, (i + 1) * 10);
+    nests[i]->setPosition((i + 1) * 5, (i + 1) * 5);
     nests[i]->setStartingAnts(starting_ants_number);
   }
  /* 

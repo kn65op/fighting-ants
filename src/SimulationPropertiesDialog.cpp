@@ -23,9 +23,9 @@ ant_can_walk_button(Gtk::Adjustment::create(properties.GetAnt_can_walk(), 0, 100
 amount_of_food_label("Ile jedzenia ma być na polu z jedzeniem:"),
 amount_of_food_button(Gtk::Adjustment::create(properties.GetAmount_of_food(), 1, 1000, 1, 10, 0.0)),
 length_label("Długość planszy: "),
-length_button(Gtk::Adjustment::create(properties.GetLength(), 1, 500, 1, 10, 0.0)),
+length_button(Gtk::Adjustment::create(properties.GetLength(), 10, 500, 1, 10, 0.0)),
 height_label("Szerokość planszy: "),
-height_button(Gtk::Adjustment::create(properties.GetHeight(), 1, 500, 1, 10, 0.0))
+height_button(Gtk::Adjustment::create(properties.GetHeight(), 10, 500, 1, 10, 0.0))
 {
   //setting floats
   placing_food_button.set_digits(4);

@@ -106,6 +106,8 @@ private:
   void processSimulation();
 
   void paintArea();
+
+  void deleteAll();
 };
 
 #endif	/* APPLICATIONCONTROLLER_H */
