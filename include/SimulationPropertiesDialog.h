@@ -12,6 +12,8 @@
 
 #include "Properties.h"
 
+#include <list>
+
 class SimulationPropertiesDialog : public Gtk::Dialog
 {
 public:
@@ -65,6 +67,13 @@ private:
   Gtk::HBox main_box;
   Gtk::VBox labels_box;
   Gtk::VBox buttons_box;
+
+  //for nests
+  std::list<Gtk::SpinButton*> nests_buttons;
+  std::list<Gtk::Label*> nests_labels;
+  
+  //adjustment
+  Glib::RefPtr<Gtk::Adjustment> nest_adjustment;
   
 };
 
