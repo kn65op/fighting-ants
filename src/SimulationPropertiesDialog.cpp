@@ -65,6 +65,8 @@ height_button(Gtk::Adjustment::create(properties.GetHeight(), 10, 500, 1, 10, 0.
 
   //for nests positions
   nests_button.signal_focus_out_event().connect(sigc::mem_fun(*this, &SimulationPropertiesDialog::focus_out_nests_button));
+  length_button.signal_focus_out_event().connect(sigc::mem_fun(*this, &SimulationPropertiesDialog::focus_out_nests_button));
+  height_button.signal_focus_out_event().connect(sigc::mem_fun(*this, &SimulationPropertiesDialog::focus_out_nests_button));
   
   //showing acutal number of buttons
   change_nests_positions();
@@ -94,9 +96,6 @@ void SimulationPropertiesDialog::change_nests_positions()
   //showing buttons to select nests positions
   int nests_number = nests_button.get_value_as_int();
 
-  nest_adjustment_x = Gtk::Adjustment::create(1, 1, length_button.get_value(), 1, 10, 0.0);
-  nest_adjustment_y = Gtk::Adjustment::create(1, 1, height_button.get_value(), 1, 10, 0.0);
-
   clearNestsList();
   Gtk::Label* label_tmp;
   Gtk::SpinButton* button_tmp;
@@ -111,11 +110,11 @@ void SimulationPropertiesDialog::change_nests_positions()
     nests_labels_ys.push_back(label_tmp);
     labels_box.pack_end(*label_tmp);
 
-    button_tmp = new Gtk::SpinButton(nest_adjustment_x);
+    button_tmp = new Gtk::SpinButton(Gtk::Adjustment::create(1, 1, length_button.get_value(), 1, 10, 0.0));
     nests_buttons_xs.push_back(button_tmp);
     buttons_box.pack_end(*button_tmp);
 
-    button_tmp = new Gtk::SpinButton(nest_adjustment_y);
+    button_tmp = new Gtk::SpinButton(Gtk::Adjustment::create(1, 1, height_button.get_value(), 1, 10, 0.0));
     nests_buttons_xs.push_back(button_tmp);
     buttons_box.pack_end(*button_tmp);
   }
@@ -139,23 +138,27 @@ void SimulationPropertiesDialog::clearNestsList()
     delete button;
     button = 0;
   });
+  nests_buttons_xs.clear();
   std::for_each(nests_buttons_ys.begin(), nests_buttons_ys.end(), [this](Gtk::SpinButton* button)
   {
     buttons_box.remove(*button);
     delete button;
     button = 0;
   });
+  nests_buttons_ys.clear();
   std::for_each(nests_labels_xs.begin(), nests_labels_xs.end(), [this](Gtk::Label* label)
   {
     labels_box.remove(*label);
     delete label;
     label = 0;
   });
+  nests_labels_xs.clear();
   std::for_each(nests_labels_ys.begin(), nests_labels_ys.end(), [this](Gtk::Label* label)
   {
     labels_box.remove(*label);
     delete label;
     label = 0;
   });
+  nests_labels_ys.clear();
 }
 

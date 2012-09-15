@@ -83,11 +83,6 @@ private:
 
   bool focus_out_nests_button(GdkEventFocus* f);
   void clearNestsList();
-
-  //adjustment
-  Glib::RefPtr<Gtk::Adjustment> nest_adjustment_x;
-  Glib::RefPtr<Gtk::Adjustment> nest_adjustment_y;
-
 };
 
 #endif	/* SIMULATIONPROPERTIESDIALOG_H */
