@@ -9,6 +9,7 @@
 #define	PROPERTIES_H
 
 #include <string>
+#include <list>
 
 /**
  * @brief This class holds and manage all parameters for simulation and engine.
@@ -146,6 +147,9 @@ private:
 
   /** simulation interval */
   int simulation_interval;
+
+  std::list<int> nests_x;
+  std::list<int> nests_y;
 
 };
 

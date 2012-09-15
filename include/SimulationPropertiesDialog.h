@@ -17,31 +17,32 @@
 class SimulationPropertiesDialog : public Gtk::Dialog
 {
 public:
+
   enum Response
   {
     OK,
     CANCEL
   };
-  
+
   /**
    * Constructor with properties.
    * @param properties Actual properties.
    */
   SimulationPropertiesDialog(Properties & properties);
-  
+
   /**
    * Copying is not allowed.
    * @param orig nothing.
    */
   SimulationPropertiesDialog(const SimulationPropertiesDialog& orig) = delete;
-  
+
   /**
    * Default destructor.
    */
   virtual ~SimulationPropertiesDialog();
 
   void saveProperties(Properties & properties);
-  
+
 private:
   //fields
   Gtk::SpinButton starting_ants_button;
@@ -62,19 +63,31 @@ private:
   Gtk::Label amount_of_food_label;
   Gtk::Label length_label;
   Gtk::Label height_label;
-  
+
   //boxes
   Gtk::HBox main_box;
   Gtk::VBox labels_box;
   Gtk::VBox buttons_box;
 
+  //boxes for nests
+  //Gtk::VBox labels_nests_box;
+//  Gtk::Vbox buttons_nests_bos;
+
   //for nests
-  std::list<Gtk::SpinButton*> nests_buttons;
-  std::list<Gtk::Label*> nests_labels;
-  
+  std::list<Gtk::SpinButton*> nests_buttons_xs;
+  std::list<Gtk::SpinButton*> nests_buttons_ys;
+  std::list<Gtk::Label*> nests_labels_xs;
+  std::list<Gtk::Label*> nests_labels_ys;
+
+  void change_nests_positions();
+
+  bool focus_out_nests_button(GdkEventFocus* f);
+  void clearNestsList();
+
   //adjustment
-  Glib::RefPtr<Gtk::Adjustment> nest_adjustment;
-  
+  Glib::RefPtr<Gtk::Adjustment> nest_adjustment_x;
+  Glib::RefPtr<Gtk::Adjustment> nest_adjustment_y;
+
 };
 
 #endif	/* SIMULATIONPROPERTIESDIALOG_H */

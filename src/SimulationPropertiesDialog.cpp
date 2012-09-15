@@ -9,6 +9,9 @@
 
 #include "../include/SimulationPropertiesDialog.h"
 
+#include <algorithm>
+#include <string>
+
 SimulationPropertiesDialog::SimulationPropertiesDialog(Properties & properties) :
 starting_ants_label("Początkowa liczba mrówek:"),
 starting_ants_button(Gtk::Adjustment::create(properties.GetStarting_ants(), 1, 100, 1, 10, 0.0)),
@@ -59,6 +62,12 @@ height_button(Gtk::Adjustment::create(properties.GetHeight(), 10, 500, 1, 10, 0.
 
   add_button("Anuluj", Response::CANCEL);
   add_button("OK", Response::OK);
+
+  //for nests positions
+  nests_button.signal_focus_out_event().connect(sigc::mem_fun(*this, &SimulationPropertiesDialog::focus_out_nests_button));
+  
+  //showing acutal number of buttons
+  change_nests_positions();
   
   main_box.show();
   main_box.show_all_children(true);
@@ -79,3 +88,74 @@ void SimulationPropertiesDialog::saveProperties(Properties& properties)
   properties.SetLength(length_button.get_value_as_int());
   properties.SetHeight(height_button.get_value_as_int());
 }
+
+void SimulationPropertiesDialog::change_nests_positions()
+{
+  //showing buttons to select nests positions
+  int nests_number = nests_button.get_value_as_int();
+
+  nest_adjustment_x = Gtk::Adjustment::create(1, 1, length_button.get_value(), 1, 10, 0.0);
+  nest_adjustment_y = Gtk::Adjustment::create(1, 1, height_button.get_value(), 1, 10, 0.0);
+
+  clearNestsList();
+  Gtk::Label* label_tmp;
+  Gtk::SpinButton* button_tmp;
+
+  for (int i=0; i < nests_number; ++i)
+  {
+    label_tmp = new Gtk::Label("Pozycja x gniazda " + std::to_string(i) + ":");
+    nests_labels_xs.push_back(label_tmp);
+    labels_box.pack_end(*label_tmp);
+
+    label_tmp = new Gtk::Label("Pozycja y gniazda " + std::to_string(i) + ":");
+    nests_labels_ys.push_back(label_tmp);
+    labels_box.pack_end(*label_tmp);
+
+    button_tmp = new Gtk::SpinButton(nest_adjustment_x);
+    nests_buttons_xs.push_back(button_tmp);
+    buttons_box.pack_end(*button_tmp);
+
+    button_tmp = new Gtk::SpinButton(nest_adjustment_y);
+    nests_buttons_xs.push_back(button_tmp);
+    buttons_box.pack_end(*button_tmp);
+  }
+
+  labels_box.show_all_children(true);
+  buttons_box.show_all_children(true);
+  
+}
+
+bool SimulationPropertiesDialog::focus_out_nests_button(GdkEventFocus* f)
+{
+  change_nests_positions();
+  return true;
+}
+
+void SimulationPropertiesDialog::clearNestsList()
+{
+  std::for_each(nests_buttons_xs.begin(), nests_buttons_xs.end(), [this](Gtk::SpinButton* button)
+  {
+    buttons_box.remove(*button);
+    delete button;
+    button = 0;
+  });
+  std::for_each(nests_buttons_ys.begin(), nests_buttons_ys.end(), [this](Gtk::SpinButton* button)
+  {
+    buttons_box.remove(*button);
+    delete button;
+    button = 0;
+  });
+  std::for_each(nests_labels_xs.begin(), nests_labels_xs.end(), [this](Gtk::Label* label)
+  {
+    labels_box.remove(*label);
+    delete label;
+    label = 0;
+  });
+  std::for_each(nests_labels_ys.begin(), nests_labels_ys.end(), [this](Gtk::Label* label)
+  {
+    labels_box.remove(*label);
+    delete label;
+    label = 0;
+  });
+}
+
