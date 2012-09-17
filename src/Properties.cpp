@@ -20,6 +20,7 @@ Properties::Properties()
   starting_food = 0.001;
   length = 100;
   height = 100;
+  smell_time = 100;
 }
 
 Properties::~Properties()
@@ -38,6 +39,7 @@ void Properties::saveToFile(std::string file)
   f << starting_food << "\n";
   f << length << "\n";
   f << height << "\n";
+  f << smell_time << "\n";
   for (auto i : nests_x)
   {
     f << i << "\n";
@@ -65,6 +67,7 @@ void Properties::loadFromFile(std::string file)
   f >> starting_food;
   f >> length;
   f >> height;
+  f >> smell_time;
 
   int tmp;
   while (nests_x.size() < nests)

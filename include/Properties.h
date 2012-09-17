@@ -166,10 +166,13 @@ private:
   int length;
   /** ground height */
   int height;
+  /** staying smell time */
+  int smell_time;
 
   /** simulation interval */
   int simulation_interval;
 
+  /** nest positions */
   std::list<int> nests_x;
   std::list<int> nests_y;
 
