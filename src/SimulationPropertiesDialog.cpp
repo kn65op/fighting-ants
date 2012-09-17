@@ -28,7 +28,9 @@ amount_of_food_button(Gtk::Adjustment::create(properties.GetAmount_of_food(), 1,
 length_label("Długość planszy: "),
 length_button(Gtk::Adjustment::create(properties.GetLength(), 10, 500, 1, 10, 0.0)),
 height_label("Szerokość planszy: "),
-height_button(Gtk::Adjustment::create(properties.GetHeight(), 10, 500, 1, 10, 0.0))
+height_button(Gtk::Adjustment::create(properties.GetHeight(), 10, 500, 1, 10, 0.0)),
+smell_time_label("Czas w jakim zapach paruje: "),
+smell_time_button(Gtk::Adjustment::create(properties.GetSmell_time(), 10, 1000, 1, 50, 0.0))
 {
   //setting floats
   placing_food_button.set_digits(4);
@@ -89,6 +91,7 @@ void SimulationPropertiesDialog::saveProperties(Properties& properties)
   properties.SetStarting_food(starting_food_button.get_value());
   properties.SetLength(length_button.get_value_as_int());
   properties.SetHeight(height_button.get_value_as_int());
+  properties.SetSmell_time(smell_time_button.get_value_as_int());
   std::list<int> save;
   for (auto i : nests_buttons_xs)
   {
