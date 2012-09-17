@@ -98,6 +98,12 @@ public:
     return direction;
   }
 
+  static void setSmell_time(int smell_time)
+  {
+    smell_time = 1 / static_cast<double>(smell_time);
+  }
+
+
   
 protected:
   /** Blue element of field color.
@@ -124,6 +130,9 @@ protected:
   /** direction 
    */
   Direction direction;
+
+private:
+  static double smell_time;
 };
 
 #endif	/* FIELD_H */

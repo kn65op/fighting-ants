@@ -7,6 +7,8 @@
 
 #include "../include/Field.h"
 
+double Field::smell_time;
+
 Field::Field() : can_be_changed_into_food(true)
 {
   bcolor = 0.1647;
@@ -55,7 +57,7 @@ void Field::flowAwaySmell()
 {
   if (smell > 0)
   {
-    smell -= 0.01;
+    smell -= smell_time;
   }
 }
 
