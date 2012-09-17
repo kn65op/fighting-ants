@@ -147,6 +147,17 @@ public:
     this->nests_y = nests_y;
   }
 
+  int GetSmell_time() const
+  {
+    return smell_time;
+  }
+
+  void SetSmell_time(int smell_time)
+  {
+    this->smell_time = smell_time;
+  }
+
+
 
 
 private:

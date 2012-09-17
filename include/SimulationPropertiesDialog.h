@@ -53,6 +53,7 @@ private:
   Gtk::SpinButton amount_of_food_button;
   Gtk::SpinButton length_button;
   Gtk::SpinButton height_button;
+  Gtk::SpinButton smell_time_button;
 
   //labels
   Gtk::Label starting_ants_label;
@@ -63,6 +64,7 @@ private:
   Gtk::Label amount_of_food_label;
   Gtk::Label length_label;
   Gtk::Label height_label;
+  Gtk::Label smell_time_label;
 
   //boxes
   Gtk::HBox main_box;
