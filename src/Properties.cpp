@@ -38,6 +38,14 @@ void Properties::saveToFile(std::string file)
   f << starting_food << "\n";
   f << length << "\n";
   f << height << "\n";
+  for (auto i : nests_x)
+  {
+    f << i << "\n";
+  }
+  for (auto i : nests_y)
+  {
+    f << i << "\n";
+  }
   f.close();
 }
 
@@ -57,5 +65,17 @@ void Properties::loadFromFile(std::string file)
   f >> starting_food;
   f >> length;
   f >> height;
+
+  int tmp;
+  while (nests_x.size() < nests)
+  {
+    f >> tmp;
+    nests_x.push_back(tmp);
+  }
+  while (nests_y.size() < nests)
+  {
+    f >> tmp;
+    nests_y.push_back(tmp);
+  }
   f.close();
 }
