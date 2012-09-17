@@ -98,9 +98,9 @@ public:
     return direction;
   }
 
-  static void setSmell_time(int smell_time)
+  static void setSmell_time(int smell_time_in)
   {
-    smell_time = 1 / static_cast<double>(smell_time);
+    smell_time = 1 / static_cast<double>(smell_time_in);
   }
 
 

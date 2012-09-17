@@ -170,6 +170,7 @@ void ApplicationController::setProperties(Properties& properties)
   interval = properties.GetSimulation_interval();
   length = properties.GetLength();
   height = properties.GetHeight();
+  Field::setSmell_time(properties.GetSmell_time());
   nests_x = properties.GetNests_x();
   nests_y = properties.GetNests_y();
 }

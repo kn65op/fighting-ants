@@ -52,6 +52,7 @@ smell_time_button(Gtk::Adjustment::create(properties.GetSmell_time(), 10, 1000, 
   labels_box.pack_end(starting_food_label);
   labels_box.pack_end(ant_can_walk_label);
   labels_box.pack_end(amount_of_food_label);
+  labels_box.pack_end(smell_time_label);
 
   buttons_box.pack_end(height_button);
   buttons_box.pack_end(length_button);
@@ -61,6 +62,7 @@ smell_time_button(Gtk::Adjustment::create(properties.GetSmell_time(), 10, 1000, 
   buttons_box.pack_end(starting_food_button);
   buttons_box.pack_end(ant_can_walk_button);
   buttons_box.pack_end(amount_of_food_button);
+  buttons_box.pack_end(smell_time_button);
 
   add_button("Anuluj", Response::CANCEL);
   add_button("OK", Response::OK);
