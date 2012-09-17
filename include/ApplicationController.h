@@ -99,6 +99,8 @@ private:
   int interval;
   int length;
   int height;
+  std::list<int> nests_x;
+  std::list<int> nests_y;
 
   /**
    * Processing simulation.

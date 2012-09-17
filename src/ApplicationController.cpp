@@ -55,30 +55,16 @@ void ApplicationController::deleteAll()
 void ApplicationController::initSimulation()
 {
   deleteAll();
+
+  std::list<int>::iterator xs = nests_x.begin();
+  std::list<int>::iterator ys = nests_y.begin();
+
   for (int i=0; i < nests_number; ++i)
   {
     nests[i] = new Nest(i);
-    nests[i]->setPosition((i + 1) * 5, (i + 1) * 5);
+    nests[i]->setPosition(*(xs++), *(ys++));
     nests[i]->setStartingAnts(starting_ants_number);
   }
- /* 
-  //create field 
-  nests[10] = new Nest(10); //TODO: losowa pozycja lub coś
-  nests[10]->setPosition(40,55);
-  nests[10]->setStartingAnts(15);
-
-  nests[20] = new Nest(20);
-  nests[20]->setPosition(55,40);
-  nests[20]->setStartingAnts(15);
-
-  nests[30] = new Nest(30);
-  nests[30]->setPosition(40,40);
-  nests[30]->setStartingAnts(15);
-  
-  nests[40] = new Nest(40);
-  nests[40]->setPosition(55,55);
-  nests[40]->setStartingAnts(15);
-  */
 
   ground->createMap(length, height, start_food_proability, place_food_proability);
 
@@ -184,4 +170,6 @@ void ApplicationController::setProperties(Properties& properties)
   interval = properties.GetSimulation_interval();
   length = properties.GetLength();
   height = properties.GetHeight();
+  nests_x = properties.GetNests_x();
+  nests_y = properties.GetNests_y();
 }
