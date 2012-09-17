@@ -262,18 +262,18 @@ void Ant::createMoveDistribution(Ground & ground)
     delete move_distribution;
   }
   last_direction = act_direction;
-  int zones = 4;
-  int left_max = ground.getLeftDistanceFromNestToBorder(id);
-  int up_max = ground.getUpDistanceFromNestToBorder(id);
-  int right_max = ground.getRightDistanceFromNestToBorder(id);
-  int down_max = ground.getDownDistanceFromNestToBorder(id);
+  double zones = 4;
+  double left_max = ground.getLeftDistanceFromNestToBorder(id);
+  double up_max = ground.getUpDistanceFromNestToBorder(id);
+  double right_max = ground.getRightDistanceFromNestToBorder(id);
+  double down_max = ground.getDownDistanceFromNestToBorder(id);
   int lr = abs(nest_x - x);
   int ud = abs(nest_y - y);
 
-  int iprobl = lr ? zones - lr / (left_max / zones) : 1;
-  int iprobr = lr ? zones - lr / (right_max / zones) : 1;
-  int iprobu = ud ? zones - ud / (up_max / zones) : 1;
-  int iprobd = ud ? zones - ud / (down_max / zones) : 1;
+  int iprobl = lr && left_max ? zones - lr / (left_max / zones) : 1;
+  int iprobr = lr && right_max ? zones - lr / (right_max / zones) : 1;
+  int iprobu = ud && up_max ? zones - ud / (up_max / zones) : 1;
+  int iprobd = ud && down_max ? zones - ud / (down_max / zones) : 1;
 
   double a = 0.25;
   double b = 0.75;

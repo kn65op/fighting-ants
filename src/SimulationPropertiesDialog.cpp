@@ -134,11 +134,11 @@ void SimulationPropertiesDialog::change_nests_positions()
     nests_labels_ys.push_back(label_tmp);
     labels_box.pack_start(*label_tmp);
 
-    button_tmp = new Gtk::SpinButton(Gtk::Adjustment::create(x != old_x.end() ? *(x++) : 1, 1, length_button.get_value(), 1, 10, 0.0));
+    button_tmp = new Gtk::SpinButton(Gtk::Adjustment::create(x != old_x.end() ? *(x++) : 0, 0, length_button.get_value() - 1, 1, 10, 0.0));
     nests_buttons_xs.push_back(button_tmp);
     buttons_box.pack_start(*button_tmp);
 
-    button_tmp = new Gtk::SpinButton(Gtk::Adjustment::create(y != old_y.end() ? *(y++) : 1, 1, height_button.get_value(), 1, 10, 0.0));
+    button_tmp = new Gtk::SpinButton(Gtk::Adjustment::create(y != old_y.end() ? *(y++) : 0, 0, height_button.get_value() - 1, 1, 10, 0.0));
     nests_buttons_ys.push_back(button_tmp);
     buttons_box.pack_start(*button_tmp);
   }
