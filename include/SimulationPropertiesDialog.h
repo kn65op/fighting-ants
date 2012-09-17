@@ -79,7 +79,12 @@ private:
   std::list<Gtk::Label*> nests_labels_xs;
   std::list<Gtk::Label*> nests_labels_ys;
 
+  std::list<int> old_x;
+  std::list<int> old_y;
+  
   void change_nests_positions();
+  void change_nests_positions(Properties & properties);
+  void fillNestPositions(int number);
 
   bool focus_out_nests_button(GdkEventFocus* f);
   void clearNestsList();
