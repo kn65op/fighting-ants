@@ -89,12 +89,25 @@ void SimulationPropertiesDialog::saveProperties(Properties& properties)
   properties.SetStarting_food(starting_food_button.get_value());
   properties.SetLength(length_button.get_value_as_int());
   properties.SetHeight(height_button.get_value_as_int());
+  std::list<int> save;
+  for (auto i : nests_buttons_xs)
+  {
+    save.push_back(i->get_value_as_int());
+  }
+  properties.SetNests_x(save);
+  save.clear();
+  for (auto i : nests_buttons_ys)
+  {
+    save.push_back(i->get_value_as_int());
+  }
+  properties.SetNests_y(save);
 }
 
 void SimulationPropertiesDialog::change_nests_positions()
 {
   //showing buttons to select nests positions
   int nests_number = nests_button.get_value_as_int();
+  std::cout << nest_number << "\n";
 
   clearNestsList();
   Gtk::Label* label_tmp;

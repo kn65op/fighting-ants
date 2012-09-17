@@ -127,6 +127,28 @@ public:
    */
   void loadFromFile(std::string file);
 
+  std::list<int> GetNests_x() const
+  {
+    return nests_x;
+  }
+
+  void SetNests_x(std::list<int> nests_x)
+  {
+    this->nests_x = nests_x;
+  }
+
+  std::list<int> GetNests_y() const
+  {
+    return nests_y;
+  }
+
+  void SetNests_y(std::list<int> nests_y)
+  {
+    this->nests_y = nests_y;
+  }
+
+
+
 private:
   /** number of starting ants */
   int starting_ants;
