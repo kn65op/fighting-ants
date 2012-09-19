@@ -81,8 +81,8 @@ public:
 private:
   //ants
   std::list<Ant*> ants;
-  //nests
-  std::map<int, Nest*> nests;
+/*  //nests
+  std::map<int, Nest*> nests;**/
   //ground
   GroundArea* ground;
 
@@ -110,6 +110,14 @@ private:
   void paintArea();
 
   void deleteAll();
+
+protected:
+  /**
+   * Show message to user about actual status of simulation.
+   */
+  virtual void showMessage() = 0;
+//i  nests
+  std::map<int, Nest*> nests;
 };
 
 #endif	/* APPLICATIONCONTROLLER_H */

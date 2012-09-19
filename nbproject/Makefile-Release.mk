@@ -39,8 +39,9 @@ OBJECTFILES= \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/src/Food.o \
 	${OBJECTDIR}/src/Field.o \
-	${OBJECTDIR}/src/SimulationPropertiesDialog.o \
+	${OBJECTDIR}/src/ApplicationControllerGtkmm.o \
 	${OBJECTDIR}/src/EnginePropertiesDialog.o \
+	${OBJECTDIR}/src/SimulationPropertiesDialog.o \
 	${OBJECTDIR}/src/Ant.o \
 	${OBJECTDIR}/src/MainWindow.o \
 	${OBJECTDIR}/src/GroundArea.o \
@@ -106,15 +107,20 @@ ${OBJECTDIR}/src/Field.o: src/Field.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Field.o src/Field.cpp
 
-${OBJECTDIR}/src/SimulationPropertiesDialog.o: src/SimulationPropertiesDialog.cpp 
+${OBJECTDIR}/src/ApplicationControllerGtkmm.o: src/ApplicationControllerGtkmm.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/SimulationPropertiesDialog.o src/SimulationPropertiesDialog.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/ApplicationControllerGtkmm.o src/ApplicationControllerGtkmm.cpp
 
 ${OBJECTDIR}/src/EnginePropertiesDialog.o: src/EnginePropertiesDialog.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/EnginePropertiesDialog.o src/EnginePropertiesDialog.cpp
+
+${OBJECTDIR}/src/SimulationPropertiesDialog.o: src/SimulationPropertiesDialog.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/SimulationPropertiesDialog.o src/SimulationPropertiesDialog.cpp
 
 ${OBJECTDIR}/src/Ant.o: src/Ant.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
@@ -242,17 +248,17 @@ ${OBJECTDIR}/src/Field_nomain.o: ${OBJECTDIR}/src/Field.o src/Field.cpp
 	    ${CP} ${OBJECTDIR}/src/Field.o ${OBJECTDIR}/src/Field_nomain.o;\
 	fi
 
-${OBJECTDIR}/src/SimulationPropertiesDialog_nomain.o: ${OBJECTDIR}/src/SimulationPropertiesDialog.o src/SimulationPropertiesDialog.cpp 
+${OBJECTDIR}/src/ApplicationControllerGtkmm_nomain.o: ${OBJECTDIR}/src/ApplicationControllerGtkmm.o src/ApplicationControllerGtkmm.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/src/SimulationPropertiesDialog.o`; \
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/src/ApplicationControllerGtkmm.o`; \
 	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} $@.d;\
-	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/SimulationPropertiesDialog_nomain.o src/SimulationPropertiesDialog.cpp;\
+	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/ApplicationControllerGtkmm_nomain.o src/ApplicationControllerGtkmm.cpp;\
 	else  \
-	    ${CP} ${OBJECTDIR}/src/SimulationPropertiesDialog.o ${OBJECTDIR}/src/SimulationPropertiesDialog_nomain.o;\
+	    ${CP} ${OBJECTDIR}/src/ApplicationControllerGtkmm.o ${OBJECTDIR}/src/ApplicationControllerGtkmm_nomain.o;\
 	fi
 
 ${OBJECTDIR}/src/EnginePropertiesDialog_nomain.o: ${OBJECTDIR}/src/EnginePropertiesDialog.o src/EnginePropertiesDialog.cpp 
@@ -266,6 +272,19 @@ ${OBJECTDIR}/src/EnginePropertiesDialog_nomain.o: ${OBJECTDIR}/src/EnginePropert
 	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/EnginePropertiesDialog_nomain.o src/EnginePropertiesDialog.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/src/EnginePropertiesDialog.o ${OBJECTDIR}/src/EnginePropertiesDialog_nomain.o;\
+	fi
+
+${OBJECTDIR}/src/SimulationPropertiesDialog_nomain.o: ${OBJECTDIR}/src/SimulationPropertiesDialog.o src/SimulationPropertiesDialog.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/src/SimulationPropertiesDialog.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/SimulationPropertiesDialog_nomain.o src/SimulationPropertiesDialog.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/src/SimulationPropertiesDialog.o ${OBJECTDIR}/src/SimulationPropertiesDialog_nomain.o;\
 	fi
 
 ${OBJECTDIR}/src/Ant_nomain.o: ${OBJECTDIR}/src/Ant.o src/Ant.cpp 

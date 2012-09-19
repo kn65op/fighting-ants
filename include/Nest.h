@@ -83,6 +83,11 @@ public:
    * Remove ants from counting.
    */
   void removeAnt();
+
+  int getNumberOfAnts()
+  {
+    return number_of_ants;
+  }
   
 private:
   //nest id (id differ ants from different nests).

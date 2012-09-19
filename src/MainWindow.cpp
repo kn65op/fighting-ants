@@ -32,6 +32,7 @@ MainWindow::MainWindow()
 
   //setting main box 
   main_box.pack_start(*(m_refUIManager->get_widget("/MenuBar")), Gtk::PACK_SHRINK);
+  main_box.pack_end(statusbar, Gtk::PACK_SHRINK);
   main_box.pack_end(main_part_box);
 
   //setting main part box
@@ -63,8 +64,10 @@ MainWindow::MainWindow()
   properties.loadFromFile("prop_file");
   
   //setting application controller
-  ap.setProperties(properties);
-  ap.setGround(field);
+  ap = new ApplicationControllerGtkmm();
+  ap->setProperties(properties);
+  ap->setGround(field);
+  ap->setStatusBar(&statusbar);
 }
 
 MainWindow::~MainWindow()
@@ -79,25 +82,25 @@ void MainWindow::on_start_stop_button_clicked()
     ss_button.set_label("Stop");
     init_button.set_sensitive(false);
     step_button.set_sensitive(false);
-    ap.startSimulation();
+    ap->startSimulation();
   }
   else //stopping
   {
     ss_button.set_label("Start");
     init_button.set_sensitive(true);
     step_button.set_sensitive(true);
-    ap.stopSimulation();
+    ap->stopSimulation();
   }
 }
 
 void MainWindow::on_step_button_clicked()
 {
-  ap.stepSimulation();
+  ap->stepSimulation();
 }
 
 void MainWindow::on_init_button_clicked()
 {
-  ap.initSimulation();
+  ap->initSimulation();
   step_button.set_sensitive(true);
   ss_button.set_sensitive(true);
 }
@@ -144,7 +147,7 @@ void MainWindow::on_simulation_settings_menu_item_clicked()
   if (spd.run() == SimulationPropertiesDialog::Response::OK)
   {
     spd.saveProperties(properties);
-    ap.setProperties(properties);
+    ap->setProperties(properties);
   }
 }
 
@@ -154,12 +157,12 @@ void MainWindow::on_engine_settings_menu_item_clicked()
   if (epd.run() == EnginePropertiesDialog::Response::OK)
   {
     epd.saveProperties(properties);
-    ap.setProperties(properties);
+    ap->setProperties(properties);
   }
 }
 
 bool MainWindow::on_delete_event(GdkEventAny* event)
 {
   //TODO: Dialog
-  return ap.isSimulationOn();
+  return ap->isSimulationOn();
 }

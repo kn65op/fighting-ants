@@ -8,7 +8,7 @@
 #ifndef MAINWINDOWS_H
 #define	MAINWINDOWS_H
 
-#include "ApplicationController.h"
+#include "ApplicationControllerGtkmm.h"
 #include "Properties.h"
 
 
@@ -48,16 +48,18 @@ private:
 
   //for view
   //box for buttons
-  Gtk::VBox buttons_box;
+  Gtk::HBox buttons_box;
   //box for separating field from buttons
-  Gtk::HBox main_part_box;
+  Gtk::VBox main_part_box;
   // main box for menubar, main part of screen and status bar
   Gtk::VBox main_box;
+
+  Gtk::Statusbar statusbar;
   
 
 
   //application controller
-  ApplicationController ap;
+  ApplicationControllerGtkmm * ap;
   //properties
   Properties properties;
 

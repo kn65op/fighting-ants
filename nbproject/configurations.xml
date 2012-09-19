@@ -6,6 +6,8 @@
                    projectFiles="true">
       <itemPath>include/Ant.h</itemPath>
       <itemPath>include/ApplicationController.h</itemPath>
+      <itemPath>include/ApplicationControllerGtkmm.h</itemPath>
+      <itemPath>include/Colors.h</itemPath>
       <itemPath>include/Direction.h</itemPath>
       <itemPath>include/EnginePropertiesDialog.h</itemPath>
       <itemPath>include/Field.h</itemPath>
@@ -26,8 +28,8 @@
                    projectFiles="true">
       <itemPath>src/Ant.cpp</itemPath>
       <itemPath>src/ApplicationController.cpp</itemPath>
+      <itemPath>src/ApplicationControllerGtkmm.cpp</itemPath>
       <itemPath>src/Colors.cpp</itemPath>
-      <itemPath>include/Colors.h</itemPath>
       <itemPath>src/Direction.cpp</itemPath>
       <itemPath>src/EnginePropertiesDialog.cpp</itemPath>
       <itemPath>src/Field.cpp</itemPath>

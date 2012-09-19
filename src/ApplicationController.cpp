@@ -142,6 +142,7 @@ void ApplicationController::stepSimulation()
 
   ground->unlock();
   paintArea();
+  showMessage();
 }
 
 void ApplicationController::paintArea()
