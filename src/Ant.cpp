@@ -9,8 +9,8 @@
 #include <stdlib.h>
 
 #include "../include/Ant.h"
-
 #include "../include/Ground.h"
+#include "../include/Colors.h"
 
 int Ant::can_carry_food = 10;
 
@@ -201,17 +201,17 @@ void Ant::goToNest(Ground& ground)
 
 double Ant::getBColor() const
 {
-  return 0.1 * food;
+  return Colors::getBColor(id);
 }
 
 double Ant::getRColor() const
 {
-  return 1;
+  return Colors::getRColor(id);
 }
 
 double Ant::getGColor() const
 {
-  return 0.2 * id;
+  return Colors::getGColor(id);
 }
 
 int Ant::distanceToNest() const

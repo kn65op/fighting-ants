@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/src/Properties.o \
+	${OBJECTDIR}/src/Colors.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/src/Food.o \
 	${OBJECTDIR}/src/Field.o \
@@ -84,6 +85,11 @@ ${OBJECTDIR}/src/Properties.o: src/Properties.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Properties.o src/Properties.cpp
+
+${OBJECTDIR}/src/Colors.o: src/Colors.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Colors.o src/Colors.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -162,13 +168,13 @@ ${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/DistanceToBorderTest.o ${OBJECTFILES:%
 ${TESTDIR}/tests/FindingAntsTest.o: tests/FindingAntsTest.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I. -I. -I. -I. -I. -I. -I. -I. -I. -I. -I. -MMD -MP -MF $@.d -o ${TESTDIR}/tests/FindingAntsTest.o tests/FindingAntsTest.cpp
+	$(COMPILE.cc) -O2 -I. -I. -I. -I. -I. -I. -I. -I. -I. -I. -I. -I. -MMD -MP -MF $@.d -o ${TESTDIR}/tests/FindingAntsTest.o tests/FindingAntsTest.cpp
 
 
 ${TESTDIR}/tests/DistanceToBorderTest.o: tests/DistanceToBorderTest.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I. -I. -I. -I. -I. -I. -I. -I. -I. -I. -I. -I. -I. -MMD -MP -MF $@.d -o ${TESTDIR}/tests/DistanceToBorderTest.o tests/DistanceToBorderTest.cpp
+	$(COMPILE.cc) -O2 -I. -I. -I. -I. -I. -I. -I. -I. -I. -I. -I. -I. -I. -I. -MMD -MP -MF $@.d -o ${TESTDIR}/tests/DistanceToBorderTest.o tests/DistanceToBorderTest.cpp
 
 
 ${OBJECTDIR}/src/Properties_nomain.o: ${OBJECTDIR}/src/Properties.o src/Properties.cpp 
@@ -182,6 +188,19 @@ ${OBJECTDIR}/src/Properties_nomain.o: ${OBJECTDIR}/src/Properties.o src/Properti
 	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Properties_nomain.o src/Properties.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/src/Properties.o ${OBJECTDIR}/src/Properties_nomain.o;\
+	fi
+
+${OBJECTDIR}/src/Colors_nomain.o: ${OBJECTDIR}/src/Colors.o src/Colors.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/src/Colors.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Colors_nomain.o src/Colors.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/src/Colors.o ${OBJECTDIR}/src/Colors_nomain.o;\
 	fi
 
 ${OBJECTDIR}/main_nomain.o: ${OBJECTDIR}/main.o main.cpp 
