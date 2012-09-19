@@ -48,6 +48,12 @@ public:
    * @param amount Amount to set.
    */
   static void setAmountOfFood(int amount);
+
+  /**
+   * Creates path on this field.
+   * @param id This path nest id.
+   */
+  virtual void makeSmell(int id) override;
 private:
   int amount;
 

@@ -11,8 +11,8 @@ double Field::smell_time;
 
 Field::Field() : can_be_changed_into_food(true)
 {
-  bcolor = 0.1647;
-  gcolor = 0.1647;
+  bcolor = 1;
+  gcolor = 1;
 //  rcolor = 0.6471;
   rcolor = 1;
 
@@ -29,12 +29,12 @@ Field::~Field()
 
 double Field::getBColor() const 
 {
-  return bcolor;
+  return bcolor * smell;
 }
 
 double Field::getGColor() const
 {
-  return gcolor;
+  return gcolor * smell;
 }
 
 double Field::getRColor() const

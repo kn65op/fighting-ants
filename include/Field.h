@@ -56,7 +56,7 @@ public:
    * Creates path on this field.
    * @param id This path nest id.
    */
-  void makeSmell(int id);
+  virtual void makeSmell(int id);
 
   /**
    * Creates path with direction on field.

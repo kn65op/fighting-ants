@@ -15,6 +15,8 @@ Food::Food()
   gcolor = 1;
   amount = started_amount_of_food; //TODO losowe
   can_be_changed_into_food = false;
+  smell = 1; //TODO change this
+  smell_id = -1;
 }
 
 Food::~Food()
@@ -36,4 +38,9 @@ bool Food::isEmpty()
 void Food::setAmountOfFood(int amount)
 {
   started_amount_of_food = amount;
+}
+
+void Food::makeSmell(int id)
+{
+  //do nothing
 }
