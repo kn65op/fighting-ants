@@ -15,8 +15,8 @@ Food::Food()
   gcolor = 1;
   amount = started_amount_of_food; //TODO losowe
   can_be_changed_into_food = false;
-  smell = 1; //TODO change this
-  smell_id = -1;
+  color_factor = 1;
+  smell = 0;
 }
 
 Food::~Food()
@@ -40,7 +40,7 @@ void Food::setAmountOfFood(int amount)
   started_amount_of_food = amount;
 }
 
-void Food::makeSmell(int id)
+void Food::makeSmell(int id, Direction dir)
 {
   //do nothing
 }

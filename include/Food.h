@@ -48,12 +48,14 @@ public:
    * @param amount Amount to set.
    */
   static void setAmountOfFood(int amount);
-
-  /**
-   * Creates path on this field.
-   * @param id This path nest id.
+  
+   /**
+   * Creates path with direction on field. On Food field smell is not created.
+   * @param id Nest id.
+   * @param dir Direction, where to go next.
    */
-  virtual void makeSmell(int id) override;
+   void makeSmell(int id, Direction dir) override;
+
 private:
   int amount;
 

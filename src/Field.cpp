@@ -29,17 +29,17 @@ Field::~Field()
 
 double Field::getBColor() const 
 {
-  return bcolor * smell;
+  return bcolor * color_factor;
 }
 
 double Field::getGColor() const
 {
-  return gcolor * smell;
+  return gcolor * color_factor;
 }
 
 double Field::getRColor() const
 {
-  return rcolor * smell;
+  return rcolor * color_factor;
 }
 
 bool Field::canBeChangedIntoFood() const
@@ -57,7 +57,7 @@ void Field::flowAwaySmell()
 {
   if (smell > 0)
   {
-    smell -= smell_time;
+    color_factor = smell -= smell_time;
   }
 }
 

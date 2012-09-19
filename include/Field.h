@@ -63,7 +63,7 @@ public:
    * @param id Nest id.
    * @param dir Direction, where to go next.
    */
-  void makeSmell(int id, Direction dir);
+  virtual void makeSmell(int id, Direction dir);
 
   /**
    * Make smell less perceptible. Finally the smell disappear.
@@ -98,12 +98,14 @@ public:
     return direction;
   }
 
+  /**
+   * Set time in which smell flow away.
+   * @param smell_time_in Time to set.
+   */
   static void setSmell_time(int smell_time_in)
   {
     smell_time = 1 / static_cast<double>(smell_time_in);
   }
-
-
   
 protected:
   /** Blue element of field color.
@@ -130,6 +132,10 @@ protected:
   /** direction 
    */
   Direction direction;
+
+  /** Color factor for changing color during simulation.
+   */
+  double color_factor;
 
 private:
   static double smell_time;
