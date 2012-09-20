@@ -15,6 +15,7 @@ Field::Field() : can_be_changed_into_food(true)
   gcolor = 1;
 //  rcolor = 0.6471;
   rcolor = 1;
+  color_factor = 0;
 
   smell = -1;
 }

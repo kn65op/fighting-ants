@@ -22,10 +22,12 @@ void ApplicationControllerGtkmm::showMessage()
   Glib::ustring message;
   std::map<int, Nest*>::iterator it, end;
   end = nests.end();
-  for (it = nests.begin(); it != end; it++)
+  message = "Liczba mrówek w gniazdach: ";
+  for (it = nests.begin(); it != end; ++it)
   {
-    message += "Gniazdo " + std::to_string(it->first) + " ma " + std::to_string(it->second->getNumberOfAnts()) + " mrówek. ";
+    message += std::to_string(it->first) + ": " + std::to_string(it->second->getNumberOfAnts()) + " | ";
   }
+  message = message.substr(0, message.length() - 3);
   statusbar->remove_all_messages();
   statusbar->push(message);
 }
