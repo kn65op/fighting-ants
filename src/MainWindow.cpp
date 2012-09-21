@@ -135,7 +135,7 @@ void MainWindow::makeMenu()
 
 void MainWindow::on_quit_menu_item_clicked()
 {
-  if (!on_delete_event(nullptr))
+  if (!canQuit())
   {
     hide();
   }
@@ -164,5 +164,16 @@ void MainWindow::on_engine_settings_menu_item_clicked()
 bool MainWindow::on_delete_event(GdkEventAny* event)
 {
   //TODO: Dialog
-  return ap->isSimulationOn();
+  return canQuit();
+}
+
+bool MainWindow::canQuit()
+{
+  bool tmp;
+  if (tmp = ap->isSimulationOn())
+  {
+    Gtk::MessageDialog("Nie można wyłączyć programu w czasie trawania symulacji").run();
+    
+  }
+  return tmp;
 }

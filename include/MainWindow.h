@@ -73,6 +73,7 @@ private:
 
   void makeMenu();
 
+  bool canQuit();
   Glib::ustring ui_info;
 
   //for menu
