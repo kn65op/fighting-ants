@@ -82,7 +82,7 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/fighting-ants: LibHelper/dist/Debug/G
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/fighting-ants: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} `pkg-config gtkmm-3.0 --libs` -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/fighting-ants  ${OBJECTFILES} ${LDLIBSOPTIONS} 
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/fighting-ants  ${OBJECTFILES} ${LDLIBSOPTIONS} `pkg-config gtkmm-3.0 --libs`
 
 ${OBJECTDIR}/src/Properties.o: src/Properties.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
